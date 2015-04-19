@@ -1,0 +1,146 @@
+@charset "utf-8";
+
+/*
+################################################################################
+														FARBEN (eher variabel)
+################################################################################
+*/ /*
+--------------------------------------------------------------------------------
+	Hintergrund rechts/links/unter der 'eigentlichen' Website
+--------------------------------------------------------------------------------
+*/
+body {
+	background: #FFFFCC;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Haupthintergrundfarbe
+--------------------------------------------------------------------------------
+*/
+#wrapper {
+	background: #ffdb2b;
+}
+
+.schattiert,.koerper {
+	background-color: #ffffff;
+}
+
+.grundiert,.kopf,.fuss {
+	color: white;
+	background-color: #5D5D5D;
+}
+
+.dokument,.papier,.profil {
+	background-color: #e4e4e4;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Hauptschriftfarbe (Text, Links und Überschriften)
+--------------------------------------------------------------------------------
+*/
+#wrapper,a:link {
+	color: #333333;
+}
+
+.grundiert a,.kopf a,.fuss a {
+	color: #FFFFFF;
+}
+
+.grundiert a:visited,.kopf a:visited,.fuss a:visited {
+	color: #FFFFFF;
+}
+
+a:visited {
+	color: #666633;
+}
+
+a:hover,a:focus {
+	color: #333333;
+}
+
+a:active {
+	color: #FF0000;
+}
+
+h1,h2,h3,h4,h5,h6,caption,legend {
+	color: #202020;
+}
+
+.grundiert h1,.grundiert h2,.grundiert h3,.grundiert h4,.grundiert h5,.grundiert h6,.kopf h1,.kopf h2,.kopf h3,.kopf h4,.kopf h5,.kopf h6,.fuss h1,.fuss h2,.fuss h3,.fuss h4,.fuss h5,.fuss h6 {
+	color: #FFFFFF;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Fußzeile
+--------------------------------------------------------------------------------
+*/
+#footer,#footer a {
+	color: #666600;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Navigation
+--------------------------------------------------------------------------------
+*/
+#nav_glb a,#nav_glb strong {
+	color: #5D5D5D;
+	background-color: white;
+}
+
+#sidebarnav a:hover,#sidebarnav a:focus,#sidebarnav a:active,#sidebarnav strong {
+	color: #5D5D5D;
+	background-color: #CCCAC2;
+}
+
+.nav_pub_stage1 a,.nav_pub_stage1 strong {
+	color: #ffa325;
+	background-color: #5D5D5D;
+}
+
+.nav_pub_stage2 a,.nav_pub_stage2 strong {
+	color: #333333;
+	background-color: transparent;
+}
+
+.nav_int_stage1 a,.nav_int_stage1 strong {
+	color: white;
+	background-color: #0060a1;
+}
+
+.nav_int_stage2 a,.nav_int_stage2 strong {
+	color: #333333;
+	background-color: #7cbbff;
+}
+
+#nav_cnt a,#nav_cnt strong {
+	color: #999999;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Tabellen / Formulare
+--------------------------------------------------------------------------------
+*/
+tr.odd {
+	background-color: #999999;
+}
+
+#form_overview th,tr.even {
+	background-color: #CCCCCC;
+}
+
+tr.special {
+	background-color: transparent;
+}
+
+tr.special2 {
+	background-color: transparent;
+}
+
+tr.highlight {
+	background-color: transparent;
+}

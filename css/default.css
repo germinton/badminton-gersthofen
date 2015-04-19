@@ -1,0 +1,755 @@
+@charset "utf-8";
+
+/*
+################################################################################
+														FARBEN (eher variabel)
+################################################################################
+*/ /*
+			siehe farben_xxx.css
+*/ /*
+################################################################################
+														FARBEN (eher statisch)
+################################################################################
+*/ /*
+
+--------------------------------------------------------------------------------
+	Buttons
+--------------------------------------------------------------------------------
+*/
+button[name="save"] {
+	color: #990000;
+}
+
+button[name="cancel"] {
+	color: #000099;
+}
+
+button[name="new"] {
+	color: #003300;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Asteriske
+--------------------------------------------------------------------------------
+*/
+.optional {
+	color: green;
+}
+
+.mandatory {
+	color: red;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Meldungen
+--------------------------------------------------------------------------------
+*/
+.info,.info a {
+	color: blue;
+}
+
+.info {
+	border-color: blue;
+}
+
+.check_msg,.check_msg a {
+	color: #CC0066;
+}
+
+.check_msg {
+	border-color: #CC0066;
+}
+
+.error,.error a {
+	color: red;
+}
+
+.error {
+	border-color: red;
+}
+
+/*
+################################################################################
+														ALLGEMEINE GEOMETRIE
+################################################################################
+*/ /*
+--------------------------------------------------------------------------------
+	Alle kritischen Werte instanzieren
+--------------------------------------------------------------------------------
+*/
+* {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Globale Geometrie
+--------------------------------------------------------------------------------
+*/
+#wrappershadow {
+	background: url(../bilder/wrapper/w_shadow_leftright.png) top left repeat-y;
+	width: 962px;
+	margin: auto;
+}
+
+#wrapperbottom {
+	background: transparent url(../bilder/wrapper/w_shadow_bottom.png) top left no-repeat;
+	width: 962px;
+	padding-bottom: 30px;
+	margin: auto;
+}
+
+#wrapper {
+	border: 1px solid black;
+	border-top: 0;
+	width: 950px;
+	margin: auto;
+}
+
+#sidebar {
+	float: left;
+	width: 210px;
+	min-height: 600px;
+	background: url(../bilder/netzboy_unten.gif) top left no-repeat;
+}
+
+#contentnav {
+	float: right;
+	width: 730px;
+	padding: 5px;
+}
+
+#content {
+	margin: 0 10px 0 220px;
+	padding: 60px 20px 50px 20px;
+	height: 1%; /* Behebt den 3-Pixel-Textsprung-Bug und andere Bugs im IE 6 */
+}
+
+#footer {
+	font-size: .8em;
+	text-align: center;
+	padding: 40px 20px 5px;
+	clear: both; /* immer unterhalb links- und rechts-floatierender Elemente */
+}
+
+/*
+--------------------------------------------------------------------------------
+	Allgemeines
+--------------------------------------------------------------------------------
+*/ /* Schriftgröße kontrollieren (http://jendryschik.de/wsdev/einfuehrung/eigenschaften/schrift) */
+body,td,th {
+	font: normal 80% Verdana, sans-serif;
+}
+
+td,th {
+	f\ont-size: 100%;
+}
+
+/* Betonungen */
+em {
+	font-style: normal;
+	font-weight: bold;
+}
+
+/* Allgemeine Links und Anker */
+a[href ^="http://"]:before,a[href ^="https://"]:before {
+	content: "\21D7\202F";
+}
+
+/* Kein Pfeil vor Picasa-Links */
+a[href ^="http://lh0.ggpht.com/"]:before,a[href ^="http://lh1.ggpht.com/"]:before,a[href ^="http://lh2.ggpht.com/"]:before,a[href
+	^="http://lh3.ggpht.com/"]:before,a[href ^="http://lh4.ggpht.com/"]:before,a[href ^="http://lh5.ggpht.com/"]:before,a[href
+	^="http://lh6.ggpht.com/"]:before,a[href ^="http://lh7.ggpht.com/"]:before,a[href ^="http://lh8.ggpht.com/"]:before,a[href
+	^="http://lh9.ggpht.com/"]:before,a[href ^="http://tsv-gersthofen.de/"]:before {
+	content: "";
+}
+
+/* Verlinkte Bilder */
+a img {
+	border: 0;
+}
+
+/* Bilder */
+img {
+	vertical-align: bottom;
+}
+
+#content li {
+	margin-left: 2em;
+}
+
+.textbox {
+	text-align: center;
+	padding: 0.6em;
+}
+
+.dokument,.profil {
+	border: 1px solid black;
+}
+
+.optional,.mandatory,th {
+	font-weight: bold;
+}
+
+.footnote {
+	margin-top: -1.5em;
+	margin-bottom: 0em;
+	font-size: .8em;
+	float: right;
+}
+
+.footnote_left {
+	margin-top: -1.5em;
+	margin-bottom: 0em;
+	font-size: 1em;
+	float: left;
+}
+
+p.uparrow {
+	text-align: center;
+}
+
+/** Kopfbereich
+---------------------------------------------------------- */
+#head {
+	text-align: right;
+}
+
+/** Logo
+---------------------------------------------------------- */
+#logo {
+	margin: 0 310px 0 0; /* kein äußerer Abstand nach unten (siehe obige 'globale' h1-deklaration) */
+	padding: 10px 0px 50px 0;
+	background: url(../bilder/netzboy_oben.gif) left bottom no-repeat;
+	text-align: right;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Größe und Abstände von Überschriften und Absätzen
+--------------------------------------------------------------------------------
+*/
+h1 {
+	font-size: 1.8em;
+	margin: 0 0 1.5em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.3em;
+	margin: 1.3em 0;
+}
+
+h3 {
+	font-size: 1.1em;
+	margin: 1.1em 0;
+}
+
+/* Absätze */
+p {
+	margin: .8em 0;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Tabellen
+--------------------------------------------------------------------------------
+*/
+table,th,td {
+	border: 0px solid transparent;
+}
+
+table {
+	width: 100%;
+	border-collapse: separate;
+	padding: 2px;
+	text-align: center;
+}
+
+th,td {
+	padding: 2px;
+	vertical-align: middle;
+}
+
+#form_overview table,th,td {
+	border: 0px solid transparent;
+}
+
+.tableft,.tabright {
+	display: inline-block;
+	width: 49%;
+}
+
+#form_overview table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 2px;
+}
+
+#form_overview th {
+	font-weight: bold;
+}
+
+#form_overview th,td {
+	padding: 2px;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Buttons
+--------------------------------------------------------------------------------
+*/
+button[name="save"],button[name="cancel"],button[name="new"] {
+	padding: .2em;
+	font-weight: bold;
+}
+
+button[name="new"] {
+	margin-bottom: 1em;
+}
+
+button.icon {
+	background-color: transparent;
+	border-width: 0;
+	cursor: pointer;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Formular 'FILTERN&SORTIEREN'
+--------------------------------------------------------------------------------
+*/
+#form_filter_sort {
+	float: right;
+	min-width: 350px;
+	border: 1px dotted black;
+	padding: 3px 0;
+	font-size: 0.8em;
+}
+
+#form_filter_sort select,#form_filter_sort button {
+	font-size: 1.2em;
+}
+
+#form_filter_sort .left {
+	float: left;
+	text-align: right;
+	width: 35%;
+	margin-right: 2%;
+}
+
+#form_filter_sort .right,#form_filter_sort button {
+	margin-left: 37%;
+}
+
+#form_filter_sort .control.line {
+	margin: 0.2em 0;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Formular 'OVERVIEW'
+--------------------------------------------------------------------------------
+*/
+#form_overview div.foot {
+	text-align: right;
+	padding-top: 1em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Formular 'DETAIL'
+--------------------------------------------------------------------------------
+*/
+#form_detail {
+	margin-bottom: 1em;
+}
+
+#form_detail h1 {
+	text-align: left;
+	margin: 1em;
+}
+
+#form_detail fieldset {
+	border-style: none;
+	border-top: 1px dotted black;
+	padding: 5px 10px;
+	margin-bottom: 1em;
+}
+
+#form_detail legend {
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: .4em .2em;
+}
+
+p.formularbuttons {
+	text-align: right;
+	margin-bottom: 0;
+}
+
+#form_detail li {
+	margin-left: 0em;
+}
+
+/* Steuerelemente */
+#form_detail .control {
+	display: inline-block;
+	margin: .8em 1em .3em 0;
+}
+
+#form_detail .control.hidden,#form_filter_sort .control.hidden {
+	display: none;
+}
+
+#form_detail .control label,#form_detail .control .input_heading {
+	display: block;
+	font-weight: bold;
+	margin-bottom: .4em;
+}
+
+#form_detail .sidebyside li label,#form_detail .onebelowtheother li label {
+	display: inline;
+	font-weight: normal;
+}
+
+#form_detail .control .hint {
+	font-weight: normal;
+}
+
+#form_detail .control img {
+	float: left;
+	margin-right: 1em;
+	border: 1px solid black;
+}
+
+#form_detail .control ul {
+	list-style: none;
+}
+
+#form_detail .sidebyside li {
+	display: inline;
+	margin-right: 1em;
+}
+
+#form_detail .onebelowtheother li {
+	margin-bottom: .5em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Navigation oben links
+--------------------------------------------------------------------------------
+*/
+#nav_glb {
+	font-size: .9em;
+	margin: .8em 0;
+}
+
+#nav_glb,#nav_glb li {
+	float: left;
+	list-style: none;
+}
+
+#nav_glb a,#nav_glb strong {
+	text-decoration: none;
+	padding: .2em 1em;
+}
+
+#nav_glb a:hover,#nav_glb a:focus {
+	text-decoration: underline;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Navigation in der Seitenspalte
+--------------------------------------------------------------------------------
+*/
+#sidebarnav ul {
+	list-style: none;
+}
+
+#nav_pub {
+	margin: 100px 0 0 0;
+}
+
+#nav_int {
+	margin: 30px 0 0 0;
+}
+
+.nav_pub_stage1 a,.nav_pub_stage1 strong,.nav_pub_stage2 a,.nav_pub_stage2 strong,.nav_int_stage1 a,.nav_int_stage1 strong,.nav_int_stage2 a,.nav_int_stage2 strong
+	{
+	display: block;
+	text-align: right;
+	border-bottom: 1px solid white;
+	line-height: normal;
+}
+
+.nav_pub_stage1 a,.nav_pub_stage1 strong,.nav_int_stage1 a,.nav_int_stage1 strong {
+	padding: 5px 10px 7px 10px;
+}
+
+.nav_pub_stage2 a,.nav_pub_stage2 strong,.nav_int_stage2 a,.nav_int_stage2 strong {
+	padding: 2px 10px 4px 10px;
+	font-size: 0.8em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Meldungen
+--------------------------------------------------------------------------------
+*/
+.info,.check_msg,.error {
+	margin: 10px;
+	border-width: 3px;
+	border-style: solid;
+	padding: 10px 18px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.check_msg ol {
+	text-align: left;
+	font-weight: 500;
+	margin: .8em 0 .8em 18px;
+}
+
+/*
+################################################################################
+												INHALTSSPEZIFISCHE GEOMETRIE
+################################################################################
+*/
+.disclaimer p {
+	font-size: 0.8em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Neuigkeiten, Allgemeine Termine, Punktspielbegegnungstermine
+--------------------------------------------------------------------------------
+*/
+.neuigkeit,.allg_termin,.psb_termin {
+	margin-top: 1em;
+}
+
+.highlight {
+	border-color: red;
+	border-width: 3px;
+	border-style: solid;
+}
+
+.neuigkeit .kopf,.allg_termin .kopf,.psb_termin .kopf {
+	padding: .5em 1em;
+}
+
+.neuigkeit h2,.allg_termin h2,.psb_termin h2 {
+	display: inline;
+}
+
+.neuigkeit h2 {
+	font-size: 1.2em;
+}
+
+.allg_termin h2,.psb_termin h2 {
+	font-size: 1em;
+}
+
+.psb_termin h2 {
+	float: left;
+	margin: 0;
+}
+
+.psb_termin h1 {
+	font-size: 1.2em;
+	margin: 0;
+}
+
+.neuigkeit h3,.allg_termin h3,.psb_termin h3 {
+	float: right;
+	font-size: 0.8em;
+	margin: 0;
+	padding-left: 2em;
+}
+
+.neuigkeit .koerper,.allg_termin .koerper,.psb_termin .koerper {
+	padding: 1em;
+}
+
+.neuigkeit .koerper.floatpic,.allg_termin .koerper.floatpic {
+	min-height: 100px;
+}
+
+.neuigkeit img,.allg_termin img {
+	padding-left: 1em;
+	float: right;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Profil ALLGEMEIN
+--------------------------------------------------------------------------------
+*/
+.profil {
+	padding: 1em;
+}
+
+.profil h2 {
+	margin: 0 0 1em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Profil Austragungsort
+--------------------------------------------------------------------------------
+*/
+.profil.austragungsort h2 {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.profil.austragungsort img {
+	float: right;
+	border: 1px solid black;
+}
+
+.profil.austragungsort .profil_austragungsort_gmaps {
+	height: 400px;
+	margin: auto;
+	margin-bottom: 1.3em;
+	border: 1px solid black;
+}
+
+.profil.austragungsort h3 {
+	margin: .5em 0 .3em;
+}
+
+.profil.austragungsort .profil_austragungsort_info {
+	margin: .8em 0 5px;
+}
+
+.profil.austragungsort h2 a:link,h2 a:visited,h2 a:hover,h2 a:focus,h2 a:active {
+	color: #051944;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Profil Mannschaft
+--------------------------------------------------------------------------------
+*/
+.profil.mannschaft h2 {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.profil.mannschaft h3 {
+	font-size: 1.3em;
+	margin-bottom: .4em;
+}
+
+.profil.mannschaft img {
+	display: block;
+	margin: auto;
+}
+
+.profil.mannschaft h2 a:link,h2 a:visited,h2 a:hover,h2 a:focus,h2 a:active {
+	color: #051944;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Profil Mitglied
+--------------------------------------------------------------------------------
+*/
+.profil.mitglied h2 {
+	font-size: 1.4em;
+}
+
+.profil.mitglied img {
+	float: right;
+	border: 1px solid black;
+}
+
+.profil.mitglied .profil_mitglied_fuss {
+	margin-top: 2em;
+	font-size: .8em;
+}
+
+.profil.mitglied h3 {
+	margin: .5em 0 .3em;
+}
+
+.profil.mitglied dt {
+	float: left;
+	font-weight: bold;
+	text-align: right;
+	width: 25%;
+	margin-right: 2%;
+}
+
+.profil.mitglied dd {
+	margin-left: 27%;
+}
+
+.profil.mitglied.visitenkarte {
+	width: 350px;
+	margin: auto;
+}
+
+.profil.mitglied.visitenkarte h2 {
+	margin-bottom: .5em;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Bildergalerie
+--------------------------------------------------------------------------------
+*/
+#bildergalerie li {
+	float: left;
+	list-style: none;
+	margin-left: 0;
+	margin-right: .2em;
+	padding: .3em;
+	background-color: #8ca7d4;
+	margin-right: .2em;
+}
+
+#bildergalerie table {
+	text-align: left;
+}
+
+#bildergalerie td.galerie_left {
+	text-align: right;
+	padding-right: 1em;
+}
+
+#bildergalerie td.galerie_right {
+	padding-left: 1em;
+}
+
+#bildergalerie td {
+	background-color: #8ca7d4;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Bildergalerie  NEU
+--------------------------------------------------------------------------------
+*/
+.galerie img {
+	margin-right: 2.5em;
+	margin-left: 2.5em;
+	margin-bottom: 1.5em;
+	margin-top: 1.5em;
+}
+
+.galerie.text p {
+	text-align: justify;
+	margin-left: 2.5em;
+	margin-right: 2.5em;
+}

@@ -1,0 +1,77 @@
+/**
+ * @mainpage Badminton-Website
+ *
+ * @section sec_einf Einführung
+ *
+ * Ausgangsbasis für die neuen Website war die alte von Sandro entwickelte Website. Diese Website hatte die folgenden
+ * Nachteile:
+ * <ul>
+ *   <li>Verwendung von Frames (Adressierungsproblem)</li>
+ *   <li>Externes Mitgliederverwaltungstool (Daten bei externem Anbieter, Werbebanner, Formulardesign)</li>
+ *   <li>veraltetes und fehlerhaftes HTML ('<!DOCTYPE>'-Deklarationen fehlen)</li>
+ *   <li>kene Trennung zwischen Inhalt und Präsentation (praktisch keine Verwendung von CSS)</li>
+ *   <li>Aufgrund vielzahl an Seiten veraltete und/oder redundante Informationen</li>
+ *   <li>Aktualisierung von 'Hand' wenn neue Inhalte bereitgestellt werden müssen</li>
+ *   <li>Angestaubtes Erscheinungsbild</li>
+ * </ul>
+ *
+ *  Der neuen Website soll ein modernes Erscheinungbild gegeben werden, welches in aktuellen und zukünftigen Browsern
+ *  zu einer ansprechenden Darstellung der Inhalte führt. Nutzer befassen sich eher mit den Inhalten einer Website,
+ *  wenn sie sich wohlfühlen, also von ihr auch optisch angesprochen werden. Dies soll durch befolgen des
+ *  XHTML-Standards erreicht werden, den bereits jetzt der Firefox-Browser unterstützt und den künftig alle Broser,
+ *  also auch der von Webdesignern ungeliebte Internet Explorer, unterstützen werden. Eine neue Website sollte ihren
+ *  Inhalt aus einer Datenbank beziehen. Durch Kopplung der Website mit der bereits bestehenden Datenbank 'DriVe' sollen
+ *  synergieeffekte genutzt werden und gleichzeitig die doppelte Mitgliederverwaltung hinfällig werden.
+ *
+ * Einige eigenschaften der neuen Website:
+ * <ul>
+ *   <li>XHTML 1.0 Standardkonform</li>
+ *   <li>serverseitig-dynamisch generiert (PHP)</li>
+ *   <li>MySQL-Datenbank-Anbindung</li>
+ * </ul>
+ *
+ * @section sec_ents Entstehung
+ *
+ * Diese Website wurde auf folgendem System entwickelt:
+ * <ul>
+ *   <li>Apache HTTP Server 2.2</li>
+ *   <li>PHP 5.2</li>
+ *   <li>MySQL Server 5.1-community</li>
+ * </ul>
+ *
+ * Die folgenden Tools wurden zum Erstellen und Dokumentieren der Website verwendet:
+ * <ul>
+ *   <li>Eclipse for PHP Developers (Galileo)</li>
+ *   <li>Mozilla Firefox
+ *     <ul>
+ *       <li>Add-on: Web Developer</li>
+ *       <li>Add-on: HTML Validator</li>
+ *       <li>Add-on: IE Tab</li>
+ *     </ul>
+ *   </li>
+ *   <li>phpMyAdmin</li>
+ *   <li>Doxygen</li>
+ *   <li>HTML Help Workshop</li>
+ * </ul>
+ *
+ * Die folgende Dokumentation hat zum Verständnis der verwendeten Technologien beigetragen:
+ * <dl>
+ *   <dt>Apache HTTP Server</dt>
+ *   <dd>http://httpd.apache.org/docs/trunk/en/</dd>
+ *   <dt>PHP Manual</dt>
+ *   <dd>http://www.php.net/manual/en/</dd>
+ *   <dt>MySQL Server 5.1</dt>
+ *   <dd>http://dev.mysql.com/doc/refman/5.1/en/</dd>
+ *   <dt>XHTML-Grundlagen</dt>
+ *   <dd>http://jendryschik.de/wsdev/einfuehrung/</dd>
+ *   <dt>XHTML-Formulare</dt>
+ *   <dd>http://www.einfach-fuer-alle.de/artikel/barrierefreie-formulare-mit-html-css-und-javascript/</dd>
+ *   <dt>PHP-Tutorial</dt>
+ *   <dd>http://tut.php-quake.net/de/</dd>
+ *   <dt>Doxygen</dt>
+ *   <dd>http://www.stack.nl/~dimitri/doxygen/manual.html</dd>
+ *   <dt>HTMLHelp</dt>
+ *   <dd>http://www.help-info.de/de/Help_Info_HTMLHelp/hh.htm</dd>
+ * </dl>
+ *
+ */

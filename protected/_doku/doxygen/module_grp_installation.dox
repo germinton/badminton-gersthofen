@@ -1,0 +1,139 @@
+/**
+ * @defgroup grp_installation Installation
+ * 
+ * @section sec_install_jre Java Runtime Environment
+ * 
+ * keine Besonderheiten
+ * 
+ * @section sec_install_eclipse Eclipse
+ * 
+ * Installation der Galileo-Version von 'Eclipse für PHP Entwickler' inklusive Nachrüsten des PHP-Debuggers und des
+ * C/C++-Editors für die Assoziation der *.dox-Dateien zum bequemen editieren der Special-Documentation-Blocks.
+ * 
+ * <ul>
+ *   <li>eclipse-php-galileo-win32.zip nach [Programme] entpacken</li>
+ *   <li>org.zend.php.debug_feature-I20081217.zip nach [Programme] entpacken</li>
+ *   <li>Eclipse-Workspace anlegen, z. B. [Entwicklung]\\Eclipse</li>
+ *   <li>Help -> Install New Software -> Work with 'Galileo - ...' -> Programming Languages -> Eclipse C/C++ Dev...</li>
+ *   <li>Einstellungen vornehmen:
+ *     <ul>
+ *       <li>General -> Editors -> Text Editors -> Displayed tab width: 2</li>
+ *       <li>General -> Editors -> Text Editors -> Show whitespace characters: YES</li>
+ *       <li>General -> Editors -> Text Editors -> Show print margin: YES</li>
+ *       <li>General -> Editors -> Text Editors -> Print margin column: 120 (für Querformat)</li>
+ *       <li>Web -> CSS Files -> Encoding: UTF-8</li>
+ *       <li>Web -> CSS Files -> Editor -> Line width: 120</li>
+ *       <li>Web -> HTML Files -> Encoding: UTF-8</li>
+ *       <li>Web -> HTML Files -> Editor -> Line width: 120</li>
+ *       <li>*.dox-Dateien mit C/C++-Editor assoziieren (wg. Special-Documentation-Blocks)</li>
+ *     </ul>
+ *   </li>
+ * </ul>
+ * 
+ * @section sec_install_php PHP Hypertext Preprocessor
+ * 
+ * <ul>
+ *   <li>php-5.2.10-Win32.zip nach [Programme]\\php-5.2.10-Win32 entpacken</li>
+ *   <li>[Programme]\\php-5.2.10-Win32\\ zur 'PATH'-Umgebungsvariablen hinzufügen</li>
+ *   <li>[Programme]\\php-5.2.10-Win32\\php.ini-recommended nach php.ini kopieren und Semikola wie gezeigt entfernen:
+ *     <pre>
+ *     extension=php_gd2.dll
+ *     extension=php_mbstring.dll
+ *     extension=php_mcrypt.dll
+ *     extension=php_mysql.dll
+ *     </pre>
+ *   </li>
+ *   <li>obige dlls aus [Programme]\\php-5.2.10-Win32\\ext eine Ebene höher kopieren</li>
+ * </ul>
+ * 
+ * @section sec_install_apache Apache HTTP Server
+ * 
+ * <ul>
+ *   <li>apache_2.2.11-win32-x86-openssl-0.9.8i.msi ausführen (Typical)
+ *     <ul>
+ *       <li>Hostname -> [Computername]</li>
+ *       <li>Servername -> z. B. 'MyMySQLServer'</li>
+ *       <li>E-Mail -> abc\@abc</li>
+ *     </ul>
+ *   </li>
+ *   <li>[Programme]\\Apache Software Foundation\\Apache2.2\\conf\\httpd.conf editieren:
+ *     <pre>
+ *     PHPIniDir "[Programme]/php-5.2.6-Win32/"
+ *     LoadModule php5_module "[Programme]/php-5.2.6-Win32/php5apache2_2.dll"
+ *     [...]
+ *     DocumentRoot "[Entwicklung]/Eclipse"
+ *     [...]
+ *     <Directory "[Entwicklung]/Eclipse">
+ *     [...]
+ *     \<IfModule mime_module>
+ *     [...]
+ *     AddType application/x-httpd-php .php
+ *     </pre>
+ *   </li>
+ *   <li>Restart Apache-Server</li>
+ * </ul>
+ * 
+ * @section sec_install_mysql MySQL Community Server
+ * 
+ * <ul>
+ *   <li>mysql-essential-5.1.36-win32.msi ausführen (Typical) -> Configure the MySQL Server now "YES"</li>
+ *   <li>Detailed Configuration -> Developer Machine -> ... -> Default Character Set utf8 -> Root-PW 'root'</li>
+ * </ul>
+ * 
+ * @section sec_install_phpmyadmin phpMyAdmin
+ *
+ * <ul>
+ *   <li>Extrahiere Inhalt von phpMyAdmin-3.2.0.1-all-languages.zip nach [Entwicklung]\\Eclipse\\phpMyAdmin</li>
+ *   <li>Erstelle Verzeichnis [Entwicklung]\\Eclipse\\phpMyAdmin\\config</li>
+ *   <li>Öffne im Browser "http://localhost/myPhpAdmin/setup/config.php</li>
+ *   <li>Einstellungen:
+ *     <pre>
+ *     **Overview**
+ *       Deutsch
+ *     **Features**
+ *      *Import/Export*
+ *       ZIP: NO
+ *       Bzip2: NO
+ *      *Security*
+ *       Blowfish secret: 'root'
+ *     **Mainframe**
+ *       showphpinfo-link: YES
+ *     **Exportieren**
+ *       Format: sql
+ *       Compression: gzip
+ *       Save as file: YES
+ *       Character set of the file: utf-8
+ *       Overwrite existing file(s): YES
+ *       Database name template: __DB__-\%Y\%m\%d-\%H\%M\%S
+ *     </pre>
+ *   </li>
+ *   <li>Kopiere [Entwicklung]\\Eclipse\\phpMyAdmin\\config\\config.inc.php ein Verzeichnis höher</li>
+ *   <li>Lösche Verzeichnis [Entwicklung]\\Eclipse\\phpMyAdmin\\config\\</li>
+ *   <li>Überprüfe Installation durch Öffnen im Browser "http://localhost/myPhpAdmin/index.php"</li>
+ *   <li>Benutzer 'drive_dev_user' anlegen</li>
+ * </ul>
+ *
+ * @section sec_install_doxygen Doxygen
+ *
+ * <ul>
+ *   <li>doxygen-1.5.9-setup.exe ausführen</li>
+ *   <li>Custom Installation</li>
+ *   <li>nur doxygen manual (compressed HTML) anhaken</li>
+ *   <li>don't create start menu entry</li>
+ * </ul>
+ * 
+ * @section sec_install_htmlhelp HTML Help Workshop
+ * 
+ * htmlhelp.exe ausführen
+ * 
+ * @section sec_install_ffadons Firefox Add-Ons
+ * 
+ * Öffne Firefox und klicke auf 'Extras' -> 'AddOns' -> 'AddOns herunterladen' 
+ * 
+ * <ul>
+ *   <li>Web Developer (von Chris Pederick)</li>
+ *   <li>HTML Validator (von Marc Gueury) - bei Installation 'SGML'-Parser auswählen</li>
+ *   <li>IE Tab (von PCMan)</li>
+ * </ul>
+ * 
+ */

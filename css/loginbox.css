@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/** Login
+---------------------------------------------------------- */
+#loginbox {
+	float: right;
+	text-align: left;
+	width: 180px;
+	border: 2px solid #606060;
+	margin: 0 25px 0 0;
+	border-top: 0;
+	background-color: #7cbbff;
+	font-size: 0.7em;
+}
+
+#loginbox h2 {
+	margin: 0; /* kein äußerer Abstand nach unten (siehe obige 'globale' h1-deklaration) */
+	padding: .3em .5em;
+	color: white;
+	font-weight: 700;
+	background-color: #0060a1;
+}
+
+#loginbox form {
+	padding: 5px;
+}
+
+#loginbox p {
+	margin: 0;
+}
+
+#loginbox input {
+	width: 165px;
+}
+
+
+#loginbox button {
+	float: right;
+	margin: 0 3px 5px 0;
+	color: white;
+	background-color: #0060a1;
+	border: 1px solid #606060;
+	font-size: 10px;
+}
+
+#loginbox a {
+	display: block;
+	margin-top: 8px;
+	color: #333333;
+}
+
+#loginbox a:hover,#loginbox a:focus {
+	color: #FFFFFF;
+	background-color: transparent;
+}
+
+#loginbox span.loginHeading {
+	font-size: 1.2em;
+}
+
+#loginbox span.loginName {
+	font-size: 1.6em;
+	font-weight: 700;
+	margin: 0 0 0 5px;
+}
+
+#loginbox .control {
+	margin: 0;
+}
+
+#loginbox .control label {
+	font-weight: normal;
+	margin-bottom: 0;
+}

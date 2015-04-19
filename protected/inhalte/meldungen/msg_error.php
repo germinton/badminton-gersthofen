@@ -1,0 +1,1 @@
+<?php echo MSG_ERROR_START.$data['msg'].MSG_ERROR_END ?>

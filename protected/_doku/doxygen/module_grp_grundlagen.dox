@@ -1,0 +1,42 @@
+/**
+ * @defgroup grp_grundlagen Grundlagen
+ * 
+ * @section sec_basics_homepage Die Homepage und der Section-String
+ * 
+ * Ein Besucher interagiert immer mit der gleichen Seite, der 'index.php'. Streng genommen befindet sich der Besucher
+ * also immer auf der Hompage. Der Trick besteht nun darin, dass abhängig von einem Zeichenketten-Parameter, genannt
+ * 'Section'-String, immer ein andere Inhalt in den Content-Bereich (= 'div'-Element mit id 'content') geladen wird.
+ * Gibt der Besucher Beispielsweise index.php?section=kontakt in seinen Browser ein, wird ein Inhalt mit Kontaktinfos
+ * in den Content-Bereich geladen.
+ * 
+ * Aus Programmierersicht handelt es sich hierbei um den Inhalt der PHP-Variablen '$_GET['section']'.
+ * 
+ * Die obige Erklärung ist hinreichend, sofern es sich um statische Inhalte handelt. Statisch heißt in diesem
+ * Zusammenhang, dass der Besucher nicht mit dem Seiteninhalt interagieren kann. Die Interaktionsmöglichkeiten
+ * beschränken sich auf das anklicken der Navigationselemente an der linken Seite bzw. die globale Navigation links
+ * oben.
+ * 
+ * Handelt es sich um dynamische Inhalte, beeinflußt ein weiterer Parameter den zu ladenden Inhalt. Dynamisch heißt
+ * hier, dass es sich um ein Formular handelt, auf dem der Besucher durch klicken auf einen Button (z. B. 'Speichern')
+ * eine Aktion hervorrufen kann. Dieser Parameter ist für den Besucher nicht sichtbar.
+ * 
+ * Aus Programmierersicht handelt es sich hierbei um den Inhalt einiger Varialben des PHP-Arrays '$_POST[]'.
+ * 
+ * Typischerweise wird dieses Konzept genutzt, wenn es um Stammdatenverwaltung geht. Zunächst wird beim Aufrufen der
+ * Seite index.php?section=verw_mitglieder eine Liste aller Mitglieder gezeigt. Durch Klick auf das 'Bearbeiten'-Symbol
+ * neben dem Mitgliedsnamen (ist in Wahrheit ein Formularbutton), wird dann in die Detailansicht gewechselt und es
+ * können Änderungen vorgenommen werden. Bestätigt man die Änderung durch Klick auf den Formularbutton 'Speichern', so
+ * wird wieder in die Übersichtsdarstellung gewechselt. Der Section-String in der Adresszeile des Browsers ändert sich
+ * währen dieser Aktionen nicht.
+ * 
+ * @section sec_basics_navigation Navigationselemente
+ * 
+ * Die Navigation wird in der Datei 'navigation.php' definiert. Zur Auswahl stehen drei Bereiche, in denen es eine
+ * Navigationselemente geben kann. Erstens die 'globale' Navigation links oben. Zweitens die 'normale' Navigation am
+ * linken Seitenrand und drittens die 'benutzerspezifische' Navigaiton unter der 'normalen' Navigation. Die ersten
+ * beiden Navigationsbereiche sind für jeden Besucher sichtbar, der letzte enthält abhängig von den Berechtigungen
+ * des eingeloggten Mitglieds spezifische Navigationselemente.
+ * 
+ * @section sec_basics_benutzerverw Login und Benutzerrechte
+ * 
+ */

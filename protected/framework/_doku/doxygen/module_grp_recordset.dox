@@ -1,0 +1,17 @@
+/**
+ * @defgroup grp_recordset Klassen für Datensatzrepräsentation
+ *
+ * Die hier zusammengefassten Klassen repräsentieren Datensätze aus der zugrundeliegenden Datenbank. Objekte dieser
+ * Klassen können mit der Angabe einer ID konstruiert werden, wodurch die Daten des entsprechenden Datensatzes in das
+ * Objekt geladen werden. Alternativ kann auch nachträglich der Methode 'load()' eine ID übergeben werden, die
+ * dasselbe bewirkt.
+ *
+ * @warning Ist die ID nicht auffindbar, so wird ein allgemeines (unbehandeltes) Exception-Objekt geworfen.
+ *
+ * Je nach dem, ob dem Objekt eine ID übergeben wurde, wird nach Aufruf der Methode 'save()' entweder der zugehörige
+ * Datensatz aktualisiert, oder es wird ein Datensatz angelegt und die neue ID ins Objekt geladen.
+ *
+ * Im Zuge der Speicherung wird vorab eine Datenprüfung durchgeführt. Sollten ein oder mehrere Daten nicht der
+ * Vorgabe entsprechen, so wird ein Objekt der Klasse CShowCheckMsg geworfen.
+ *
+ */

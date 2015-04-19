@@ -1,0 +1,25 @@
+#thumbcontainer {
+	margin:20px;
+	padding-top:10px;
+	text-align:center;
+	color:blue;
+}
+#thumbcontainer a img {
+	display:inline;
+}
+#thumbcontainer ul {
+	display:inline;
+	padding: 0 5px 0 5px;
+}
+#thumbcontainer ul li {
+	float: left;
+	display:inline;
+	list-style-type:none;
+	padding: 0 0px 0 0px;
+}
+#thumbcontainer ul li img {
+	border:1px solid #B0000B;
+}
+#thumbcontainer p {
+	margin:5px 0 5px 0;
+}

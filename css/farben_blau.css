@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+/*
+################################################################################
+														FARBEN (eher variabel)
+################################################################################
+*/ /*
+--------------------------------------------------------------------------------
+	Hintergrund rechts/links/unter der 'eigentlichen' Website
+--------------------------------------------------------------------------------
+*/
+body {
+	background: #d0d6e2;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Haupthintergrundfarbe
+--------------------------------------------------------------------------------
+*/
+#wrapper {
+	background: #a7b9d7;
+}
+
+.schattiert,.koerper {
+	background-color: #8ca7d4;
+}
+
+.grundiert,.kopf,.fuss {
+	background-color: #6f8dc1;
+}
+
+.dokument,.papier,.profil {
+	background-color: #e4e4e4;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Hauptschriftfarbe (Text, Links und Überschriften)
+--------------------------------------------------------------------------------
+*/
+#wrapper,a:link {
+	color: #1e1e1e;
+}
+
+a:visited {
+	color: #333333;
+}
+
+a:hover,a:focus {
+	color: #333333;
+}
+
+a:active {
+	color: #FF0000;
+}
+
+h1,h2,h3,h4,h5,h6,caption,legend {
+	color: #051944;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Fußzeile
+--------------------------------------------------------------------------------
+*/
+#footer,#footer a {
+	color: #1e1d56;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Navigation
+--------------------------------------------------------------------------------
+*/
+#nav_glb a,#nav_glb strong {
+	color: #5D5D5D;
+	background-color: white;
+}
+
+#sidebarnav a:hover,#sidebarnav a:focus,#sidebarnav a:active,#sidebarnav strong {
+	color: #5D5D5D;
+	background-color: #CCCAC2;
+}
+
+.nav_pub_stage1 a,.nav_pub_stage1 strong {
+	color: white;
+	background-color: #5D5D5D;
+}
+
+.nav_pub_stage2 a,.nav_pub_stage2 strong {
+	color: #333333;
+	background-color: #FFFFCC;
+}
+
+.nav_int_stage1 a,.nav_int_stage1 strong {
+	color: white;
+	background-color: #993300;
+}
+
+.nav_int_stage2 a,.nav_int_stage2 strong {
+	color: #333333;
+	background-color: #FF9900;
+}
+
+#nav_cnt a,#nav_cnt strong {
+	color: #999999;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Tabellen / Formulare
+--------------------------------------------------------------------------------
+*/
+tr.odd {
+	background-color: #B4D2D2;
+}
+
+#form_overview th,tr.even {
+	background-color: #D7DCDC;
+}
+
+tr.special {
+	background-color: #a7b9d7;
+}
+
+tr.special2 {
+	background-color: #8da3c6;
+}
+
+tr.highlight {
+	background-color: #6699cc;
+}
