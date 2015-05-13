@@ -4,6 +4,32 @@
 # Force the following filetypes to have unix eols, so Windows does not break them
 * text eol=lf
 
+#binaries
+*.psd binary
+*.bmp binary
+*.cur binary
+*.gif binary
+*.ico binary
+*.jpg binary
+*.chm binary
+*.xlsx binary
+*.vsd binary
+*.docx binary
+*.png binary
+
+
+#text files
+*.dox text
+*.js text
+*.md text
+*.php text
+*.rst text
+*.tagfile text
+*.bat text
+.gitattributes text
+.gitignore text
+
+
 # Custom for Visual Studio
 *.cs     diff=csharp
 
