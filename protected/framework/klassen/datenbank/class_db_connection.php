@@ -1,6 +1,7 @@
 <?php
 include_once(dirname(__FILE__).'/../../konstanten/const__all.php');
 include_once(dirname(__FILE__).'/../datensatz/class_mitglied.php');
+include_once(dirname(__FILE__).'/class_db_connectioninfo.php');
 
 /*******************************************************************************************************************//**
  * 'Ein-Instanz'-Klasse, die die Verbindung zur MySQL-Datenbank repräsentiert.
@@ -10,20 +11,15 @@ class CDBConnection
 
 	private static $mInstance; ///< Die eine, einzige Instanz der Klasse
 	private static $mDB; ///< Der MySQL-Identifier
-	
-	const mcHost = 'localhost'; ///< Host-Bezeichner
-	const mcUser = 'root'; ///< DB-Benutzername
-	const mcPwd = 'root'; ///< DB-Passwort
-	const mcDBName = 'drive_nt'; ///< Name der Datenbank
-	
+
 	/*****************************************************************************************************************//**
 	 * @name Magics
 	 **************************************************************************************************************//*@{*/
 
 	private function __construct()
 	{
-		if(!self::$mDB = @mysql_connect(self::mcHost, self::mcUser, self::mcPwd)) {throw new Exception(mysql_error());}
-		if(!mysql_select_db(self::mcDBName)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!self::$mDB = @mysql_connect(CDBConnectionInfo::mcHost, CDBConnectionInfo::mcUser, CDBConnectionInfo::mcPwd)) {throw new Exception(mysql_error());}
+		if(!mysql_select_db(CDBConnectionInfo::mcDBName)) {throw new Exception(mysql_error(self::$mDB));}
 		if(!$result = mysql_query('SET CHARACTER SET utf8', self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
 		$this->setStichtag();
 	}
