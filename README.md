@@ -14,20 +14,22 @@
 	* XAMPP Control Panel öffnen
 	* Apache einrichten
 		* Vhost konfigurieren: in der Datei "c:\xampp\apache\conf\extra\httpd-vhosts.conf" folgendes einfügen:
-```apache
-<VirtualHost *:80>
-	DocumentRoot "C:/src/www.badminton-gersthofen.de/htdocs"
-	ServerName localhost
-	DirectoryIndex index.html index.php
-	ErrorLog "logs/www.badminton-gersthofen.de-error.log"
-	CustomLog "logs/www.badminton-gersthofen.de-access.log" common
-	<Directory "C:/src/www.badminton-gersthofen.de/htdocs">
-		Options All
-		AllowOverride All
-		Require all granted
-	</Directory>
-</VirtualHost>
-```
+				
+				```apache
+				<VirtualHost *:80>
+					DocumentRoot "C:/src/www.badminton-gersthofen.de/htdocs"
+					ServerName localhost
+					DirectoryIndex index.html index.php
+					ErrorLog "logs/www.badminton-gersthofen.de-error.log"
+					CustomLog "logs/www.badminton-gersthofen.de-access.log" common
+					<Directory "C:/src/www.badminton-gersthofen.de/htdocs">
+						Options All
+						AllowOverride All
+						Require all granted
+					</Directory>
+				</VirtualHost>
+				```
+				
 		* Apache starten
 	* MySQL DB einrichten
 		* MySQL starten
