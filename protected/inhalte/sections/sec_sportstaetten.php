@@ -7,17 +7,17 @@ sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden fü
 <table class="schattiert">
 	<tr>
 		<th></th>
-		<th>Schüler (8-14 Jahre)</th>
-		<th>Jugend (15-18 Jahre)</th>
+		<th>Schüler (8-12 Jahre)</th>
+		<th>Jugend (13-18 Jahre)</th>
 		<th>Aktive/Freizeit (ab 18 Jahren)</th>
 	</tr>
 	<tr>
 		<th>Freitag</th>
 		<td>
 		<p>16-17:30Uhr</p>
-		(Halle:<a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
 		<td>
-		<p>16:00-17:30Uhr</p>
+		<p>17:30-19Uhr</p>
 		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
 		<td>
 		<p>19-22Uhr</p>
