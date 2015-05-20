@@ -148,6 +148,5 @@ define('STR_ATH_LOCK', 'Die Athletdaten können momentan nicht verändert werden
 define('STD_META_DESC', 'Informationen zum Training, Spielbetrieb und den Freizeitaktivitäten der Badmintonsparte des TSV Gersthofen. Gersthofen ist eine Stadt am nördlichen Stadtrand von Augsburg.');
 define('STD_NEW_WINDOW', 'onclick="void(window.open(this.href, \'\', \'\')); return false;"');
 define('STD_P_UPARROW', '<p class="uparrow"><a href="#head">up&nbsp;&uarr;</a></p>');
-define('GMAP_API_KEY', 'ABQIAAAAyMOau66JonYn2P6Mrcj-1xQHpc12iIBOnIzylQ12pkg4M3qA4xTrz1bylkp5Ii-4YOsTbdJJMwET2g');
 /*@{*/
 ?>

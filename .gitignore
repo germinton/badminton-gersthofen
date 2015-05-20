@@ -42,3 +42,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 protected/framework/klassen/datenbank/class_db_connectioninfo.php
+protected/framework/konstanten/const_google_api_key.php
