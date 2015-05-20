@@ -11,10 +11,10 @@
 <p>Auszug aus der Satzung des TSV-Gersthofen (<a href="downloads/Satzung_Stand20041029.pdf">pdf</a>)</p>
 
 <h2>Spielbetrieb</h2>
-<p>Durchführungsbestimmungen Saison 2014/15 (<a href="downloads/durchfuehrungsbestimmungen.pdf">pdf</a>)</p>
+<p>Durchführungsbestimmungen Saison 2015/16 (<a href="downloads/durchfuehrungsbestimmungen.pdf">pdf</a>)</p>
 <p>Hallenadressen Saison 2014/15 (<a href="downloads/2014-2015_hallenadressen.pdf">pdf</a>)</p>
-<p>Staffeleinteilung Saison 2014/15 (<a href="downloads/2014-2015_staffeleinteilung_v3.pdf">pdf</a>)</p>
-<p>Spielplan Saison 2014/15 (<a href="downloads/2014-2015_spielplan_v9.pdf">pdf</a>)</p>
+<p>Staffeleinteilung Saison 2015/16 (<a href="downloads/2015-2016_staffeleinteilung.pdf">pdf</a>)</p>
+<p>Spielplan Saison 2015/16 folgt</p>
 <p>Aufgaben eines Staffelleiters (<a href="downloads/staffelleiter12-2007.pdf">pdf</a>)</p>
 <p>Ersatz-Spielergebnis-Meldebogen (<a href="downloads/BBVSpielergebnismeldung.pdf">pdf</a>)</p>
  
