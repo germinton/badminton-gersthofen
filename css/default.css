@@ -753,3 +753,27 @@ p.formularbuttons {
 	margin-left: 2.5em;
 	margin-right: 2.5em;
 }
+
+/* 
+--------------------------------------------------------------------------------
+Aufklappen von Elementen
+--------------------------------------------------------------------------------
+*/
+
+.collapse > * + *{
+  display:none;
+}
+.collapse > *{
+  
+}
+.collapse:focus{
+  outline:none;
+}
+.collapse:focus > * + *{
+  display:block; 
+}
+
+.klickbar {
+	text-decoration: underline;
+	cursor:pointer;
+}
