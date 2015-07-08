@@ -15,10 +15,10 @@ sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden fü
 		<th>Freitag</th>
 		<td>
 		<p>16-17:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
 		<td>
-		<p>17:30-19Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		<p>16-17.30Uhr</p>
+		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
 		<td>
 		<p>19-22Uhr</p>
 		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
@@ -27,13 +27,13 @@ sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden fü
 		<th>Sonntag</th>
 		<td>
 		<p>18-19:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		(Halle: <a href="#austragungsort_id:276">International School</a>)</td>
 		<td>
 		<p>18-19:30Uhr</p>
 		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
 		<td>
 		<p>19.30-22Uhr</p>
-		(Halle: <a href="#austragungsort_id:52">Mittelschule</a>)</td>
+		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a> und<br /><a href="#austragungsort_id:276">International School</a>)</td>
 	</tr>
 </table>
 
@@ -55,4 +55,4 @@ Wettkämpfen teilzunehmen, dies ist aber kein Muss.</p>
 <p>&nbsp;</p>
 <?php echo sni_ProfilAustragungsort(259) ?>
 <p>&nbsp;</p>
-<?php echo sni_ProfilAustragungsort(52) ?>
+<?php echo sni_ProfilAustragungsort(276) ?>
