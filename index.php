@@ -106,7 +106,7 @@ echo '" />'."\n";
 <div id="wrappershadow">
 <div id="wrapper">
 
-<a href="http://www.tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
+<a href="http://tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
 
 <div id="head"><?php 
 
@@ -223,7 +223,7 @@ echo '</div>'."\n";
 <p>Badminton ist eine Sparte der <a href="http://www.tsv-gersthofen.de/startseite-leichtathletik.html"
 <?php echo STD_NEW_WINDOW ?>>Abteilung Leichtathletik</a> im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
 <?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
-© 2009-2013 - Sparte Badminton</p>
+© 2009-2015 - Sparte Badminton</p>
 </div>
 
 </div>
