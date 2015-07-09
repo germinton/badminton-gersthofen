@@ -52,6 +52,7 @@ if(!isset($_GET['section'])) {$_GET['section'] = 'startseite';}
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="alternate" hreflang="de" href="https://www.badminton-gersthofen.de/" />
 
 <?php
 echo '<title>';
@@ -85,11 +86,11 @@ echo '" />'."\n";
 <script type="text/javascript" src="javascript/date_picker/js/datepicker.js"></script>
 <script type="text/javascript" src="javascript/gmap/my_gmap.js"></script>
 <script type="text/javascript"
-	src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo GMAP_API_KEY ?>"></script>
+	src="https://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo GMAP_API_KEY ?>"></script>
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/galleria/src/galleria.js"></script>
 <script type="text/javascript" src="javascript/galleria/src/themes/classic/galleria.classic.js"></script>
 <style type="text/css">
@@ -105,7 +106,7 @@ echo '" />'."\n";
 <div id="wrappershadow">
 <div id="wrapper">
 
-<a href="http://tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
+<a href="http://www.tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
 
 <div id="head"><?php 
 
