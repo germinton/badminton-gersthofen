@@ -2,16 +2,32 @@
 <?php if(VIEW_LIST == $data['view']) { ?>
 <?php /*===========================================================================================================*/ ?>
 
+<script type="text/javascript">
+function CheckAllOrNone()
+{
+	var formElement = document.getElementById("form_overview");
+	var checkboxAll = document.getElementById("checkboxAll");
+	
+	for(var i=0; i < formElement.length; ++i)
+	{
+		if(formElement.elements[i].type == "checkbox")
+		{
+			formElement.elements[i].checked = checkboxAll.checked;
+		}
+	}
+}
+</script>
+
 <h1>Adressenliste</h1>
 
-<form action="index.php?section=ms_adressenliste" method="post" id="form_overview">
+<form action="index.php?section=ms_adressenliste" method="post" name="form_overview" id="form_overview">
 
 <p>Die folgenden Feldnamen sollen im Export berücksichtig werden:</p>
 
 <table style="width: 300px; margin: auto">
 	<thead>
 		<tr>
-			<th>&nbsp;</th>
+			<th><input type="checkbox" id="checkboxAll" checked="checked" onClick="CheckAllOrNone()" /></th>
 			<th>Feldname</th>
 		</tr>
 	</thead>
