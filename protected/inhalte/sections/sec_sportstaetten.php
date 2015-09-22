@@ -27,10 +27,10 @@ sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden fü
 		<th>Sonntag</th>
 		<td>
 		<p>18-19:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:276">International School</a>)</td>
+		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
 		<td>
 		<p>18-19:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		(Halle: <a href="#austragungsort_id:276">International School</a>)</td>
 		<td>
 		<p>19.30-22Uhr</p>
 		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a> und<br /><a href="#austragungsort_id:276">International School</a>)</td>
