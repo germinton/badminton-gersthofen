@@ -14,7 +14,7 @@
 <p>Durchführungsbestimmungen Saison 2015/16 (<a href="downloads/durchfuehrungsbestimmungen.pdf">pdf</a>)</p>
 <p>Hallenadressen Saison 2014/15 (<a href="downloads/2014-2015_hallenadressen.pdf">pdf</a>)</p>
 <p>Staffeleinteilung Saison 2015/16 (<a href="downloads/2015-2016_staffeleinteilung.pdf">pdf</a>)</p>
-<p>Spielplan Saison 2015/16 folgt</p>
+<p>Spielplan Saison 2015/16 (<a href="downloads/2015-2016_spielplan.pdf">pdf</a>)</p>
 <p>Aufgaben eines Staffelleiters (<a href="downloads/staffelleiter12-2007.pdf">pdf</a>)</p>
 <p>Ersatz-Spielergebnis-Meldebogen (<a href="downloads/BBVSpielergebnismeldung.pdf">pdf</a>)</p>
  
