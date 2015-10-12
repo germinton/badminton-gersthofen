@@ -126,8 +126,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 	
 	final public function getRSSLink()
 	{
-		if(is_null($this->mPicasaAuthkey)) {return 'http://';}
-		return 'http://picasaweb.google.com/data/feed/base/user/'.PICASA_USER.'/albumid/'.$this->mPicasaAlbumID.'?alt=rss&kind=photo&authkey='.$this->mPicasaAuthkey.'&hl=de';
+		if(is_null($this->mPicasaAuthkey)) {return 'https://';}
+		return 'https://picasaweb.google.com/data/feed/base/user/'.PICASA_USER.'/albumid/'.$this->mPicasaAlbumID.'?alt=rss&kind=photo&authkey='.$this->mPicasaAuthkey.'&hl=de';
 	}
 
 	/*@}*/
@@ -260,6 +260,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		$session = curl_init($this->getRSSLink());
 		curl_setopt($session, CURLOPT_HEADER, false);
 		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
 		$response = curl_exec($session);
 		curl_close($session);
 		$xml = simplexml_load_string($response);
@@ -400,7 +402,9 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		// die XML version auslesen
 		$session = curl_init($this->getRSSLink());
 		curl_setopt($session, CURLOPT_HEADER, false);
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);		
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
 		$response = curl_exec($session);
 		curl_close($session);
 		$xml = simplexml_load_string($response);
@@ -493,7 +497,9 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		// die XML version auslesen
 		$session = curl_init($this->getRSSLink());
 		curl_setopt($session, CURLOPT_HEADER, false);
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);		
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
 		$response = curl_exec($session);
 		curl_close($session);
 		$xml = simplexml_load_string($response);
