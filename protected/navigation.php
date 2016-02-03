@@ -38,6 +38,7 @@ $NavContPub->add(new CNav(2, 'links', 'Links'));
 $NavContPub->add(new CNav(2, 'downloads', 'Downloads'));
 $NavContPub->add(new CNav(2, 'hallen', 'Sporthallen', true));
 $NavContPub->add(new CNav(2, 'vereine', 'Vereine', true));
+$NavContPub->add(new CNav(1, 'kontakt', 'Kontakt'));
 
 /*******************************************************************************************************************//**
  * Navigation mit Untergruppen, die nur eingeloggten, berechtigten Mitgliedern zugänglich ist.
@@ -134,11 +135,12 @@ S_SPORTWARTWETTKAMPF)));
 $NavContInt->add(new CNav(2, 'verw_galerie', 'Bildergalerie', true,
 array(S_KOMMUNIKATIONSWART, S_EVENTMANAGER)));
 
-$NavContInt->add(new CNav(1, 'dienste', 'Dienste', false, S_DBENTWICKLER));
+$NavContInt->add(new CNav(1, 'dienste', 'Dienste'));
+$NavContInt->add(new CNav(2, 'dienste_trainingsorga', 'Trainingsorganisation'));
 $NavContInt->add(new CNav(2, 'dienste_aktivitaeten', 'Aktivitätenprotokoll', true,
 array(S_SPARTENLEITER, S_WEBMASTER)));
 
-$NavContInt->add(new CNav(2, 'dienste_rundmail', 'Rundmail', true));
+$NavContInt->add(new CNav(2, 'dienste_rundmail', 'Rundmail', true, S_DBENTWICKLER));
 
 $NavContInt->add(new CNav(1, 'verw_stammdaten', 'Stammdaten-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'verw_mitglieder', 'Mitglieder', true,
