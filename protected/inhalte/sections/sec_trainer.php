@@ -2,7 +2,7 @@
 <p>Die Sparte Badminton gibt es im TSV Gersthofen seit Ende 1995 und erfreut sich seit dem Start einer zunehmenden
 Beliebtheit. Grund hierfür sind nicht nur die Geselligkeit und die gute Organisation der Sparte, sondern vor allem die
 hohe Qualität unseres Trainings. Möglich machen dies unsere gut ausgebildeten Trainer, die das Aktvien-, Jugend- und
-Schülertraining durchführen. Alle Übungsleiter sind vom Bayerischen Badminton Verband ausgebildet und geprüft worden.</p>
+Schülertraining durchführen. Alle Übungsleiter sind selbst erfahrene Badmintonspieler und einige haben sich sogar als C-Trainer vom Bayerischen Badminton-Verband lizenzieren lassen.</p>
 <p>Nachfolgend findest Du ein Kurzportrait zu jedem unserer Trainer:</p>
 <?php
 $SortierungArray = array();
