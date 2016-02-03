@@ -14,26 +14,26 @@ sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden fü
 	<tr>
 		<th>Freitag</th>
 		<td>
-		<p>16-17:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
+		<p>16-17:30Uhr<br />
+		<a href="#austragungsort_id:3">PKG-Halle</a></p></td>
 		<td>
-		<p>16-17.30Uhr</p>
-		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
+		<p>16-17.30Uhr<br />
+		<a href="#austragungsort_id:3">PKG-Halle</a></p></td>
 		<td>
-		<p>19-22Uhr</p>
-		(Halle: <a href="#austragungsort_id:3">PKG</a>)</td>
+		<p>19-22Uhr<br />
+		<a href="#austragungsort_id:3">PKG-Halle</a></p></td>
 	</tr>
 	<tr>
 		<th>Sonntag</th>
 		<td>
-		<p>18-19:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a>)</td>
+		<p>18-19:30Uhr<br />
+		<a href="#austragungsort_id:259">Pestalozzihalle</a></p></td>
 		<td>
-		<p>18-19:30Uhr</p>
-		(Halle: <a href="#austragungsort_id:276">International School</a>)</td>
+		<p>18-19:30Uhr<br />
+		<a href="#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
 		<td>
-		<p>19.30-22Uhr</p>
-		(Halle: <a href="#austragungsort_id:259">Pestalozzi</a> und<br /><a href="#austragungsort_id:276">International School</a>)</td>
+		<p>19:30-22Uhr<br />
+		<a href="#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
 	</tr>
 </table>
 
@@ -53,6 +53,6 @@ Wettkämpfen teilzunehmen, dies ist aber kein Muss.</p>
 <p class="textbox papier">In welchen Hallen trainieren wir?</p>
 <?php echo sni_ProfilAustragungsort(3) ?>
 <p>&nbsp;</p>
-<?php echo sni_ProfilAustragungsort(259) ?>
+<?php echo sni_ProfilAustragungsort(278) ?>
 <p>&nbsp;</p>
-<?php echo sni_ProfilAustragungsort(276) ?>
+<?php echo sni_ProfilAustragungsort(259) ?>
