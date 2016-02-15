@@ -18,13 +18,16 @@
     - Vhost konfigurieren: in der Datei "c:\xampp\apache\conf\extra\httpd-vhosts.conf" folgendes einfügen:
 
       ```apache
-        <VirtualHost *:80>
-            DocumentRoot "C:/src/www.badminton-gersthofen.de/htdocs"
+        <VirtualHost *:443>
+            DocumentRoot "C:/source/webapps/www.badminton-gersthofen.de"
             ServerName localhost
+        	  SSLEngine on
+            SSLCertificateFile "conf/ssl.crt/server.crt"
+            SSLCertificateKeyFile "conf/ssl.key/server.key"
             DirectoryIndex index.html index.php
             ErrorLog "logs/www.badminton-gersthofen.de-error.log"
             CustomLog "logs/www.badminton-gersthofen.de-access.log" common
-            <Directory "C:/src/www.badminton-gersthofen.de/htdocs">
+            <Directory "C:/source/webapps/www.badminton-gersthofen.de">
                 Options All
                 AllowOverride All
                 Require all granted
