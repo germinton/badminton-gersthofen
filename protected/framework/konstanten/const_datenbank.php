@@ -119,7 +119,7 @@ define('S_RANGLISTE', 2);
 /*******************************************************************************************************************//**
  * @name 'Aufgaben'-Konstanten
  ****************************************************************************************************************//*@{*/
-define('S_SPARTENLEITER', 1);
+define('S_ABTEILUNGSLEITER', 1);
 define('S_KOMMUNIKATIONSWART', 4);
 define('S_SPIELLEITENDESTELLE', 5);
 define('S_TRAINER', 10);

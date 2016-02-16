@@ -88,7 +88,7 @@ $theObj->load(14);
 
 $xhtml .= '<p>'."\n";
 $xhtml .= 'getNachnameVorname(): '.$theObj->getNachnameVorname().'<br />'."\n";
-$xhtml .= 'hatAufgabe(S_SPARTENLEITER): '.(($theObj->hatAufgabe(S_SPARTENLEITER))?('ja'):('nein')).'<br />'."\n";
+$xhtml .= 'hatAufgabe(S_ABTEILUNGSLEITER): '.(($theObj->hatAufgabe(S_ABTEILUNGSLEITER))?('ja'):('nein')).'<br />'."\n";
 $xhtml .= '</p>'."\n";
 
 $MeisterstringArray = $theObj->getMeisterstringArray();

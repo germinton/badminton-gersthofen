@@ -90,8 +90,8 @@ $theObj->load(10);
 $xhtml .= '<p>'."\n";
 $AthletIDArray = CAufgabenzuordnung::getAthletIDArray(S_DBENTWICKLER);
 $xhtml .= 'getAthletIDArray(S_DBENTWICKLER): '.print_r($AthletIDArray, true).'<br /><br />'."\n";
-$AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_DBENTWICKLER, S_SPARTENLEITER));
-$xhtml .= 'getAthletIDArray(array(S_DBENTWICKLER, S_SPARTENLEITER)): '.print_r($AthletIDArray, true).'<br />'."\n";
+$AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_DBENTWICKLER, S_ABTEILUNGSLEITER));
+$xhtml .= 'getAthletIDArray(array(S_DBENTWICKLER, S_ABTEILUNGSLEITER)): '.print_r($AthletIDArray, true).'<br />'."\n";
 $xhtml .= '</p>'."\n";
 
 $theObj->load($tmpID);

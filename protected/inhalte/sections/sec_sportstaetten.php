@@ -1,8 +1,8 @@
 <h1>Sportstätten und Trainingszeiten</h1>
-<p class="textbox papier">Du interessierst Dich für unsere Sparte und möchtest mehr über uns und unsere Trainingszeiten
+<p class="textbox papier">Du interessierst Dich für unsere Abteilung und möchtest mehr über uns und unsere Trainingszeiten
 erfahren?</p>
 <p>Es spielt keine Rolle, ob Du Anfänger, erfahrener Freizeitspieler oder Profi bist. Alle Leistungs- und Altersgruppen
-sind bei uns herzlich willkommen. Die Sparte Badminton bietet Übungsstunden für folgende Gruppen an:</p>
+sind bei uns herzlich willkommen. Die Abteilung Badminton bietet Übungsstunden für folgende Gruppen an:</p>
 
 <table class="schattiert">
 	<tr>

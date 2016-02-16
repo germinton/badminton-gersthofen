@@ -19,7 +19,7 @@ if($Nbr= CTerminAllg::getNumberOfTermine(3))
 <h2>Bist Du ein Interessent?</h2>
 <p>Bei uns sind Neugierige aller Alters- und Leistungsklassen herzlich willkommen. Auf diesen Seiten findest Du
 Informationen über unsere <a href="index.php?section=training">Trainingszeiten und -gruppen</a> sowie eine <a
-	href="index.php?section=diesparte">Vorstellung unserer Sparte</a>.</p>
+	href="index.php?section=dieabteilung">Vorstellung unserer Abteilung</a>.</p>
 
 <h2>Neuigkeiten</h2>
 <?php

@@ -2,7 +2,7 @@
 
 <p>Die folgende Übersicht zeigt die meist gestellten Fragen unserer neuen Mitglieder zum Trainingsbetrieb. Sollten nach
 der Durchsicht noch Fragen offen sein, scheue Dich nicht diese an uns zu richten und schreibe uns bitte eine E-Mail an <a
-	href="mailto:webmaster@badminton-gersthofen.de?subject=Frage zur Sparte Badminton">webmaster@badminton-gersthofen.de</a>.</p>
+	href="mailto:webmaster@badminton-gersthofen.de?subject=Frage zur Abteilung Badminton">webmaster@badminton-gersthofen.de</a>.</p>
 
 <div class="collapse" tabindex="1">
 	<p class="textbox papier klickbar">Ich bin Anfänger. Macht es Sinn, dass ich Badminton im Verein spiele?</p>
@@ -44,8 +44,8 @@ der Durchsicht noch Fragen offen sein, scheue Dich nicht diese an uns zu richten
 
 <div class="collapse" tabindex="1">
 	<p class="textbox papier klickbar">Welche Rechte und Pflichten entstehen mir durch die Mitgliedschaft im Verein bzw. in dieser
-	Sparte?</p>
-	<p>Auf der Soll-Seite stehen die Zahlung der Mitgliedschaft im Verein sowie unseres spartenspezifischen Ballgeldes. Auf
+	Abteilung?</p>
+	<p>Auf der Soll-Seite stehen die Zahlung der Mitgliedschaft im Verein sowie unseren Abteilungsbeitrag. Auf
 	der Haben-Seite bekommst Du die Nutzung unserer Sportstätten, ein angeleitetes Training, bist bei Sportverletzungen
 	versichert, kannst Badminton wettkampfmäßig betreiben und gewinnst natürlich Kontakt zu netten Leuten, die die
 	Begeisterung für den Badmintonsport mit Dir teilen. Das, was das Vereinsleben wirklich besonders macht, sind übrigens

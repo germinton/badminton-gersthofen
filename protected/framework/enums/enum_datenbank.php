@@ -85,7 +85,7 @@ $GLOBALS['Enum']['Spielregel'][] = S_SpR_RallyPoint;
 /*******************************************************************************************************************//**
  * @name 'Aufgaben'-Aufzählung
  ****************************************************************************************************************//*@{*/
-$GLOBALS['Enum']['Aufgabe'][] = S_SPARTENLEITER;
+$GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSLEITER;
 $GLOBALS['Enum']['Aufgabe'][] = S_KOMMUNIKATIONSWART;
 $GLOBALS['Enum']['Aufgabe'][] = S_SPIELLEITENDESTELLE;
 $GLOBALS['Enum']['Aufgabe'][] = S_TRAINER;

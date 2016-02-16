@@ -1,6 +1,6 @@
 <h1>Spielbetrieb</h1>
 
-<p>Die Sparte Badminton bietet allen Athleten die Möglichkeit die im
+<p>Die Abteilung Badminton bietet allen Athleten die Möglichkeit die im
 wöchentlichen <a href="index.php?section=sportstaetten">Regel-Training</a>
 erlernten Fähigkeiten im Wettkampf anzuwenden. Neben <a
 	href="index.php?section=termine_allg">Turnieren in der Region</a>,
@@ -74,7 +74,7 @@ ergeben sich für einen Mannschaftsspieler?</p>
 in Notfällen abgesagt werden. Ein Spielerausfall führt zur kampflosen
 Abgabe von Spieltagen und im Wiederholungsfall zur Sperrung des gesamten
 Teams. Dies ist nicht nur sehr frustrierend für das Team, sondern zieht
-auch eine Strafzahlung für die Sparte nach sich.</em></p>
+auch eine Strafzahlung für die Abteilung nach sich.</em></p>
 
 <br />
 

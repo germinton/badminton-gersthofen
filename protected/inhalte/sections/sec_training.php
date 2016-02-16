@@ -1,6 +1,6 @@
 <h1>Training</h1>
 
-<p>Du interessierst Dich für unsere Sparte und möchtest mehr über uns und unsere Trainingszeiten erfahren? Die Sparte
+<p>Du interessierst Dich für unsere Abteilung und möchtest mehr über uns und unsere Trainingszeiten erfahren? Die Abteilung
 bietet Übungsstunden für folgende Gruppen an:</p>
 
 <ul>
@@ -15,7 +15,7 @@ Altersgruppen sind bei uns herzlich willkommen. Weitere Informationen zum Traini
 erhältst Du direkt vom <a href="index.php?section=kontakt">Cheftrainer</a>.</p>
 
 <h2>Gebühren</h2>
-<p>Die Gesamtkosten setzen sich aus dem <em>Mitgliedsbeitrag für den Hauptverein</em> und dem <em>Ballgeld</em> zusammen. Beide Beträge werden per Lastschrift eingezogen:</p>
+<p>Die Gesamtkosten setzen sich aus dem <em>Mitgliedsbeitrag für den Hauptverein</em> und dem <em>Abteilungsbeitrag</em> zusammen. Beide Beträge werden per Lastschrift eingezogen:</p>
 
 <table class="schattiert">
 	<tr>
@@ -31,7 +31,7 @@ erhältst Du direkt vom <a href="index.php?section=kontakt">Cheftrainer</a>.</p>
 		</td>
 	</tr>
 	<tr>
-		<td>Jahres-Ballgeld der Sparte Badminton</td>
+		<td>Jahres-Abteilungsbeitrag der Abteilung Badminton</td>
 		<td>54 bis 84€</td>
 		<td>Hobby & <18 Jahre: 4,50€<br>
 		Mannschaftsspieler: 7€/Monat<br>

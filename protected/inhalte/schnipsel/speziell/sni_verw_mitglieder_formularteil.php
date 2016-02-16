@@ -117,7 +117,7 @@ include('protected/inhalte/schnipsel/allgemein/sni_control_bilder-upload.php');
 <ul class="sidebyside">
 	<li><input type="checkbox" name="newsletter" id="newsletter" value="1"
 	<?php if($Mitglied->getNewsletter() or MODE_NEW == $data['modus']) {echo ' checked="checked"';} ?> /> <label
-		for="newsletter">Ja, ich möchte den Newsletter der Sparte Badminton erhalten um immer über Trainingsausfälle oder
+		for="newsletter">Ja, ich möchte den Newsletter der Abteilung Badminton erhalten um immer über Trainingsausfälle oder
 	geplante Unternehmungen auf dem Laufenden zu sein.</label></li>
 </ul>
 </div>

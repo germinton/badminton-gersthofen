@@ -1,1 +1,1 @@
-Dies ist die Bildergalerie der Sparte Badminton des TSV Gersthofen. Hier sind Zeitungsartikel, Berichte und Bilder zu unseren Unternehmungen gesammelt.
+Dies ist die Bildergalerie der Abteilung Badminton des TSV Gersthofen. Hier sind Zeitungsartikel, Berichte und Bilder zu unseren Unternehmungen gesammelt.

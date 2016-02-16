@@ -1,6 +1,6 @@
 <h1>Bildergalerie</h1>
 
-<p>Die Bildergalerie ist das Eventarchiv der Sparte Badminton. Hier sind Zeitungsartikel, Berichte und Bilder zu unseren
+<p>Die Bildergalerie ist das Eventarchiv der Abteilung Badminton. Hier sind Zeitungsartikel, Berichte und Bilder zu unseren
 Unternehmungen gesammelt. Klicke auf ein Jahr oder scrolle selbst nach unten:</p>
 
 <div id="bildergalerie">
