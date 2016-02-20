@@ -27,7 +27,7 @@ sind bei uns herzlich willkommen. Die Abteilung Badminton bietet Übungsstunden 
 		<th>Sonntag</th>
 		<td>
 		<p>18-19:30Uhr<br />
-		<a href="#austragungsort_id:259">Pestalozzihalle</a></p></td>
+		<a href="#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
 		<td>
 		<p>18-19:30Uhr<br />
 		<a href="#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
