@@ -56,7 +56,7 @@
     - Exportierte DB in lokalen MySQL Server importieren:
       - Einfach den angepassten SQL Dump wählen und auf OK clicken
 
-- Testen der lokalen Webseite unter [http://localhost](https://localhost)
+- Testen der lokalen Webseite unter [https://localhost](https://localhost)
 - Git z.B.: [GitHub Windows](https://windows.github.com/) oder [SourceTree](https://www.sourcetreeapp.com/)
   - ToDo
 
