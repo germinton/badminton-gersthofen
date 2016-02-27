@@ -70,4 +70,4 @@
 
 - Issue-Tracking: jeder Task sollte in den Issues erfasst sein, siehe hierzu: [Mastering Issues](https://guides.github.com/features/issues/)
 - Commit-Messages: jeder Commit sollte eine gültige Issue Nummer beinhalten, z.B.: "#123: Fehler xyz behoben"
-- **WICHTIG !!!: keine Passworter oder Benutzer Daten im Github ablegen oder in irgendwelchen Issues aufschreiben.**
+- **WICHTIG !!!: keine Passwörter oder Benutzerdaten im Github ablegen oder in irgendwelchen Issues aufschreiben.**
