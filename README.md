@@ -18,21 +18,21 @@
     - Vhost konfigurieren: in der Datei "c:\xampp\apache\conf\extra\httpd-vhosts.conf" folgendes einfügen:
 
       ```apache
-        <VirtualHost *:443>
-            DocumentRoot "C:/source/webapps/www.badminton-gersthofen.de"
-            ServerName localhost
-        	  SSLEngine on
-            SSLCertificateFile "conf/ssl.crt/server.crt"
-            SSLCertificateKeyFile "conf/ssl.key/server.key"
-            DirectoryIndex index.html index.php
-            ErrorLog "logs/www.badminton-gersthofen.de-error.log"
-            CustomLog "logs/www.badminton-gersthofen.de-access.log" common
-            <Directory "C:/source/webapps/www.badminton-gersthofen.de">
-                Options All
-                AllowOverride All
-                Require all granted
-            </Directory>
-        </VirtualHost>
+      <VirtualHost *:443>
+          DocumentRoot "C:/source/webapps/www.badminton-gersthofen.de"
+          ServerName localhost
+          SSLEngine on
+          SSLCertificateFile "conf/ssl.crt/server.crt"
+          SSLCertificateKeyFile "conf/ssl.key/server.key"
+          DirectoryIndex index.html index.php
+          ErrorLog "logs/www.badminton-gersthofen.de-error.log"
+          CustomLog "logs/www.badminton-gersthofen.de-access.log" common
+          <Directory "C:/source/webapps/www.badminton-gersthofen.de">
+              Options All
+              AllowOverride All
+              Require all granted
+          </Directory>
+      </VirtualHost>
       ```
 
     - Apache starten
