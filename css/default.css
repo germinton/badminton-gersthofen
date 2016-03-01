@@ -777,3 +777,42 @@ Aufklappen von Elementen
 	text-decoration: underline;
 	cursor:pointer;
 }
+
+/*
+--------------------------------------------------------------------------------
+	Trainingtypen
+--------------------------------------------------------------------------------
+*/
+.training_type_container {
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: 1em;
+}
+.training_type_box {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    width: 131px;
+    height: 80px;
+    border: 2px solid #606060;
+    padding: 8px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.training_type_box div {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/*
+--------------------------------------------------------------------------------
+	Rangliste
+--------------------------------------------------------------------------------
+*/
+.rangliste {
+  width: 100%;
+  height: 260px;
+}
