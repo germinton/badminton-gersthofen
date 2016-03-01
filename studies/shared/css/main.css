@@ -1,0 +1,25 @@
+body,
+td,
+th {
+  font: normal 80% Verdana, sans-serif;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin: 0 0 1.5em;
+  text-align: center;
+  color: #202020;
+}
+
+p {
+  margin: .8em 0;
+}
+
+.main_content {
+  width: 680px;
+  background: #ffdb2b;
+  padding-top: 60px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+}
