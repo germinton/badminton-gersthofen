@@ -144,7 +144,7 @@ $NavContInt->add(new CNav(2, 'dienste_rundmail', 'Rundmail', true, S_DBENTWICKLE
 
 $NavContInt->add(new CNav(1, 'verw_stammdaten', 'Stammdaten-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'verw_mitglieder', 'Mitglieder', true,
-array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_CHEFTRAINER, S_TRAINER)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_CHEFTRAINER, S_TRAINER, S_JUGENDBEAUFTRAGTER)));
 $NavContInt->add(new CNav(2, 'verw_aufgaben', 'Aufgaben', true));
 $NavContInt->add(new CNav(2, 'verw_aufgabenzuordnungen', 'Aufgabenzuordnungen', true,
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
@@ -161,7 +161,7 @@ $NavContInt->add(new CNav(2, 'verw_saisons', 'Saisons', true));
 
 $NavContInt->add(new CNav(1, 'db_verwaltung', 'Datenbank-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'db_werkzeuge', 'Werkzeuge', true,
-array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_JUGENDBEAUFTRAGTER), array(14)));
 
 $NavContInt->add(new CNav(1, 'wartung', 'Wartung', true, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'chk_datenbank', 'Datenbank prüfen', true, array(S_WEBMASTER)));
