@@ -84,8 +84,8 @@ class CGegner extends CAthlet
 		$format = 'SELECT verein_id '.
 		          'FROM athleten_gegner WHERE athlet_id=%s';
 		$query = sprintf($format, $this->getAthletID());
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Gegner mit athlet_id='.$AthletID.' nicht gefunden!');}
 		$this->mVereinID = lD($row[0]);
 	}
@@ -116,7 +116,7 @@ class CGegner extends CAthlet
 			          ') VALUES (%s, %s)';
 			$query = sprintf($format, $this->getID(), sS($this->mVereinID));
 		}
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 	}
 
 	public function check()

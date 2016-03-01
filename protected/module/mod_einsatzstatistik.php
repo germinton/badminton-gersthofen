@@ -26,8 +26,8 @@ foreach($query_having as $i => $clause) {$query .= (($i)?(' AND '):(' HAVING '))
 
 $query .= ' ORDER BY sum(einsaetze) DESC';
 
-if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-while($row = mysql_fetch_row($result)) {$data['MitgliederArray'][] = new CMitglied($row[0]);}
+if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+while($row = mysqli_fetch_row($result)) {$data['MitgliederArray'][] = new CMitglied($row[0]);}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

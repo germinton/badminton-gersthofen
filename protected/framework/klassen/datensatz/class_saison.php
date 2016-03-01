@@ -113,8 +113,8 @@ class CSaison extends CDriveEntity
 		$format = 'SELECT spielregel, beginn, ende '.
 		          'FROM saisons WHERE saison_id=%s';
 		$query = sprintf($format, $this->getSaisonID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Saison mit saison_id='.$SaisonID.' nicht gefunden!');}
 		$this->mSpielregel = lD($row[0]);
 		$this->mBeginn = lS($row[1]);
@@ -144,7 +144,7 @@ class CSaison extends CDriveEntity
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sD($this->mSpielregel), sS($this->mBeginn), sS($this->mEnde));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -201,17 +201,17 @@ class CSaison extends CDriveEntity
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM mannschaften WHERE saison_id='.$this->getSaisonID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM tabellen WHERE saison_id='.$this->getSaisonID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		return (($Zaehler)?(false):(true));

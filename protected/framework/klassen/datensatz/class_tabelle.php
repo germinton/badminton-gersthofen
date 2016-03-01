@@ -138,8 +138,8 @@ class CTabelle extends CDriveEntity
 		$format = 'SELECT saison_id, ligaklasse_id, athlet_id '.
 		          'FROM tabellen WHERE tabelle_id=%s';
 		$query = sprintf($format, $this->getTabelleID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Tabelle mit tabelle_id='.$TabelleID.' nicht gefunden!');}
 		$this->mSaisonID= lD($row[0]);
 		$this->mLigaKlasseID = lD($row[1]);
@@ -148,8 +148,8 @@ class CTabelle extends CDriveEntity
 		// TabelleneintragArray
 		$query = 'SELECT tabelleneintrag_id FROM tabelleneintraege '.
 		         'WHERE tabelle_id='.$this->getTabelleID().' ORDER BY platz';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$this->mTabelleneintragArray[] = new CTabelleneintrag($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$this->mTabelleneintragArray[] = new CTabelleneintrag($row[0]);}
 	}
 
 	public function save()
@@ -175,7 +175,7 @@ class CTabelle extends CDriveEntity
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sD($this->mSaisonID), sD($this->mLigaKlasseID), sD($this->mAthletID));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -239,10 +239,10 @@ class CTabelle extends CDriveEntity
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM tabelleneintraege WHERE tabelle_id='.$this->getTabelleID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		return (($Zaehler)?(false):(true));

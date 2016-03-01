@@ -185,8 +185,8 @@ class CSpErMl extends CDriveEntity
 		$format = 'SELECT datum, austragungsort_id, bemerkungen '.
 		          'FROM sperml WHERE sperml_id=%s';
 		$query = sprintf($format, $this->getSpErMlID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Spielergebnismeldung mit sperml_id='.$SpErMlID.' nicht gefunden!');}
 		$this->mDatum = lS($row[0]);
 		$this->mAustragungsortID = lD($row[1]);
@@ -194,16 +194,16 @@ class CSpErMl extends CDriveEntity
 
 		// SpielSpErMlArray
 		$query = 'SELECT spiel_id, spermlspieltyp FROM spiele_sperml WHERE sperml_id='.$this->getSpErMlID();
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		$this->mSpielSpErMlArray = array();
-		while($row = mysql_fetch_row($result)) {$this->mSpielSpErMlArray[lD($row[1])] = new CSpielSpErMl(lD($row[0]));}
+		while($row = mysqli_fetch_row($result)) {$this->mSpielSpErMlArray[lD($row[1])] = new CSpielSpErMl(lD($row[0]));}
 
 		// ErsatzspielerArray
 		$query = 'SELECT ersatzspieler_id FROM ersatzspieler e INNER JOIN athleten a ON e.athlet_id=a.athlet_id '.
 		'WHERE sperml_id='.$this->getSpErMlID().' ORDER BY nachname, vorname';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		$this->mErsatzspielerArray = array();
-		while($row = mysql_fetch_row($result)) {$this->mErsatzspielerArray[] = new CErsatzspieler(lD($row[0]));}
+		while($row = mysqli_fetch_row($result)) {$this->mErsatzspielerArray[] = new CErsatzspieler(lD($row[0]));}
 
 	}
 
@@ -231,7 +231,7 @@ class CSpErMl extends CDriveEntity
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sS($this->mDatum), sD($this->mAustragungsortID), sS($this->mBemerkungen));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -241,8 +241,8 @@ class CSpErMl extends CDriveEntity
 		{
 			$query = 'SELECT spiel_id FROM spiele_sperml '.
 			         'WHERE sperml_id='.$this->getSpErMlID().' AND spermlspieltyp='.$SpErMlSpieltyp;
-			if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			if($row = mysql_fetch_row($result))
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+			if($row = mysqli_fetch_row($result))
 			{
 				if(isset($this->mSpielSpErMlArray[$SpErMlSpieltyp])) {
 					$this->mSpielSpErMlArray[$SpErMlSpieltyp]->setSpielID($row[0]);
@@ -263,14 +263,14 @@ class CSpErMl extends CDriveEntity
 			while($ErSp = next($this->mErsatzspielerArray)) {$query .= ' OR athlet_id='. $ErSp->getAthletID();}
 			$query .= ')';
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		foreach($this->mErsatzspielerArray as $ErSpNew)
 		{
 			$query = 'SELECT ersatzspieler_id FROM ersatzspieler '.
 			         'WHERE sperml_id='.$this->getSpErMlID(). ' AND athlet_id='. $ErSpNew->getAthletID();
-			if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			if(!($row = mysql_fetch_row($result))) {$ErSpNew->setSpErMlID($this->getSpErMlID()); $ErSpNew->store();}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+			if(!($row = mysqli_fetch_row($result))) {$ErSpNew->setSpErMlID($this->getSpErMlID()); $ErSpNew->store();}
 		}
 	}
 
@@ -356,8 +356,8 @@ class CSpErMl extends CDriveEntity
 		'INNER JOIN _v1_punktspiele p ON ss.sperml_id=p.sperml_id '.
 		'WHERE k.seite='.$Seite.' AND p.sperml_id='.$this->getSpErMlID().' '.
 		'GROUP BY k.athlet_id';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
 
 		$ErsatzspielerArray = $this->getErsatzspielerArray();
 

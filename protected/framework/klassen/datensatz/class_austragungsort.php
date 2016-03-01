@@ -210,8 +210,8 @@ class CAustragungsort extends CDriveEntityWithAttachment
 		$format = 'SELECT hallenname, verein_id, strasse, plz, ort, felder, info, gmap_lat, gmap_lon '.
 		          'FROM austragungsorte WHERE austragungsort_id=%s';
 		$query = sprintf($format, $this->getAustragungsortID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Austragungsort mit austragungsort_id='.$AustragungsortID.' nicht gefunden!');}
 		$this->mHallenname = lS($row[0]);
 		$this->mVereinID = lD($row[1]);
@@ -249,7 +249,7 @@ class CAustragungsort extends CDriveEntityWithAttachment
 			$query = sprintf($format, sS($this->mHallenname), sD($this->mVereinID), sS($this->mStrasse), sS($this->mPLZ),
 			sS($this->mOrt), sD($this->mFelder), sS($this->mInfo), sD($this->mGMapLat), sD($this->mGMapLon));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -351,17 +351,17 @@ class CAustragungsort extends CDriveEntityWithAttachment
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM sperml WHERE austragungsort_id='.$this->getAustragungsortID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM turniere WHERE austragungsort_id='.$this->getAustragungsortID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		return (($Zaehler)?(false):(true));

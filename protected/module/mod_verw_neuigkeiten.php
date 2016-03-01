@@ -119,8 +119,8 @@ if(VIEW_LIST == $data['view'])
 	// Abfrage
 	//--------------------------------------------------------------------------------------------------------------------
 	$data['neuigkeit_array'] = array();
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['neuigkeit_array'][] = new CNeuigkeit($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['neuigkeit_array'][] = new CNeuigkeit($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

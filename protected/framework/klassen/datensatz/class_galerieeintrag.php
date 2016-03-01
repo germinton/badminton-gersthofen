@@ -147,8 +147,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		$format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey '.
 		          'FROM galerieeintraege WHERE galerieeintrag_id=%s';
 		$query = sprintf($format, $this->getGalerieeintragID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Album mit galerieeintrag_id='.$GalerieeintragID.' nicht gefunden!');}
 		$this->mTitel = lS($row[0]);
 		$this->mDatum = lS($row[1]);
@@ -164,8 +164,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		$format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, galerieeintrag_id '.
 		          'FROM galerieeintraege ORDER BY datum DESC LIMIT 1';
 		$query = sprintf($format);
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Kein Album gefunden.');}
 		$this->mTitel = lS($row[0]);
 		$this->mDatum = lS($row[1]);
@@ -200,7 +200,7 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 			$query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext), 
 				sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -570,8 +570,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT galerieeintrag_id FROM galerieeintraege'.((isset($chosenYear))?(' WHERE YEAR(datum) = '.$chosenYear.' '):' ').
 		         'ORDER BY datum DESC';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$GalerieeintraegeArray[] = new CGalerieeintrag($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$GalerieeintraegeArray[] = new CGalerieeintrag($row[0]);}
 		return ((isset($GalerieeintraegeArray))?($GalerieeintraegeArray):(array()));
 	}
 	

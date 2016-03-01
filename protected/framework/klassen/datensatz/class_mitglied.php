@@ -397,8 +397,8 @@ class CMitglied extends CAthlet
 		                 'erzber_tel_mobil, erzber_email '.
 		          'FROM athleten_mitglieder WHERE athlet_id=%s';
 		$query = sprintf($format, $this->getAthletID());
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Mitglied mit athlet_id='.$AthletID.' nicht gefunden!');}
 		$this->mGeburtstag = lS($row[0]);
 		$this->mStrasse = lS($row[1]);
@@ -474,7 +474,7 @@ class CMitglied extends CAthlet
 			sS($this->mLastUpdate), sB($this->mPwAendern), sB($this->mFreigabeWSite), sB($this->mFreigabeFBook),
 			sS($this->mErzBerVorname),sS($this->mErzBerNachname), sS($this->mErzBerTelMobil), sS($this->mErzBerEMail));
 		}
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 	}
 
 	public function check()
@@ -615,10 +615,10 @@ class CMitglied extends CAthlet
 		{
 			$query = 'SELECT athlet_id FROM athleten_mitglieder '.
 			         'WHERE benutzername=\''.$this->mBenutzername.'\' AND athlet_id<>'.$this->getAthletID();
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			if($row = mysql_fetch_row($result)) {
+			if($row = mysqli_fetch_row($result)) {
 				CDriveEntity::addCheckMsg('Dieser Benutzername wird bereits von einem anderen Mitglied verwendet.');
 			}
 		}
@@ -691,7 +691,7 @@ class CMitglied extends CAthlet
 			$query = sprintf($format, sS($this->mLastLogin), $this->getID());
 		}
 		else {throw new Exeption('updateLastLogin() nicht möglich da athlet_id ungültig!');}
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 	}
 
 	public function getMailToEMail($Name)
@@ -705,8 +705,8 @@ class CMitglied extends CAthlet
 		$FlagArray = (array)$FlagVariant;
 		$query = 'SELECT (YEAR(p.stichtag)-YEAR(am.geburtstag)) - (RIGHT(p.stichtag,5)<RIGHT(am.geburtstag,5)) '.
 		         'FROM athleten_mitglieder am, _parameter p WHERE am.athlet_id='.$this->getAthletID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Mitglied mit athlet_id='.$this->getAthletID().' nicht gefunden!');}
 		return (($row[0])?((int)$row[0]):((in_array(GET_NBSP, $FlagArray))?('&nbsp;'):(null)));
 	}
@@ -719,10 +719,10 @@ class CMitglied extends CAthlet
 		{
 			$query = 'SELECT altersklasse '.
 			         'FROM _lkup_altersklassen WHERE '.$Alter.' BETWEEN vonalter AND bisalter';
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			$row = mysql_fetch_row($result);
+			$row = mysqli_fetch_row($result);
 			$AKlasse = (int)$row[0];
 		}
 		if($AKlasse and in_array(GET_C2SC, $FlagArray)) {$AKlasse = C2S_Altersklasse($AKlasse);}
@@ -737,10 +737,10 @@ class CMitglied extends CAthlet
 		{
 			$query = 'SELECT aklagruppe '.
 			         'FROM _lkup_aklagruppen WHERE '.$AKlasse.' BETWEEN vonaklasse AND bisaklasse';
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			$row = mysql_fetch_row($result);
+			$row = mysqli_fetch_row($result);
 			$AKlaGruppe = (int)$row[0];
 		}
 		if($AKlaGruppe and in_array(GET_C2SC, $FlagArray)) {$AKlaGruppe = C2S_AKlaGruppe($AKlaGruppe);}
@@ -766,10 +766,10 @@ class CMitglied extends CAthlet
 					$Aufgabe->load(S_MANNSCHAFTSFUEHRER);
 					$view = CDBConnection::getViewAufgabenzuordnungenUnionMF();
 					$query = 'SELECT view.mannschaft_id FROM ('.$view.') view WHERE view.athlet_id='.$this->getAthletID();
-					if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+					if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 						throw new Exception(mysql_error(CDriveEntity::getDB()));
 					}
-					$row = mysql_fetch_row($result);
+					$row = mysqli_fetch_row($result);
 					$Mannschaft->load($row[0]);
 					if     (S_HERR == CAthlet::getAnrede()) {$Aufgabenstring = $Aufgabe->getBezMaennlich().' ('.$Mannschaft.')';}
 					else if(S_DAME == CAthlet::getAnrede()) {$Aufgabenstring = $Aufgabe->getBezWeiblich().' ('.$Mannschaft.')';}
@@ -777,10 +777,10 @@ class CMitglied extends CAthlet
 				default:
 					$query = 'SELECT aufgabenzuordnung_id FROM aufgabenzuordnungen '.
 					'WHERE athlet_id='.$this->getAthletID().' AND aufgabe_id='.$AufgabeID;
-					if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+					if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 						throw new Exception(mysql_error(CDriveEntity::getDB()));
 					}
-					$row = mysql_fetch_row($result);
+					$row = mysqli_fetch_row($result);
 					$Aufgabenzuordnung->load($row[0]);
 					$Aufgabenstring = $Aufgabenzuordnung->getAufgabenstring();
 					break;
@@ -809,10 +809,10 @@ class CMitglied extends CAthlet
 					$Aufgabe->load(S_MANNSCHAFTSFUEHRER);
 					$view = CDBConnection::getViewAufgabenzuordnungenUnionMF();
 					$query = 'SELECT view.mannschaft_id FROM ('.$view.') view WHERE view.athlet_id='.$this->getAthletID();
-					if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+					if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 						throw new Exception(mysql_error(CDriveEntity::getDB()));
 					}
-					$row = mysql_fetch_row($result);
+					$row = mysqli_fetch_row($result);
 					$Mannschaft->load($row[0]);
 					if     (S_HERR == CAthlet::getAnrede()) {$Aufgabenstring = '<span style="font-weight: bold">'.$Aufgabe->getBezMaennlich().'</span><br />('.$Mannschaft.')';}
 					else if(S_DAME == CAthlet::getAnrede()) {$Aufgabenstring = '<span style="font-weight: bold">'.$Aufgabe->getBezWeiblich().'</span><br />('.$Mannschaft.')';}
@@ -820,10 +820,10 @@ class CMitglied extends CAthlet
 				default:
 					$query = 'SELECT aufgabenzuordnung_id FROM aufgabenzuordnungen '.
 					'WHERE athlet_id='.$this->getAthletID().' AND aufgabe_id='.$AufgabeID;
-					if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+					if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 						throw new Exception(mysql_error(CDriveEntity::getDB()));
 					}
-					$row = mysql_fetch_row($result);
+					$row = mysqli_fetch_row($result);
 					$Aufgabenzuordnung->load($row[0]);
 					$Aufgabenstring = $Aufgabenzuordnung->getAufgabenstringFormatted();
 					break;
@@ -836,8 +836,8 @@ class CMitglied extends CAthlet
 	public static function Bn2Id($Benutzername)
 	{
 		$query = 'SELECT athlet_id FROM athleten_mitglieder WHERE benutzername=\''.$Benutzername.'\'';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		if(!$row = mysql_fetch_row($result)) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$row = mysqli_fetch_row($result)) {
 			throw new Exception('Mitglied mit Benutzername \''.$Benutzername.'\' nicht gefunden!');
 		}
 		return (int)$row[0];
@@ -846,8 +846,8 @@ class CMitglied extends CAthlet
 	public static function Id2Bn($AthletID)
 	{
 		$query = 'SELECT benutzername FROM athleten_mitglieder WHERE athlet_id='.$AthletID;
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		if(!$row = mysql_fetch_row($result)) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$row = mysqli_fetch_row($result)) {
 			throw new Exception('Mitglied mit athlet_id='.$AthletID.' nicht gefunden!');
 		}
 		return (string)$row[0];
@@ -860,8 +860,8 @@ class CMitglied extends CAthlet
 		$query  = 'SELECT SUM(einsaetze) AS einsaetze FROM _rd_mitglieder_einsaetze ';
 		$query_where = $this->statEinsaetzeQueryWhereString($String);
 		$query .= 'WHERE athlet_id='.$this->getAthletID().((strlen($query_where))?(' AND '.$query_where):(''));
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		if(!$row = mysql_fetch_row($result)) {/* Abfragen mit Gruppierfunktionen liefern IMMER eine Ergebniszeile */;}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$row = mysqli_fetch_row($result)) {/* Abfragen mit Gruppierfunktionen liefern IMMER eine Ergebniszeile */;}
 		return ((is_null($v = $row[0]))?(0):((int)$v));
 	}
 
@@ -878,9 +878,9 @@ class CMitglied extends CAthlet
 		if(strlen($query_where)) {$query .= ' WHERE '.$query_where;}
 		if($BeachteGeschlecht) {$query .= (strlen($query_where)?(' AND '):(' WHERE ')).' a.anrede='.CAthlet::getAnrede();}
 		$query .= ' GROUP BY athlet_id ORDER BY SUM(einsaetze) DESC';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 		$Platz = 0;
-		while($row = mysql_fetch_row($result)) {$Platz++; if((int)$row[0] == $this->getAthletID()) {break;}}
+		while($row = mysqli_fetch_row($result)) {$Platz++; if((int)$row[0] == $this->getAthletID()) {break;}}
 		return $Platz;
 	}
 

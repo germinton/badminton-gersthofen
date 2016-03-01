@@ -118,8 +118,8 @@ class CAthlet extends CDriveEntityWithAttachment
 		$format = 'SELECT anrede, nachname, vorname '.
 		          'FROM athleten WHERE athlet_id=%s';
 		$query = sprintf($format, $this->getAthletID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Athlet mit athlet_id='.$AthletID.' nicht gefunden!');}
 		$this->mAnrede = lD($row[0]);
 		$this->mNachname = lS($row[1]);
@@ -149,7 +149,7 @@ class CAthlet extends CDriveEntityWithAttachment
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sD($this->mAnrede), sS($this->mVorname), sS($this->mNachname));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -205,10 +205,10 @@ class CAthlet extends CDriveEntityWithAttachment
 		'WHERE (ta.athlet_id='.$this->getAthletID().') AND (t.ebene IS NOT NULL) AND '.
 		'(t.turniertyp='.S_MEISTERSCHAFT.') AND (tm.platzierung=1 OR tm.platzierung=2) '.
 		'ORDER BY t.ebene DESC, tm.platzierung, t.datumvon DESC, tm.spieltyp';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 
 		$Turnierathlet = new CTurnierathlet();
-		while($row = mysql_fetch_row($result))
+		while($row = mysqli_fetch_row($result))
 		{
 			$Turnierathlet->load($row[0]);
 			$MeisterstringArray[] = $Turnierathlet->getMeisterstring();
@@ -225,10 +225,10 @@ class CAthlet extends CDriveEntityWithAttachment
 		'WHERE (ta.athlet_id='.$this->getAthletID().') AND (t.ebene IS NOT NULL) AND '.
 		'(t.turniertyp='.S_RANGLISTE.') AND (tm.platzierung BETWEEN 1 AND 10) '.
 		'ORDER BY t.ebene DESC, tm.platzierung, t.datumvon DESC, tm.spieltyp';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 
 		$Turnierathlet = new CTurnierathlet();
-		while($row = mysql_fetch_row($result))
+		while($row = mysqli_fetch_row($result))
 		{
 			$Turnierathlet->load($row[0]);
 			$RLErfolgArray[] = $Turnierathlet->getRLErfolgstring();
@@ -247,8 +247,8 @@ class CAthlet extends CDriveEntityWithAttachment
 		'INNER JOIN mannschaftsspieler mss ON mss.aufstellung_id=a.aufstellung_id ' .
 		'WHERE (mss.athlet_id='.$this->getAthletID().') AND (ms.saison_id='.CDBConnection::getInstance()->getSaisonID().') '.
 		'ORDER BY ms.mannschaft_id DESC';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		return (int)$row[0];
 	}
 
@@ -280,10 +280,10 @@ class CAthlet extends CDriveEntityWithAttachment
 
 		foreach($TabNameArray as $TabName) {
 			$query = 'SELECT COUNT(*) FROM '.$TabName.' WHERE athlet_id='.$this->getAthletID();
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			$row = mysql_fetch_row($result);
+			$row = mysqli_fetch_row($result);
 			$Zaehler += (int)$row[0];
 		}
 

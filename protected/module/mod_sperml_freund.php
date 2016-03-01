@@ -46,8 +46,8 @@ if(VIEW_LIST == $data['view'])
 	$fltr1_query = 'SELECT s.saison_id '.
 	               'FROM saisons s, sperml sp INNER JOIN sperml_freundschaft sf ON sp.sperml_id=sf.sperml_id '.
 	               'WHERE sp.datum BETWEEN s.beginn AND s.ende GROUP BY s.saison_id ORDER BY s.beginn DESC';
-	if(!$result = mysql_query($fltr1_query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['fltr1_array'][] = new CSaison($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $fltr1_query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['fltr1_array'][] = new CSaison($row[0]);}
 	if($data['fltr1']) {
 		$Saison = new CSaison($data['fltr1']);
 		$query_where[] = 's.datum BETWEEN \''.$Saison->getBeginn().'\' AND \''.$Saison->getEnde().'\'';
@@ -68,8 +68,8 @@ if(VIEW_LIST == $data['view'])
 	// Abfrage
 	//--------------------------------------------------------------------------------------------------------------------
 	$data['sperml_x_array'] = array();
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['sperml_x_array'][] = new CSpErMlFreundschaft($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['sperml_x_array'][] = new CSpErMlFreundschaft($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

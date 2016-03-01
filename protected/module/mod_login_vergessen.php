@@ -35,8 +35,8 @@ if(MODE_SAVE == $data['modus'])
 
 	$AthletIDArray = array();
 	$query = 'SELECT athlet_id FROM athleten_mitglieder WHERE STRCMP(LOWER(TRIM(email)), \''.strtolower($EMail).'\')=0';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
 
 	if(!count($AthletIDArray)) {
 		throw new CShowCheckMsg(array($Msg));
@@ -50,9 +50,9 @@ if(MODE_SAVE == $data['modus'])
 		$query = 'SELECT a.athlet_id FROM athleten_mitglieder am INNER JOIN athleten a ON am.athlet_id=a.athlet_id '.
 		         'WHERE STRCMP(LOWER(TRIM(email)), \''.strtolower($EMail).'\')=0 '.
 		           'AND STRCMP(LOWER(TRIM(vorname)), \''.strtolower($Vorname).'\')=0';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
 
-		if(!$row = mysql_fetch_row($result)) {
+		if(!$row = mysqli_fetch_row($result)) {
 			throw new CShowCheckMsg(array($Msg));
 		}
 		$Mitglied->load($row[0]);

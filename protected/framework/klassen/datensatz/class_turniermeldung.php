@@ -176,8 +176,8 @@ class CTurniermeldung extends CDriveEntity
 		$format = 'SELECT turnier_id, spieltyp, spielgruppe, platzierung '.
 		          'FROM turniermeldungen WHERE turniermeldung_id=%s';
 		$query = sprintf($format, $this->getTurniermeldungID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Turniermeldung mit turniermeldung_id='.$TurniermeldungID.' nicht gefunden!');}
 		$this->mTurnierID = lD($row[0]);
 		$this->mSpieltyp = lD($row[1]);
@@ -186,8 +186,8 @@ class CTurniermeldung extends CDriveEntity
 
 		// TurnierathletArray
 		$query = 'SELECT turnierathlet_id FROM turnierathleten WHERE turniermeldung_id='.$this->getTurniermeldungID();
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$this->mTurnierathletArray[] = new CTurnierathlet($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$this->mTurnierathletArray[] = new CTurnierathlet($row[0]);}
 	}
 
 	public function save()
@@ -215,7 +215,7 @@ class CTurniermeldung extends CDriveEntity
 			$query = sprintf($format, sD($this->mTurnierID), sD($this->mSpieltyp), sS($this->mSpielgruppe),
 			sD($this->mPlatzierung));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

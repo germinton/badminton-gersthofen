@@ -109,8 +109,8 @@ class CSpErMlPunktspielIntern extends CSpErMl
 		$format = 'SELECT heim_mannschaft_id, heim_begegnungnr, gast_mannschaft_id, gast_begegnungnr '.
 		          'FROM sperml_punktspiel_intern WHERE sperml_id=%s';
 		$query = sprintf($format, $this->getSpErMlID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Interne Punktspielergebnismeldung mit sperml_id='.$SpErMlID.' nicht gefunden!');}
 		$this->mHeimMannschaftID = lD($row[0]);
 		$this->mHeimBegegnungNr = lD($row[1]);
@@ -146,7 +146,7 @@ class CSpErMlPunktspielIntern extends CSpErMl
 			$query = sprintf($format, sD($this->mHeimMannschaftID), sD($this->mHeimBegegnungNr), sD($this->mGastMannschaftID),
 			sD($this->mGastBegegnungNr));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 	}
 
 	public function check($CheckForeignKey = true)

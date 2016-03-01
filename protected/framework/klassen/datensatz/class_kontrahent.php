@@ -124,8 +124,8 @@ class CKontrahent extends CDriveEntity
 		$format = 'SELECT athlet_id, spiel_id, seite, position '.
 		          'FROM kontrahenten WHERE kontrahent_id=%s';
 		$query = sprintf($format, $this->getKontrahentID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Kontrahent mit kontrahent_id='.$KontrahentID.' nicht gefunden!');}
 		$this->mAthletID = lD($row[0]);
 		$this->mSpielID = lD($row[1]);
@@ -157,7 +157,7 @@ class CKontrahent extends CDriveEntity
 			          ') VALUES (%s, %s, %s, %s)';
 			$query = sprintf($format, sD($this->mAthletID), sD($this->mSpielID), sD($this->mSeite), sD($this->mPosition));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

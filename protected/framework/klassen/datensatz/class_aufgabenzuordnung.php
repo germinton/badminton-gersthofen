@@ -116,8 +116,8 @@ class CAufgabenzuordnung extends CDriveEntity
 		$format = 'SELECT athlet_id, aufgabe_id, zusatzinfo '.
 		          'FROM aufgabenzuordnungen WHERE aufgabenzuordnung_id=%s';
 		$query = sprintf($format, $this->getAufgabenzuordnungID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Aufgabenzuordnung mit aufgabenzuordnung_id='.$AufgabenzuordnungID.' nicht gefunden!');}
 		$this->mAthletID = lD($row[0]);
 		$this->mAufgabeID = lD($row[1]);
@@ -147,7 +147,7 @@ class CAufgabenzuordnung extends CDriveEntity
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sD($this->mAthletID), sD($this->mAufgabeID), sS($this->mZusatzinfo));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -186,8 +186,8 @@ class CAufgabenzuordnung extends CDriveEntity
 		$view = CDBConnection::getViewAufgabenzuordnungen();
 		$query = 'SELECT view.athlet_id FROM ('.$view.') view WHERE view.aufgabe_id='.reset($AufgabeIDArray);
 		while($AufgabeID = next($AufgabeIDArray)) {$query .= ' OR view.aufgabe_id='.$AufgabeID;}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$AthletIDArray[] = (int)$row[0];}
 		return ((isset($AthletIDArray))?($AthletIDArray):(array()));
 	}
 
@@ -197,8 +197,8 @@ class CAufgabenzuordnung extends CDriveEntity
 		$view = CDBConnection::getViewAufgabenzuordnungen();
 		$query = 'SELECT view.aufgabe_id FROM ('.$view.') view WHERE view.athlet_id='.reset($AthletIDArray);
 		while($AthletID = next($AthletIDArray)) {$query .= ' OR view.athlet_id='.$AthletID;}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$AufgabeIDArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$AufgabeIDArray[] = (int)$row[0];}
 		return ((isset($AufgabeIDArray))?($AufgabeIDArray):(array()));
 	}
 
@@ -209,8 +209,8 @@ class CAufgabenzuordnung extends CDriveEntity
 		$query = 'SELECT view.athlet_id FROM ('.$view.') view WHERE view.athlet_id='.reset($AthletIDArray);
 		while($AthletID = next($AthletIDArray)) {$query .= ' OR view.athlet_id='.$AthletID;}
 		$query .= ' GROUP BY view.athlet_id ORDER BY SUM(sortierung) DESC';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$SortedAthletIDArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$SortedAthletIDArray[] = (int)$row[0];}
 		return ((isset($SortedAthletIDArray))?($SortedAthletIDArray):(array()));
 	}
 

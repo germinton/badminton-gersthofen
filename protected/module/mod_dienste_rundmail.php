@@ -124,7 +124,7 @@ if(VIEW_DETAIL == $data['view'])
 
 	$query .= ' ORDER BY nachname, vorname';
 
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
 
 	$i = 0;
 
@@ -136,7 +136,7 @@ if(VIEW_DETAIL == $data['view'])
 		default: $delim = ', '; break;
 	}
 
-	while($row = mysql_fetch_row($result)) {$data['empfaenger'] .= (($i++)?($delim):('')).$row[0];}
+	while($row = mysqli_fetch_row($result)) {$data['empfaenger'] .= (($i++)?($delim):('')).$row[0];}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

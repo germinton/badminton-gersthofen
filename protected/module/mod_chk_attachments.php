@@ -92,8 +92,8 @@ function CheckAttachments($Attachmentbezeichnung, $Tabname)
 			{
 				$FileHasDBEntry = true;
 				$query = 'SELECT * FROM '.$Tabname.' WHERE '.$IDName.'='.substr($datei, 0, 10);
-				if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-				if(!mysql_fetch_row($result)) {$FileHasDBEntry = false;}
+				if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+				if(!mysqli_fetch_row($result)) {$FileHasDBEntry = false;}
 				$xhtml .= '<span style="color:'.(($FileHasDBEntry)?('green'):('red')).'">';
 				$xhtml .= '&#x2714;</span>';
 			}

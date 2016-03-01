@@ -67,8 +67,8 @@ if(VIEW_DETAIL == $data['view'])
 	// VereinArray
 	$data['verein_array'] = array();
 	$query = 'SELECT v.verein_id FROM vereine v ORDER BY v.name, v.kuerzel';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,8 +101,8 @@ if(VIEW_LIST == $data['view'])
 	$query_where = array();
 
 	$fltr1_query = 'SELECT verein_id FROM vereine ORDER BY name, kuerzel';
-	if(!$result = mysql_query($fltr1_query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['fltr1_array'][] = new CVerein($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $fltr1_query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['fltr1_array'][] = new CVerein($row[0]);}
 	if($data['fltr1']) {$query_where[] = 'v.verein_id='.$data['fltr1'];}
 
 	foreach($query_where as $i => $clause) {$query .= (($i)?(' AND '):(' WHERE ')).$clause;}
@@ -121,8 +121,8 @@ if(VIEW_LIST == $data['view'])
 	//--------------------------------------------------------------------------------------------------------------------
 
 	$data['austragungsort_array'] = array();
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['austragungsort_array'][] = new CAustragungsort($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['austragungsort_array'][] = new CAustragungsort($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

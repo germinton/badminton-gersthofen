@@ -57,23 +57,23 @@ if(VIEW_DETAIL == $data['view'])
 	// SaisonArray
 	$data['saison_array'] = array();
 	$query = 'SELECT saison_id FROM saisons ORDER BY beginn DESC';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['saison_array'][] = new CSaison($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['saison_array'][] = new CSaison($row[0]);}
 
 	$data['saison_id'] = CDBConnection::getInstance()->getSaisonID();
 
 	// LigaKlasseArray
 	$data['ligaklasse_array'] = array();
 	$query = 'SELECT ligaklasse_id FROM ligenklassen ORDER BY aklagruppe DESC, bezeichnung';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['ligaklasse_array'][] = new CLigaKlasse($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['ligaklasse_array'][] = new CLigaKlasse($row[0]);}
 
 	// VereinArray
 	$data['verein_array'] = array();
 	$query = 'SELECT v.verein_id FROM vereine v, vereine_benutzerinformationen vb WHERE NOT v.verein_id=vb.verein_id '.
 	         'ORDER BY v.name, v.kuerzel';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,8 +108,8 @@ if(VIEW_LIST == $data['view'])
 	$query_where = array();
 
 	$fltr1_query = 'SELECT saison_id FROM saisons ORDER BY beginn DESC';
-	if(!$result = mysql_query($fltr1_query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['fltr1_array'][] = new CSaison($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $fltr1_query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['fltr1_array'][] = new CSaison($row[0]);}
 	if($data['fltr1']) {$query_where[] = 's.saison_id='.$data['fltr1'];}
 
 	if($data['fltr2']) {$query_where[] = 'm.aklagruppe='.$data['fltr2'];}
@@ -130,8 +130,8 @@ if(VIEW_LIST == $data['view'])
 	//--------------------------------------------------------------------------------------------------------------------
 
 	$data['mannschaft_array'] = array();
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['mannschaft_array'][] = new CMannschaft($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['mannschaft_array'][] = new CMannschaft($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

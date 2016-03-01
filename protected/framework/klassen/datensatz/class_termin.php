@@ -107,8 +107,8 @@ class CTermin extends CDriveEntityWithAttachment
 		$format = 'SELECT datum, freitext '.
 		          'FROM termine WHERE termin_id=%s';
 		$query = sprintf($format, $this->getTerminID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Termin mit termin_id='.$TerminID.' nicht gefunden!');}
 		$this->mDatum = lS($row[0]);
 		$this->mFreitext = lS($row[1]);
@@ -137,7 +137,7 @@ class CTermin extends CDriveEntityWithAttachment
 			          ') VALUES (%s, %s)';
 			$query = sprintf($format, sS($this->mDatum), sS($this->mFreitext));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

@@ -214,8 +214,8 @@ class CSpiel extends CDriveEntity
 		$format = 'SELECT spieltyp '.
 		          'FROM spiele WHERE spiel_id=%s';
 		$query = sprintf($format, $this->getSpielID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Spiel mit spiel_id='.$SpielID.' nicht gefunden!');}
 		$this->mSpieltyp = lD($row[0]);
 
@@ -224,14 +224,14 @@ class CSpiel extends CDriveEntity
 		{
 			$query = 'SELECT kontrahent_id, position FROM kontrahenten '.
 			         'WHERE spiel_id='.$this->getSpielID().' AND seite='.$Seite.' ORDER BY position';
-			if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			while($row = mysql_fetch_row($result)) {$this->mKontrahentArray[$Seite][$row[1]] = new CKontrahent($row[0]);}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+			while($row = mysqli_fetch_row($result)) {$this->mKontrahentArray[$Seite][$row[1]] = new CKontrahent($row[0]);}
 		}
 
 		// SatzArray
 		$query = 'SELECT satz_id, nr FROM saetze WHERE spiel_id='.$this->getSpielID().' ORDER BY nr';
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$this->mSatzArray[$row[1]] = new CSatz($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$this->mSatzArray[$row[1]] = new CSatz($row[0]);}
 	}
 
 	public function save()
@@ -257,7 +257,7 @@ class CSpiel extends CDriveEntity
 			          ') VALUES (%s)';
 			$query = sprintf($format, sD($this->mSpieltyp));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -269,8 +269,8 @@ class CSpiel extends CDriveEntity
 			{
 				$query = 'SELECT kontrahent_id FROM kontrahenten '.
 				         'WHERE spiel_id='.$this->getSpielID().' AND seite='.$Seite.' AND position='.$Position;
-				if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-				if($row = mysql_fetch_row($result))
+				if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+				if($row = mysqli_fetch_row($result))
 				{
 					if(isset($this->mKontrahentArray[$Seite][$Position])) {
 						$this->mKontrahentArray[$Seite][$Position]->setKontrahentID($row[0]);
@@ -288,8 +288,8 @@ class CSpiel extends CDriveEntity
 		for($Nr = 1; $Nr <=MAX_SAETZE; $Nr++)
 		{
 			$query = 'SELECT satz_id FROM saetze WHERE spiel_id='.$this->getSpielID().' AND nr='.$Nr;
-			if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			if($row = mysql_fetch_row($result))
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+			if($row = mysqli_fetch_row($result))
 			{
 				if(isset($this->mSatzArray[$Nr])) {
 					$this->mSatzArray[$Nr]->setSatzID($row[0]);

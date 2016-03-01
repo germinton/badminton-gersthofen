@@ -48,8 +48,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$returnstring = '';
 		// Eigener Verein
 		$query = 'SELECT verein_id FROM vereine_benutzerinformationen';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		$EigenerVerein = (string)(new CVerein($row[0]));
 		// Partnerverein
 		if(!$this->mVereinID)
@@ -220,8 +220,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 		          'bildunterschrift, ergdienst '.
 		          'FROM mannschaften WHERE mannschaft_id=%s';
 		$query = sprintf($format, $this->getMannschaftID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Mannschaft mit mannschaft_id='.$MannschaftID.' nicht gefunden!');}
 		$this->mSaisonID = lD($row[0]);
 		$this->mAKlaGruppe = lD($row[1]);
@@ -263,7 +263,7 @@ class CMannschaft extends CDriveEntityWithAttachment
 			sD($this->mPlatzierung2), sD($this->mLigaKlasseID), sD($this->mVereinID), sS($this->mBildunterschrift),
 			sS($this->mErgDienst));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -353,10 +353,10 @@ class CMannschaft extends CDriveEntityWithAttachment
 			         ' AND nr='.$this->mNr.
 			         ' AND verein_id'.((is_null($this->mVereinID))?(' IS NULL'):('='.$this->mVereinID)).
 			         ' AND mannschaft_id<>'.$this->getMannschaftID();
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			if($row = mysql_fetch_row($result)) {
+			if($row = mysqli_fetch_row($result)) {
 				$Meldung = 'Eine ';
 				$Meldung .= C2S_AKlaGruppe($this->mAKlaGruppe);
 				if(S_AKTIVE == $this->mAKlaGruppe) {$Meldung .= 'n';};
@@ -392,20 +392,20 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM sperml_punktspiel_extern WHERE mannschaft_id='.$this->getMannschaftID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		foreach($GLOBALS['Enum']['Seite'] as $Seite)
 		{
 			$query = 'SELECT COUNT(*) FROM sperml_punktspiel_intern '.
 			         'WHERE '.strtolower(C2S_Seite($Seite)).'_mannschaft_id='.$this->getMannschaftID();
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 				throw new Exception(mysql_error(CDriveEntity::getDB()));
 			}
-			$row = mysql_fetch_row($result);
+			$row = mysqli_fetch_row($result);
 			$Zaehler += (int)$row[0];
 		}
 
@@ -427,8 +427,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 		         'INNER JOIN _parameter p ON m.saison_id=p.saison_id '.
 		         'WHERE tp.mannschaft_id='.$this->getMannschaftID().(($RecentOnly)?(' AND t.datum >= CURDATE()'):(' ')).
 		         'ORDER BY t.datum, tp.uhrzeit';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
 		return $TerminPSBArray;
 	}
 
@@ -461,8 +461,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT tabelle_id FROM tabellen '.
 		         'WHERE saison_id='.$this->getSaisonID().' and ligaklasse_id='.$this->getLigaKlasseID();
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-		return (($row = mysql_fetch_row($result))?((int)$row[0]):(null));
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		return (($row = mysqli_fetch_row($result))?((int)$row[0]):(null));
 	}
 
 	public function getSpermlXArray()
@@ -472,9 +472,9 @@ class CMannschaft extends CDriveEntityWithAttachment
 
 		$SpermlXArray = array();
 
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
 
-		while($row = mysql_fetch_row($result)) {
+		while($row = mysqli_fetch_row($result)) {
 			switch($row[1])
 			{
 				case S_PKTSPEXT: $SpermlXArray[] = new CSpErMlPunktspielExtern($row[0]); break;
@@ -490,8 +490,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$query = 'SELECT begegnungnr FROM _v1_punktspiele '.
 		         'WHERE mannschaft_id='.$this->getMannschaftID().' ORDER BY datum, begegnungnr';
 		$SpermlXBegegnungNrArray = array();
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-		while($row = mysql_fetch_row($result)) {$SpermlXBegegnungNrArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$SpermlXBegegnungNrArray[] = (int)$row[0];}
 		return $SpermlXBegegnungNrArray;
 	}
 
@@ -500,8 +500,8 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$query = 'SELECT seite FROM _v1_punktspiele '.
 		         'WHERE mannschaft_id='.$this->getMannschaftID().' ORDER BY datum, begegnungnr';
 		$SpermlXSeiteArray = array();
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-		while($row = mysql_fetch_row($result)) {$SpermlXSeiteArray[] = (int)$row[0];}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$SpermlXSeiteArray[] = (int)$row[0];}
 		return $SpermlXSeiteArray;
 	}
 

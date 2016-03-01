@@ -119,8 +119,8 @@ class CVerein extends CDriveEntityWithAttachment
 		$format = 'SELECT kuerzel, name, homepage '.
 		          'FROM vereine WHERE verein_id=%s';
 		$query = sprintf($format, $this->getVereinID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Verein mit verein_id='.$VereinID.' nicht gefunden!');}
 		$this->mKuerzel = lS($row[0]);
 		$this->mName = lS($row[1]);
@@ -150,7 +150,7 @@ class CVerein extends CDriveEntityWithAttachment
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, sS($this->mKuerzel), sS($this->mName), sS($this->mHomepage));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -205,24 +205,24 @@ class CVerein extends CDriveEntityWithAttachment
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM sperml_freundschaft WHERE verein_id='.$this->getVereinID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM sperml_punktspiel_extern WHERE verein_id='.$this->getVereinID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM vereine_benutzerinformationen WHERE verein_id='.$this->getVereinID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		return (($Zaehler)?(false):(true));
