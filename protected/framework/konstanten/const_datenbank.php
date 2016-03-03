@@ -137,6 +137,9 @@ define('S_SPORTWARTTRAINING', 63);
 define('S_CHEFTRAINER', 65);
 define('S_MANNSCHAFTSFUEHRER_M', 69);
 define('S_SCHIEDSRICHTEROBMANN', 71);
+define('S_SCHUELERTRAINER', 73);
+define('S_JUGENDTRAINER', 74);
+define('S_ERWACHSENENTRAINER', 75);
 /*@}*/
 
 /*******************************************************************************************************************//**

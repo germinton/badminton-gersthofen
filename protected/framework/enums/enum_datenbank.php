@@ -101,5 +101,8 @@ $GLOBALS['Enum']['Aufgabe'][] = S_KASSENWART;
 $GLOBALS['Enum']['Aufgabe'][] = S_SPORTWARTWETTKAMPF;
 $GLOBALS['Enum']['Aufgabe'][] = S_SPORTWARTTRAINING;
 $GLOBALS['Enum']['Aufgabe'][] = S_CHEFTRAINER;
+$GLOBALS['Enum']['Aufgabe'][] = S_SCHUELERTRAINER;
+$GLOBALS['Enum']['Aufgabe'][] = S_JUGENDTRAINER;
+$GLOBALS['Enum']['Aufgabe'][] = S_ERWACHSENENTRAINER;
 /*@}*/
 ?>

@@ -44,7 +44,41 @@ für Ihre Mannschaft.</p>
 <p>&nbsp;</p>
 <p>Trainer:<br>
 Folgende Trainer betreuen die Jugend-Gruppe:
-<p>!!!TODO: [Hier die Steckbriefe einfügen von Uli, Tommi, Stefan]</p>
+<?php
+$SortierungArray = array();
+$MitgliedArray = array();
+
+$AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_JUGENDTRAINER));
+$SortedAthletIDArray = CAufgabenzuordnung::getSortedAthletIDArray($AthletIDArray);
+
+foreach($SortedAthletIDArray as $AthletID)
+{
+	$TempMitglied = new CMitglied($AthletID);
+	
+	if($TempMitglied->getAnrede() == S_DAME)
+	{
+		array_unshift($MitgliedArray, $TempMitglied);
+	}
+	else
+	{
+		$MitgliedArray[] = $TempMitglied;
+	}
+}
+
+if($Mitglied = reset($MitgliedArray)){
+	do
+	{
+		echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
+		echo STD_P_UPARROW.PHP_EOL;
+	}
+	while($Mitglied = next($MitgliedArray));
+} else {
+	echo '<p>&nbsp;</p>'.PHP_EOL;
+	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
+}
+
+
+?>
 </p>
 
 <p>&nbsp;</p>

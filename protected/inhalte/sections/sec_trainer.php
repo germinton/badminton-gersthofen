@@ -8,6 +8,7 @@ Schülertraining durchführen. Alle Übungsleiter sind selbst erfahrene Badminto
 $SortierungArray = array();
 $MitgliedArray = array();
 
+//$AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_SCHUELERTRAINER, S_JUGENDTRAINER, S_ERWACHSENENTRAINER, S_CHEFTRAINER));
 $AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_TRAINER, S_CHEFTRAINER));
 $SortedAthletIDArray = CAufgabenzuordnung::getSortedAthletIDArray($AthletIDArray);
 
