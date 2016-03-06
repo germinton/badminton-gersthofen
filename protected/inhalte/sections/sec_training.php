@@ -6,7 +6,7 @@ weiten Alters- und Leistungsgruppe die Möglichkeit zu bieten Badminton zu spiel
 wird das Training grundsätzlich anhand folgender Altersstufen eingeteilt:</p>
 
 <ul>
-	<li><a href="index.php?section=training_schueler">Schülertraining (8-12 Jahre)</a></li>
+	<li><a href="index.php?section=training_schueler">Schülertraining (8-14 Jahre)</a></li>
 	<li><a href="index.php?section=training_jugend">Jugend (15-18 Jahre)</a></li>
 	<li><a href="index.php?section=training_erwachsene">Freizeitspieler (ab 18 Jahre)</a></li>
 	<li><a href="index.php?section=training_erwachsene">Mannschaftsspieler (ab 18 Jahre)</a></li>

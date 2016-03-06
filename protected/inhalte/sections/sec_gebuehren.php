@@ -26,20 +26,20 @@ Abteilungsbeitrag.</p>
 	</tr>
 	<tr>
 		<td>Jahres-Mitgliedsbeitrag des TSV Gersthofen</td>
-		<td>84 bis 110,40€</td>
+		<td>84,00 € bis 110,40 €</td>
 		<td>Beitrag ist abhängig vom Alter<br>
 		(<a href="http://tsv-gersthofen.de/gesch%C3%A4ftsstelle/hv-beitraege.html">Beitrag & Aufnahmeantrag</a>)
 		</td>
 	</tr>
 	<tr>
 		<td>Jahres-Abteilungsbeitrag der Abteilung Badminton</td>
-		<td>54 bis 84€</td>
-		<td>Hobby & <18 Jahre: 4,50€<br>
-		Mannschaftsspieler: 7€/Monat<br>
+		<td>54,00 € bis 84,00 €</td>
+		<td>Hobby & <18 Jahre: 4,50 €<br>
+		Mannschaftsspieler: 7,00 €/Monat<br>
 		(Abbuchung im Januar/Juli, anteilig bei unterjährigem Eintritt)
 		</td>
 	</tr>
 </table>
 
 <p class="textbox schattiert">Damit ergeben sich in Summe jährlich günstige <em>Gesamtkosten</em> für Training und Bälle <em>in
-Höhe von 138 bis 194,40€</em>.</p>
+Höhe von 138,00 € bis 194,40 €</em>.</p>
