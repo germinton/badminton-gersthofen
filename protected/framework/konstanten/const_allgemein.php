@@ -145,7 +145,7 @@ define('M_DEZ', 12);
  * @name allgemeine Zeichenketten
  ****************************************************************************************************************//*@{*/
 define('STR_ATH_LOCK', 'Die Athletdaten können momentan nicht verändert werden, da die Datenbank gerade aktualisiert wird. Bitte probiere es später nochmal.');
-define('STD_META_DESC', 'Informationen zum Training, Spielbetrieb und den Freizeitaktivitäten der Badmintonsparte des TSV Gersthofen. Gersthofen ist eine Stadt am nördlichen Stadtrand von Augsburg.');
+define('STD_META_DESC', 'Informationen zum Training, Spielbetrieb und den Freizeitaktivitäten der Badmintonabteilung des TSV Gersthofen. Gersthofen ist eine Stadt am nördlichen Stadtrand von Augsburg.');
 define('STD_NEW_WINDOW', 'onclick="void(window.open(this.href, \'\', \'\')); return false;"');
 define('STD_P_UPARROW', '<p class="uparrow"><a href="#head">up&nbsp;&uarr;</a></p>');
 /*@{*/

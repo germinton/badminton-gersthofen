@@ -4,8 +4,8 @@
 
 <h1>Aufgabenverteilung</h1>
 
-<p>Ohne das ehrenamtliche Engagement unserer Mitglieder gäbe es die Sparte nicht. Auf dieser Seite wollen wir uns bei
-den Helferinnen und Helfern bedanken, die ein wenig ihrer wertvollen Zeit der Sparte widmen und damit aktiv zum
+<p>Ohne das ehrenamtliche Engagement unserer Mitglieder gäbe es die Abteilung nicht. Auf dieser Seite wollen wir uns bei
+den Helferinnen und Helfern bedanken, die ein wenig ihrer wertvollen Zeit der Abteilung widmen und damit aktiv zum
 reibungslosen Ablauf von Training und Wettkämpfen sowie natürlich unseren sozialen Events beitragen.</p>
 
 <div class="divided_tabs"><?php

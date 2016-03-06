@@ -34,7 +34,7 @@ function sB($Boolean)
 function lS($StringOrNull)
 {
 	/*
-	 * mysql_fetch_row()
+	 * mysqli_fetch_row()
 	 * http://www.php.net/manual/en/function.mysql-fetch-row.php
 	 * ...
 	 * Note: This function sets NULL fields to the PHP NULL value.
@@ -49,7 +49,7 @@ function lS($StringOrNull)
 function lD($StringOrNull)
 {
 	/*
-	 * mysql_fetch_row()
+	 * mysqli_fetch_row()
 	 * http://www.php.net/manual/en/function.mysql-fetch-row.php
 	 * ...
 	 * Note: This function sets NULL fields to the PHP NULL value.
@@ -65,7 +65,7 @@ function lD($StringOrNull)
 function lB($StringOrNull)
 {
 	/*
-	 * mysql_fetch_row()
+	 * mysqli_fetch_row()
 	 * http://www.php.net/manual/en/function.mysql-fetch-row.php
 	 * ...
 	 * Note: This function sets NULL fields to the PHP NULL value.

@@ -212,8 +212,8 @@ class CTabelleneintrag extends CDriveEntity
 		          'saetze_1, saetze_3 '.
 		          'FROM tabelleneintraege WHERE tabelleneintrag_id=%s';
 		$query = sprintf($format, $this->getTabelleneintragID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Tabelleneintrag mit tabelleneintrag_id='.$TabelleneintragID.' nicht gefunden!');}
 		$this->mTabelleID= lD($row[0]);
 		$this->mPlatz = lD($row[1]);
@@ -257,7 +257,7 @@ class CTabelleneintrag extends CDriveEntity
 			sD($this->mAnzahlSpiele), sD($this->mPunkte1), sD($this->mPunkte3), sD($this->mSpiele1), sD($this->mSpiele3),
 			sD($this->mSaetze1), sD($this->mSaetze3));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

@@ -1,4 +1,4 @@
-<h1>Willkommen auf unserer Website</h1>
+<h1>Badminton – Dein Sport!</h1>
 
 <?php
 if($Nbr= CTerminAllg::getNumberOfTermine(3))
@@ -16,11 +16,21 @@ if($Nbr= CTerminAllg::getNumberOfTermine(3))
 }
 ?>
 
-<h2>Bist Du ein Interessent?</h2>
-<p>Bei uns sind Neugierige aller Alters- und Leistungsklassen herzlich willkommen. Auf diesen Seiten findest Du
-Informationen über unsere <a href="index.php?section=training">Trainingszeiten und -gruppen</a> sowie eine <a
-	href="index.php?section=diesparte">Vorstellung unserer Sparte</a>.</p>
+<h2>Du interessierst Dich für Badminton – wie können wir Dir helfen?</h2>
+<p>Das Trainingsangebot <a href="index.php?section=dieabteilung">der Abteilung Badminton</a> im 
+TSV 1909 Gersthofen e. V. richtet sich sowohl an erfahrene Spieler, als auch an 
+Freizeitspieler. Egal wie alt oder jung Du bist, wir haben das richtige 
+Trainingsangebot für Dich. <strong>Was können wir für Dich tun?</strong></p>
 
+<p>&nbsp;</p>
+<div class="training_type_container">
+	<a href="index.php?section=training_schueler"><div class="training_type_box waves-effect waves-light btn"><div>Unser Kind möchte Badminton spielen lernen!</div></div></a>
+	<a href="index.php?section=training_jugend"><div class="training_type_box"><div>Ich bin Jugendlicher und möchte gerne Badminton spielen!</div></div></a>
+	<a href="index.php?section=training_erwachsene"><div class="training_type_box"><div>Freizeitspieler war ich lange genug, jetzt will ich Profi werden!</div></div></a>
+	<a href="index.php?section=training_erwachsene"><div class="training_type_box"><div>Erfahrener Badmintonspieler sucht neuen Verein!</div></div></a>
+</div>
+
+<p>&nbsp;</p>
 <h2>Neuigkeiten</h2>
 <?php
 if(count($NeuigkeitArray = CNeuigkeit::getRecentNeuigkeitArray())) {

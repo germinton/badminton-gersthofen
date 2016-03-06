@@ -120,8 +120,8 @@ class CSpErMlPunktspielExtern extends CSpErMl
 		$format = 'SELECT mannschaft_id, begegnungnr, seite, verein_id, mannschaftnr '.
 		          'FROM sperml_punktspiel_extern WHERE sperml_id=%s';
 		$query = sprintf($format, $this->getSpErMlID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Externe Punktspielergebnismeldung mit sperml_id='.$SpErMlID.' nicht gefunden!');}
 		$this->mMannschaftID = lD($row[0]);
 		$this->mBegegnungNr = lD($row[1]);
@@ -158,7 +158,7 @@ class CSpErMlPunktspielExtern extends CSpErMl
 			$query = sprintf($format, sD($this->mMannschaftID), sD($this->mBegegnungNr), sD($this->mSeite),
 			sD($this->mVereinID), sD($this->mMannschaftNr));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 	}
 
 	public function check($CheckForeignKey = true)

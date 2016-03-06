@@ -144,3 +144,18 @@ tr.special2 {
 tr.highlight {
 	background-color: transparent;
 }
+
+/*
+--------------------------------------------------------------------------------
+	Trainingtypen
+--------------------------------------------------------------------------------
+*/
+
+.training_type_box {
+ 	color: #333333;
+	background-color: #7cbbff;
+}
+
+.training_type_box:hover {
+    background-color: #a5d0fd
+}

@@ -142,8 +142,8 @@ class CAufgabe extends CDriveEntity
 		$format = 'SELECT bez_maennlich, bez_weiblich, aufgabentyp, sortierung, freitext '.
 		          'FROM aufgaben WHERE aufgabe_id=%s';
 		$query = sprintf($format, $this->getAufgabeID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Aufgabe mit aufgabe_id='.$AufgabeID.' nicht gefunden!');}
 		$this->mBezMaennlich = lS($row[0]);
 		$this->mBezWeiblich = lS($row[1]);
@@ -177,7 +177,7 @@ class CAufgabe extends CDriveEntity
 			$query = sprintf($format, sS($this->mBezMaennlich), sS($this->mBezWeiblich), sD($this->mAufgabentyp),
 			sD($this->mSortierung), sS($this->mFreitext));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

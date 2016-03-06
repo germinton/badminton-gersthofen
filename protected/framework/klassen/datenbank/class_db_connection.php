@@ -18,9 +18,17 @@ class CDBConnection
 
 	private function __construct()
 	{
-		if(!self::$mDB = @mysql_connect(CDBConnectionInfo::mcHost, CDBConnectionInfo::mcUser, CDBConnectionInfo::mcPwd)) {throw new Exception(mysql_error());}
-		if(!mysql_select_db(CDBConnectionInfo::mcDBName)) {throw new Exception(mysql_error(self::$mDB));}
-		if(!$result = mysql_query('SET CHARACTER SET utf8', self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!self::$mDB = mysqli_connect(
+				CDBConnectionInfo::mcHost, 
+				CDBConnectionInfo::mcUser, 
+				CDBConnectionInfo::mcPwd, 
+				CDBConnectionInfo::mcDBName)) {
+			throw new Exception(mysqli_connect_error());			
+		}
+		
+		if(!$result = mysqli_query(self::$mDB, 'SET CHARACTER SET utf8')) {
+			throw new Exception(mysqli_error(self::$mDB));
+		}
 		$this->setStichtag();
 	}
 
@@ -54,32 +62,32 @@ class CDBConnection
 	{
 		if(!($Stichtag instanceof DateTime)) {$Stichtag = new DateTime();}
 		$query = 'UPDATE _parameter SET stichtag=\''.$Stichtag->format('Y-m-d').'\'';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 	}
 
 	public function setSaisonID($SaisonID)
 	{
 		$query = 'UPDATE _parameter SET saison_id='.$SaisonID;
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 	}
 
 	public function setSaisonIDByDate($Datum = null)
 	{
 		$query = 'UPDATE _parameter SET saison_id='.$this->getSaisonIDForDatum($Datum);
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 	}
 
 	public function setRdDateMitgliederEinsaetze($Datum = null)
 	{
 		if(!($Datum instanceof DateTime)) {$Datum = new DateTime();}
 		$query = 'UPDATE _parameter SET rddate_mitglieder_einsaetze=\''.$Datum->format('Y-m-d').'\'';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 	}
 
 	public function setAthLock($AthLock = false)
 	{
 		$query = 'UPDATE _parameter SET ath_lock='.(($AthLock)?(1):(0));
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 	}
 
 	/*@}*/
@@ -91,31 +99,31 @@ class CDBConnection
 	public function getStichtag()
 	{
 		$query = 'SELECT stichtag FROM _parameter';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		return (($row = mysql_fetch_row($result))?($row[0]):(null));
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		return (($row = mysqli_fetch_row($result))?($row[0]):(null));
 	}
 
 	public function getSaisonID($FlagVariant = array())
 	{
 		$FlagArray = (array)$FlagVariant;
 		$query = 'SELECT saison_id FROM _parameter';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		$row = mysqli_fetch_row($result);
 		return ((in_array(GET_OFID, $FlagArray))?(new CSaison($row[0])):((int)$row[0]));
 	}
 
 	public function getRdDateMitgliederEinsaetze()
 	{
 		$query = 'SELECT rddate_mitglieder_einsaetze FROM _parameter';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		return (($row = mysql_fetch_row($result))?($row[0]):(null));
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		return (($row = mysqli_fetch_row($result))?($row[0]):(null));
 	}
 
 	public function getAthLock()
 	{
 		$query = 'SELECT ath_lock FROM _parameter';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		return (($row = mysql_fetch_row($result))?(($row[0])?(true):(false)):(null));
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		return (($row = mysqli_fetch_row($result))?(($row[0])?(true):(false)):(null));
 	}
 
 	/*@}*/
@@ -128,16 +136,16 @@ class CDBConnection
 	{
 		if(!($Datum instanceof DateTime)) {$Datum = new DateTime();}
 		$query = 'SELECT saison_id FROM saisons WHERE \''.$Datum->format('Y-m-d').'\' BETWEEN beginn AND ende';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		return (($row = mysql_fetch_row($result))?((int)$row[0]):(0));
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		return (($row = mysqli_fetch_row($result))?((int)$row[0]):(0));
 	}
 
 	public function getTableComment($Tabellenname)
 	{
 		$query = 'SHOW CREATE TABLE `'.$Tabellenname.'`';
-		if($result = mysql_query($query, self::$mDB))
+		if($result = mysqli_query(self::$mDB, $query))
 		{
-			$row = mysql_fetch_row($result);
+			$row = mysqli_fetch_row($result);
 			$pos = strpos($row[1], 'COMMENT=');
 			if($pos)
 			{
@@ -152,15 +160,15 @@ class CDBConnection
 
 	public function updateRdTabEinsatzstatistik()
 	{
-		mysql_query('DELETE FROM _rd_mitglieder_einsaetze', self::$mDB);
+		mysqli_query(self::$mDB, 'DELETE FROM _rd_mitglieder_einsaetze');
 
 		$AthletID = 0; $Einsaetze = 0; $AKlaGruppe = 0; $Nr = 0; $Spielart = 0;
 
 		$query = 'SELECT athlet_id, einsaetze, aklagruppe, nr, spielart FROM _v2_mitglieder_einsaetze';
 
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 
-		while($row = mysql_fetch_row($result))
+		while($row = mysqli_fetch_row($result))
 		{
 			$AthletID = (int)$row[0];
 			$Einsaetze = (int)$row[1];
@@ -168,7 +176,7 @@ class CDBConnection
 			$Nr = (int)$row[3];
 			$Spielart = (int)$row[4];
 
-			mysql_query('INSERT INTO _rd_mitglieder_einsaetze (athlet_id, einsaetze, aklagruppe, nr, spielart) '.
+			mysqli_query(self::$mDB, 'INSERT INTO _rd_mitglieder_einsaetze (athlet_id, einsaetze, aklagruppe, nr, spielart) '.
 		              'VALUES ('.$AthletID.','.$Einsaetze.','.$AKlaGruppe.','.$Nr.','.$Spielart.')');
 		}
 
@@ -220,9 +228,9 @@ class CDBConnection
 	public function cleanupMitglieder()
 	{
 		$query = 'SELECT athlet_id FROM athleten_mitglieder';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
 		$Mitglied = new CMitglied();
-		while($row = mysql_fetch_row($result))
+		while($row = mysqli_fetch_row($result))
 		{
 			$Mitglied->load((int)$row[0]);
 			if(!strlen(trim($Mitglied->getStrasse()))) {$Mitglied->setStrasse(null);}
@@ -244,8 +252,8 @@ class CDBConnection
 	public function deleteElapsedNeuigkeiten($Wochen = MAX_WOCHEN_NEUIGKEITEN)
 	{
 		$query = 'SELECT neuigkeit_id FROM neuigkeiten WHERE gueltigbis < DATE_SUB(NOW(), INTERVAL '.$Wochen.' WEEK)';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		while($row = mysql_fetch_row($result)) {
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		while($row = mysqli_fetch_row($result)) {
 			$Neuigkeit = new CNeuigkeit($row[0]);
 			$Neuigkeit->delete();
 		}
@@ -256,8 +264,8 @@ class CDBConnection
 	{
 		$query = 'SELECT t.termin_id FROM termine t INNER JOIN termine_allgemein ta ON t.termin_id=ta.termin_id '.
 		         'WHERE t.datum < DATE_SUB(NOW(), INTERVAL '.$Wochen.' WEEK)';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		while($row = mysql_fetch_row($result)) {
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		while($row = mysqli_fetch_row($result)) {
 			$TerminAllg = new CTerminAllg($row[0]);
 			$TerminAllg->delete();
 		}
@@ -268,8 +276,8 @@ class CDBConnection
 	{
 		$query = 'SELECT t.termin_id FROM termine t INNER JOIN termine_pktspbeg tp ON t.termin_id=tp.termin_id '.
 		         'WHERE t.datum < DATE_SUB(NOW(), INTERVAL '.$Wochen.' WEEK)';
-		if(!$result = mysql_query($query, self::$mDB)) {throw new Exception(mysql_error(self::$mDB));}
-		while($row = mysql_fetch_row($result)) {
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysql_error(self::$mDB));}
+		while($row = mysqli_fetch_row($result)) {
 			$TerminPSB = new CTerminPSB($row[0]);
 			$TerminPSB->delete();
 		}

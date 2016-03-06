@@ -32,8 +32,8 @@ $data['dat_estatistik'] = $DBConnection->getRdDateMitgliederEinsaetze();
 $data['saison_id'] = $DBConnection->getSaisonID();
 $data['saison_array'] = array();
 $query = 'SELECT saison_id FROM saisons ORDER BY beginn DESC';
-if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-while($row = mysql_fetch_row($result)) {$data['saison_array'][] = new CSaison($row[0]);}
+if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+while($row = mysqli_fetch_row($result)) {$data['saison_array'][] = new CSaison($row[0]);}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // RETURN

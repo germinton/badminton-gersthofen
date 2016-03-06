@@ -134,8 +134,8 @@ class CTerminPSB extends CTermin
 		$format = 'SELECT mannschaft_id, austragungsort_id, uhrzeit, seite, verein_id, mannschaftnr '.
 		          'FROM termine_pktspbeg WHERE termin_id=%s';
 		$query = sprintf($format, $this->getTerminID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('TerminPSB mit termin_id='.$TerminID.' nicht gefunden!');}
 		$this->mMannschaftID = lD($row[0]);
 		$this->mAustragungsortID = lD($row[1]);
@@ -173,7 +173,7 @@ class CTerminPSB extends CTermin
 			$query = sprintf($format, $this->getID(), sD($this->mMannschaftID), sD($this->mAustragungsortID),
 			sS($this->mUhrzeit), sD($this->mSeite), sD($this->mVereinID), sD($this->mMannschaftNr));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 	}
 
 	public function check()
@@ -309,8 +309,8 @@ class CTerminPSB extends CTermin
 		'WHERE datum >= CURDATE() AND MONTH(datum)='.$Monat.' AND YEAR(datum) ='.$Jahr.' AND mannschaft_id ='.$MannschaftID.' ORDER BY datum, uhrzeit')
 			:('SELECT tp.termin_id FROM termine_pktspbeg tp INNER JOIN termine t ON tp.termin_id=t.termin_id '.
 		'WHERE datum >= CURDATE() AND MONTH(datum)='.$Monat.' AND YEAR(datum) ='.$Jahr.' ORDER BY datum, mannschaft_id, uhrzeit'));
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			while($row = mysql_fetch_row($result)) {$TerminPSBArrayArray[$MonatString][] = new CTerminPsB($row[0]);}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+			while($row = mysqli_fetch_row($result)) {$TerminPSBArrayArray[$MonatString][] = new CTerminPsB($row[0]);}
 			if(++$Monat > 12) {$Monat = 1; $Jahr++;}
 		}
 		return $TerminPSBArrayArray;

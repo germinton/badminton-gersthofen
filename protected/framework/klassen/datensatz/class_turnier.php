@@ -169,8 +169,8 @@ class CTurnier extends CDriveEntity
 		$format = 'SELECT datumvon, datumbis, bezeichnung, austragungsort_id, ebene, hrichtung, turniertyp '.
 		          'FROM turniere WHERE turnier_id=%s';
 		$query = sprintf($format, $this->getTurnierID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Turnier mit turnier_id='.$TurnierID.' nicht gefunden!');}
 		$this->mDatumVon = lS($row[0]);
 		$this->mDatumBis = lS($row[1]);
@@ -207,7 +207,7 @@ class CTurnier extends CDriveEntity
 			$query = sprintf($format, sS($this->mDatumVon), sS($this->mDatumBis), sS($this->mBezeichnung),
 			sD($this->mAustragungsortID), sD($this->mEbene), sD($this->mHRichtung), sD($this->mTurniertyp));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

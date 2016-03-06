@@ -104,8 +104,8 @@ class CErsatzspieler extends CDriveEntity
 		$format = 'SELECT sperml_id, athlet_id '.
 		          'FROM ersatzspieler WHERE ersatzspieler_id=%s';
 		$query = sprintf($format, $this->getErsatzspielerID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Ersatzspieler mit ersatzspieler_id='.$ErsatzspielerID.' nicht gefunden!');}
 		$this->mSpErMlID = lD($row[0]);
 		$this->mAthletID = lD($row[1]);
@@ -134,7 +134,7 @@ class CErsatzspieler extends CDriveEntity
 			          ') VALUES (%s, %s)';
 			$query = sprintf($format, sD($this->mSpErMlID), sD($this->mAthletID));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

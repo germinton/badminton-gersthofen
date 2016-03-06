@@ -57,12 +57,12 @@ if(VIEW_DETAIL == $data['view'])
 	if(!$Flag) {throw new Exception('Mindestens ein Feldname muss ausgewählt werden!');}
 	$query .= ' FROM _v3_mitglieder_daten ORDER BY nachname, vorname';
 
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
 
 	for($i=0; $i<mysql_num_fields($result); $i++) {$data['export'] .= mysql_field_name($result, $i).',';}
 	$data['export'] = substr($data['export'], 0, strlen($data['export'])-1)."\n";
 
-	while($row = mysql_fetch_row($result)) {
+	while($row = mysqli_fetch_row($result)) {
 		foreach($row as $cell) {$data['export'] .= $cell.',';}
 		$data['export'] = substr($data['export'], 0, strlen($data['export'])-1)."\n";
 	}

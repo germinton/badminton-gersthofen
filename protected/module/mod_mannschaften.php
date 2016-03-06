@@ -17,8 +17,8 @@ $data['mannschaft_array'] = array();
 $query = 'SELECT mannschaft_id '.
          'FROM (mannschaften m INNER JOIN saisons s ON m.saison_id=s.saison_id) '.
          'WHERE s.saison_id='.$data['saison']->getSaisonID().' ORDER BY aklagruppe DESC, nr';
-if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-while($row = mysql_fetch_row($result)) {$data['mannschaft_array'][] = new CMannschaft($row[0]);}
+if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+while($row = mysqli_fetch_row($result)) {$data['mannschaft_array'][] = new CMannschaft($row[0]);}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // RETURN

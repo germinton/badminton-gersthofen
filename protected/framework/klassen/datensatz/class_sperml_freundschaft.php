@@ -129,8 +129,8 @@ class CSpErMlFreundschaft extends CSpErMl
 		$format = 'SELECT aklagruppe, seite, eigene_mannschaftnr, begegnungnr, verein_id, gegner_mannschaftnr '.
 		          'FROM sperml_freundschaft WHERE sperml_id=%s';
 		$query = sprintf($format, $this->getSpErMlID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Freundschaftsspielergebnismeldung mit sperml_id='.$SpErMlID.' nicht gefunden!');}
 		$this->mAKlaGruppe = lD($row[0]);
 		$this->mSeite = lD($row[1]);
@@ -168,7 +168,7 @@ class CSpErMlFreundschaft extends CSpErMl
 			$query = sprintf($format, sD($this->mAKlaGruppe), sD($this->mSeite), sD($this->mEigeneMannschaftNr),
 			sD($this->mBegegnungNr), sD($this->mVereinID), sD($this->mGegnerMannschaftNr));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 	}
 
 	public function check($CheckForeignKey = true)

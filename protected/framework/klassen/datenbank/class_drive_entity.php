@@ -100,8 +100,8 @@ abstract class CDriveEntity
 	{
 		if(!self::genericIsValidID($this->mTabName, $this->mID)) 
 		{
-			$res = mysql_query("SELECT LAST_INSERT_ID() as LID");
-			$r = mysql_fetch_assoc($res);
+			$res = mysqli_query(self::$mDB, "SELECT LAST_INSERT_ID() as LID");
+			$r = mysqli_fetch_assoc($res);
 			$this->mID = $r['LID'];
 			/*
 			[PHP-BUG] Bug #53152 [NEW]: mysql_insert_id return 0
@@ -123,7 +123,7 @@ abstract class CDriveEntity
 		$IDName = S2S_TabName_IDName($TabName);
 		if(!self::genericIsValidID($TabName, $ID)) {throw new Exception('Ungültige '.$IDName);}
 		$query = 'DELETE FROM '.$TabName.' WHERE '.$IDName.'='.$ID;
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(self::$mDB));}
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysqli_error(self::$mDB));}
 
 		/* -----------------------------------------------------------------------------------------------------------------
 		 * Erinnerung:
@@ -202,7 +202,7 @@ abstract class CDriveEntity
 				foreach($RefInt[$TabName]['DELETE'] as $TabNameDelete)
 				{
 					$query = 'DELETE FROM '.$TabNameDelete.' WHERE '.$IDName.'='.$ID;
-					if(!$result = mysql_query($query)) {throw new Exception(mysql_error(self::$mDB));}
+					if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysqli_error(self::$mDB));}
 				}
 			}
 
@@ -218,8 +218,8 @@ abstract class CDriveEntity
 					else {
 						$query .= $IDName.'='.$ID;
 					}
-					if(!$result = mysql_query($query)) {throw new Exception(mysql_error(self::$mDB));}
-					while($row = mysql_fetch_row($result)) {$Object->load($row[0]); $Object->delete();}
+					if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysqli_error(self::$mDB));}
+					while($row = mysqli_fetch_row($result)) {$Object->load($row[0]); $Object->delete();}
 				}
 			}
 
@@ -228,7 +228,7 @@ abstract class CDriveEntity
 				foreach($RefInt[$TabName]['SETNIL'] as $TabNameSetNull)
 				{
 					$query = 'UPDATE '.$TabNameSetNull.' SET '.$IDName.'=NULL WHERE '.$IDName.'='.$ID;
-					if(!$result = mysql_query($query)) {throw new Exception(mysql_error(self::$mDB));}
+					if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysqli_error(self::$mDB));}
 				}
 			}
 		}
@@ -282,8 +282,8 @@ abstract class CDriveEntity
 	{
 		$IDName = S2S_TabName_IDName($TabName);
 		$query = 'SELECT '.$IDName.' FROM '.$TabName.' WHERE '.$IDName.'='.$ID;
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(self::$mDB));}
-		return ((mysql_fetch_row($result))?(true):(false));
+		if(!$result = mysqli_query(self::$mDB, $query)) {throw new Exception(mysqli_error(self::$mDB));}
+		return ((mysqli_fetch_row($result))?(true):(false));
 	}
 
 	/*@}*/

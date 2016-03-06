@@ -52,8 +52,8 @@ if(VIEW_DETAIL == $data['view'])
 	$data['verein_array'] = array();
 	$query = 'SELECT v.verein_id FROM vereine v LEFT JOIN vereine_benutzerinformationen vb '.
 	         'ON v.verein_id=vb.verein_id WHERE vb.verein_id IS NULL ORDER BY name, kuerzel';
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['verein_array'][] = new CVerein($row[0]);}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,8 +88,8 @@ if(VIEW_LIST == $data['view'])
 	$data['fltr1_array'] = array();
 	$fltr1_query = 'SELECT v.verein_id FROM vereine v LEFT JOIN vereine_benutzerinformationen vb '.
 	               'ON v.verein_id=vb.verein_id WHERE vb.verein_id IS NULL ORDER BY name, kuerzel';
-	if(!$result = mysql_query($fltr1_query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {$data['fltr1_array'][] = new CVerein($row[0]);}
+	if(!$result = mysqli_query(CDBConnection::getDB(), $fltr1_query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {$data['fltr1_array'][] = new CVerein($row[0]);}
 	if($data['fltr1']) {$query_where[] = 'v.verein_id'.((-1==$data['fltr1'])?(' IS NULL'):('='.$data['fltr1']));}
 
 	foreach($query_where as $i => $clause) {$query .= (($i)?(' AND '):(' WHERE ')).$clause;}
@@ -108,8 +108,8 @@ if(VIEW_LIST == $data['view'])
 	//--------------------------------------------------------------------------------------------------------------------
 	$data['gegner_array_'.S_HERR] = array();
 	$data['gegner_array_'.S_DAME] = array();
-	if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-	while($row = mysql_fetch_row($result)) {
+	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+	while($row = mysqli_fetch_row($result)) {
 		$TmpGegner = new CGegner($row[0]);
 		$data['gegner_array_'.$TmpGegner->getAnrede()][] = $TmpGegner;
 	}

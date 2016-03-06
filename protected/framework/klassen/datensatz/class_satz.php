@@ -121,8 +121,8 @@ class CSatz extends CDriveEntity
 		$format = 'SELECT spiel_id, nr, heimp, gastp '.
 		          'FROM saetze WHERE satz_id=%s';
 		$query = sprintf($format, $this->getSatzID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Satz mit satz_id='.$SatzID.' nicht gefunden!');}
 		$this->mSpielID = lD($row[0]);
 		$this->mNr = lD($row[1]);
@@ -154,7 +154,7 @@ class CSatz extends CDriveEntity
 			          ') VALUES (%s, %s, %s, %s)';
 			$query = sprintf($format, sD($this->mSpielID), sD($this->mNr), sD($this->mHeimP), sD($this->mGastP));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();

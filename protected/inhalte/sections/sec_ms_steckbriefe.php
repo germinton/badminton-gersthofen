@@ -53,7 +53,7 @@ if($SiteManager->getMitglied() instanceof CMitglied) {
 		$i = 0;
 		foreach($aa as $AString) {echo (($i++)?(' und '):('')).$AString;}
 		echo '. Aus diesem Grund darfst Du das private Profil Deiner ';
-		echo 'Sportskameraden einsehen. Jemand, der kein Amt in unserer Sparte hat, sieht lediglich ein verkürztes ';
+		echo 'Sportskameraden einsehen. Jemand, der kein Amt in unserer Abteilung hat, sieht lediglich ein verkürztes ';
 		echo 'Profil.</p>'."\n";
 		echo '</div>'."\n";
 		echo sni_ProfilMitgliedPrivat($data['mitglied']->getAthletID());

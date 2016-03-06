@@ -101,8 +101,8 @@ class CLigaKlasse extends CDriveEntity
 		$format = 'SELECT bezeichnung, aklagruppe '.
 		          'FROM ligenklassen WHERE ligaklasse_id=%s';
 		$query = sprintf($format, $this->getLigaKlasseID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('LigaKlasse mit ligaklasse_id='.$LigaKlasseID.' nicht gefunden!');}
 		$this->mBezeichnung = lS($row[0]);
 		$this->mAKlaGruppe = lD($row[1]);
@@ -131,7 +131,7 @@ class CLigaKlasse extends CDriveEntity
 			          ') VALUES (%s, %s)';
 			$query = sprintf($format, sS($this->mBezeichnung), sD($this->mAKlaGruppe));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -170,17 +170,17 @@ class CLigaKlasse extends CDriveEntity
 		$Zaehler = 0;
 
 		$query = 'SELECT COUNT(*) FROM mannschaften WHERE ligaklasse_id='.$this->getLigaKlasseID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM tabellen WHERE ligaklasse_id='.$this->getLigaKlasseID();
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
 			throw new Exception(mysql_error(CDriveEntity::getDB()));
 		}
-		$row = mysql_fetch_row($result);
+		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		return (($Zaehler)?(false):(true));

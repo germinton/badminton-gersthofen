@@ -154,8 +154,8 @@ class CNeuigkeit extends CDriveEntityWithAttachment
 		$format = 'SELECT athlet_id, titel, inhalt, eingestellt, gueltigbis, wichtig '.
 		          'FROM neuigkeiten WHERE neuigkeit_id=%s';
 		$query = sprintf($format, $this->getNeuigkeitID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Neuigkeit mit neuigkeit_id='.$NeuigkeitID.' nicht gefunden!');}
 		$this->mAthletID = lD($row[0]);
 		$this->mTitel = lS($row[1]);
@@ -190,7 +190,7 @@ class CNeuigkeit extends CDriveEntityWithAttachment
 			$query = sprintf($format, sD($this->mAthletID), sS($this->mTitel), sS($this->mInhalt), sS($this->mEingestellt),
 			sS($this->mGueltigBis), sB($this->mWichtig));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		// Basisklasse
 		parent::store();
@@ -291,8 +291,8 @@ class CNeuigkeit extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT neuigkeit_id FROM neuigkeiten WHERE gueltigbis IS NULL OR gueltigbis >= CURDATE() '.
 		         'ORDER BY wichtig DESC, eingestellt DESC, neuigkeit_id';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		while($row = mysql_fetch_row($result)) {$NeuigkeitArray[] = new CNeuigkeit($row[0]);}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$NeuigkeitArray[] = new CNeuigkeit($row[0]);}
 		return ((isset($NeuigkeitArray))?($NeuigkeitArray):(array()));
 	}
 

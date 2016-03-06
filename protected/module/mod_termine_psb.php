@@ -31,8 +31,8 @@ $query_where[] = 't.datum >= CURDATE()';
 
 $fltr1_query = 'SELECT m.mannschaft_id FROM mannschaften m '.
                'INNER JOIN _parameter p ON m.saison_id=p.saison_id ORDER BY m.aklagruppe DESC, m.verein_id, m.nr';
-if(!$result = mysql_query($fltr1_query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-while($row = mysql_fetch_row($result)) {$data['fltr1_array'][] = new CMannschaft($row[0]);}
+if(!$result = mysqli_query(CDBConnection::getDB(), $fltr1_query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
+while($row = mysqli_fetch_row($result)) {$data['fltr1_array'][] = new CMannschaft($row[0]);}
 
 if($data['fltr1']) {$query_where[] = 'm.mannschaft_id='.$data['fltr1'];}
 
@@ -67,8 +67,8 @@ if(0 == $data['group']) // Mannschaft
 			//------------------------------------------------------------------------------------------------------------------
 			// Abfrage
 			//------------------------------------------------------------------------------------------------------------------
-			if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-			while($row = mysql_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
+			if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+			while($row = mysqli_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
 
 			//------------------------------------------------------------------------------------------------------------------
 			// PostProcessing
@@ -124,8 +124,8 @@ else // Monat
 		//------------------------------------------------------------------------------------------------------------------
 		// Abfrage
 		//------------------------------------------------------------------------------------------------------------------
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDBConnection::getDB()));}
-		while($row = mysql_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		while($row = mysqli_fetch_row($result)) {$TerminPSBArray[] = new CTerminPSB($row[0]);}
 
 		//------------------------------------------------------------------------------------------------------------------
 		// PostProcessing

@@ -119,10 +119,9 @@ define('S_RANGLISTE', 2);
 /*******************************************************************************************************************//**
  * @name 'Aufgaben'-Konstanten
  ****************************************************************************************************************//*@{*/
-define('S_SPARTENLEITER', 1);
+define('S_ABTEILUNGSLEITER', 1);
 define('S_KOMMUNIKATIONSWART', 4);
 define('S_SPIELLEITENDESTELLE', 5);
-define('S_TRAINER', 10);
 define('S_SCHIEDSRICHTER', 11);
 define('S_STAFFELLEITER', 12);
 define('S_MANNSCHAFTSFUEHRER', 13);
@@ -131,12 +130,15 @@ define('S_WEBMASTER', 20);
 define('S_BALLWART', 21);
 define('S_DBENTWICKLER', 50);
 define('S_EVENTMANAGER', 60);
-define('S_KASSENWART', 61);
+define('S_ABTEILUNGSSCHATZMEISTER', 61);
 define('S_SPORTWARTWETTKAMPF', 62);
 define('S_SPORTWARTTRAINING', 63);
 define('S_CHEFTRAINER', 65);
 define('S_MANNSCHAFTSFUEHRER_M', 69);
 define('S_SCHIEDSRICHTEROBMANN', 71);
+define('S_SCHUELERTRAINER', 73);
+define('S_JUGENDTRAINER', 74);
+define('S_ERWACHSENENTRAINER', 75);
 /*@}*/
 
 /*******************************************************************************************************************//**

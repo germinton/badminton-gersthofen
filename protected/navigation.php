@@ -18,14 +18,19 @@ $NavContGlb->add(new CNav(2, 'login_vergessen', 'Login Vergessen', true));
  * Navigation mit Untergruppen, die am linken Rand erscheint und jedem Besucher zugänglich ist.
  **********************************************************************************************************************/
 $NavContPub = new CNavCont('nav_pub');
-$NavContPub->add(new CNav(1, 'diesparte', 'Die Sparte'));
+$NavContPub->add(new CNav(1, 'dieabteilung', 'Die Abteilung'));
 $NavContPub->add(new CNav(2, 'termine_allg', 'Termine'));
+$NavContPub->add(new CNav(2, 'gebuehren', 'Gebühren'));
 $NavContPub->add(new CNav(2, 'aufgabenverteilung', 'Aufgabenverteilung', true));
 $NavContPub->add(new CNav(2, 'galerie', 'Bildergalerie', true));
 $NavContPub->add(new CNav(1, 'training', 'Training'));
+$NavContPub->add(new CNav(2, 'training_schueler', 'Schüler-Training'));
+$NavContPub->add(new CNav(2, 'training_jugend', 'Jugend-Training'));
+$NavContPub->add(new CNav(2, 'training_erwachsene', 'Erwachsenen-Training'));
+$NavContPub->add(new CNav(2, 'sportstaetten', 'Sportstätten'));
 $NavContPub->add(new CNav(2, 'trainer', 'Unsere Trainer'));
-$NavContPub->add(new CNav(2, 'sportstaetten', 'Sportstätten &amp; Trainingszeiten'));
-$NavContPub->add(new CNav(2, 'faq', 'FAQ für Interessenten'));
+$NavContPub->add(new CNav(2, 'rangliste', 'Rangliste'));
+$NavContPub->add(new CNav(2, 'faq', 'FAQ'));
 $NavContPub->add(new CNav(1, 'spielbetrieb', 'Spielbetrieb'));
 $NavContPub->add(new CNav(2, 'mannschaften', 'Mannschaften &amp; Ergebnisse', true));
 $NavContPub->add(new CNav(2, 'termine_psb', 'Punktspieltermine', true));
@@ -68,15 +73,17 @@ $NavContInt->add(new CNav(1, 'profil', 'Mein Profil'));
 $NavContInt->add(new CNav(2, 'prof_aendernlogin', 'Benutzername/Passwort', true));
 $NavContInt->add(new CNav(2, 'prof_aendernperson', 'Persönliche Daten', true));
 
-$NavContInt->add(new CNav(1, 'meinesparte', 'Meine Sparte'));
+$NavContInt->add(new CNav(1, 'meineabteilung', 'Meine Abteilung'));
 $NavContInt->add(new CNav(2, 'ms_steckbriefe', 'Steckbriefe', true));
 $NavContInt->add(new CNav(2, 'ms_shuttlekids', 'Shuttle-Kids'));
 $NavContInt->add(new CNav(2, 'ms_adressenliste', 'Adressenliste', true,
 array(
-S_SPARTENLEITER,
+S_ABTEILUNGSLEITER,
 S_KOMMUNIKATIONSWART,
 S_SPIELLEITENDESTELLE,
-S_TRAINER,
+S_SCHUELERTRAINER,
+S_JUGENDTRAINER,
+S_ERWACHSENENTRAINER,	
 S_SCHIEDSRICHTER,
 S_SCHIEDSRICHTEROBMANN,
 S_STAFFELLEITER,
@@ -86,18 +93,20 @@ S_JUGENDBEAUFTRAGTER,
 S_WEBMASTER,
 S_BALLWART,
 S_EVENTMANAGER,
-S_KASSENWART,
+S_ABTEILUNGSSCHATZMEISTER,
 S_SPORTWARTWETTKAMPF,
 S_SPORTWARTTRAINING,
 S_CHEFTRAINER)));
 
 $NavContInt->add(new CNav(1, 'verw_website', 'Website-Verwaltung', false,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_neuigkeiten', 'Neuigkeiten', true,
 array(
 S_KOMMUNIKATIONSWART,
 S_SPIELLEITENDESTELLE,
-S_TRAINER,
+S_JUGENDTRAINER,
+S_ERWACHSENENTRAINER,	
+S_SCHIEDSRICHTER,
 S_SCHIEDSRICHTER,
 S_SCHIEDSRICHTEROBMANN,
 S_STAFFELLEITER,
@@ -106,7 +115,7 @@ S_MANNSCHAFTSFUEHRER_M,
 S_JUGENDBEAUFTRAGTER,
 S_BALLWART,
 S_EVENTMANAGER,
-S_KASSENWART,
+S_ABTEILUNGSSCHATZMEISTER,
 S_SPORTWARTWETTKAMPF,
 S_SPORTWARTTRAINING,
 S_CHEFTRAINER
@@ -115,7 +124,9 @@ S_CHEFTRAINER
 $NavContInt->add(new CNav(2, 'verw_termine_allg', 'Termine (allg.)', true,
 array(
 S_KOMMUNIKATIONSWART,
-S_TRAINER,
+S_JUGENDTRAINER,
+S_ERWACHSENENTRAINER,	
+S_SCHIEDSRICHTER,
 S_SCHIEDSRICHTER,
 S_SCHIEDSRICHTEROBMANN,
 S_JUGENDBEAUFTRAGTER,
@@ -138,30 +149,30 @@ array(S_KOMMUNIKATIONSWART, S_EVENTMANAGER)));
 $NavContInt->add(new CNav(1, 'dienste', 'Dienste'));
 $NavContInt->add(new CNav(2, 'dienste_trainingsorga', 'Trainingsorganisation'));
 $NavContInt->add(new CNav(2, 'dienste_aktivitaeten', 'Aktivitätenprotokoll', true,
-array(S_SPARTENLEITER, S_WEBMASTER)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER)));
 
 $NavContInt->add(new CNav(2, 'dienste_rundmail', 'Rundmail', true, S_DBENTWICKLER));
 
 $NavContInt->add(new CNav(1, 'verw_stammdaten', 'Stammdaten-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'verw_mitglieder', 'Mitglieder', true,
-array(S_SPARTENLEITER, S_WEBMASTER, S_CHEFTRAINER, S_TRAINER)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_CHEFTRAINER, S_JUGENDTRAINER, S_ERWACHSENENTRAINER, S_SCHIEDSRICHTER, S_JUGENDBEAUFTRAGTER)));
 $NavContInt->add(new CNav(2, 'verw_aufgaben', 'Aufgaben', true));
 $NavContInt->add(new CNav(2, 'verw_aufgabenzuordnungen', 'Aufgabenzuordnungen', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_gegner', 'Gegner', true));
 $NavContInt->add(new CNav(2, 'verw_mannschaften', 'Mannschaften', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_austragungsorte', 'Austragungsorte', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_vereine', 'Vereine', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_ligenklassen', 'LigenKlassen', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_saisons', 'Saisons', true));
 
 $NavContInt->add(new CNav(1, 'db_verwaltung', 'Datenbank-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'db_werkzeuge', 'Werkzeuge', true,
-array(S_SPARTENLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_JUGENDBEAUFTRAGTER), array(14)));
 
 $NavContInt->add(new CNav(1, 'wartung', 'Wartung', true, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'chk_datenbank', 'Datenbank prüfen', true, array(S_WEBMASTER)));

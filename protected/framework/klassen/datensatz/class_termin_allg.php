@@ -150,8 +150,8 @@ class CTerminAllg extends CTermin
 		$format = 'SELECT titel, ort, athlet_id, endedatum, fuer_a, fuer_j, fuer_s '.
 		          'FROM termine_allgemein WHERE termin_id=%s';
 		$query = sprintf($format, $this->getTerminID());
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('TerminAllg mit termin_id='.$TerminID.' nicht gefunden!');}
 		$this->mTitel = lS($row[0]);
 		$this->mOrt = lS($row[1]);
@@ -190,7 +190,7 @@ class CTerminAllg extends CTermin
 			$query = sprintf($format, $this->getID(), sS($this->mTitel), sS($this->mOrt), sD($this->mAthletID),
 			sS($this->mEndedatum), sB($this->mFuerA), sB($this->mFuerJ), sB($this->mFuerS));
 		}
-		if(!$result = mysql_query($query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 	}
 
 	public function check()
@@ -314,8 +314,8 @@ class CTerminAllg extends CTermin
 			$query = 'SELECT ta.termin_id FROM termine_allgemein ta INNER JOIN termine t ON ta.termin_id=t.termin_id '.
 			         'WHERE IFNULL(endedatum, datum) >= CURDATE() AND MONTH(IFNULL(endedatum, datum))='.$Monat.' '.
 			         'AND YEAR(IFNULL(endedatum, datum)) ='.$Jahr.' ORDER BY datum';
-			if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-			while($row = mysql_fetch_row($result)) {$TerminAllgArrayArray[$MonatString][] = new CTerminAllg($row[0]);}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+			while($row = mysqli_fetch_row($result)) {$TerminAllgArrayArray[$MonatString][] = new CTerminAllg($row[0]);}
 			if(++$Monat > 13) {$Monat = 1; $Jahr++;}
 		}
 		return $TerminAllgArrayArray;
@@ -326,8 +326,8 @@ class CTerminAllg extends CTermin
 		$query = 'SELECT count(*) FROM termine_allgemein ta INNER JOIN termine t ON ta.termin_id=t.termin_id '.
 		         'WHERE IFNULL(endedatum, datum) BETWEEN CURDATE() '.
 		         'AND DATE_ADD(CURDATE(), INTERVAL '.$Month.' MONTH)';
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		return (int)$row[0];
 	}
 

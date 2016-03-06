@@ -94,8 +94,8 @@ class CSpielSpErMl extends CSpiel
 		$format = 'SELECT spermlspieltyp, sperml_id '.
 		          'FROM spiele_sperml WHERE spiel_id=%s';
 		$query = sprintf($format, $this->getSpielID());
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
-		$row = mysql_fetch_row($result);
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		$row = mysqli_fetch_row($result);
 		if(!$row) {throw new Exception('Spielergebnsimeldungsspiel mit spiel_id='.$SpielID.' nicht gefunden!');}
 		$this->mSpErMlSpieltyp = lD($row[0]);
 		$this->mSpErMlID = lD($row[1]);
@@ -127,7 +127,7 @@ class CSpielSpErMl extends CSpiel
 			          ') VALUES (%s, %s, %s)';
 			$query = sprintf($format, $this->getID(), sD($this->mSpErMlSpieltyp), sD($this->mSpErMlID));
 		}
-		if(!$result = mysql_query($query, CDriveEntity::getDB())) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
 	}
 
 	public function check($CheckForeignKey = true)

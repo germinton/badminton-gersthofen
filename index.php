@@ -60,11 +60,11 @@ if($_GET['section'] != 'startseite' && ($NavForSecRequest = $SiteManager->getNav
 	echo $NavForSecRequest->getNavText().' - Badminton TSV Gersthofen';
 }
 else {
-	echo 'Website der Sparte Badminton des TSV Gersthofen';
+	echo 'Website der Abteilung Badminton des TSV Gersthofen';
 }
 echo '</title>';
 ?>
-<meta name="author-personal" content="Badmintonsparte TSV Gersthofen" />
+<meta name="author-personal" content="Badmintonabteilung TSV Gersthofen" />
 <meta name="author-mail" content="mailto:webmaster@badminton-gersthofen.de" />
 <?php
 echo '<meta name="description" content="';
@@ -220,10 +220,9 @@ echo '</div>'."\n";
 ?> <!-- Fußzeile -->
 <div id="footer"><img style="float: right" src="bilder/vcss-blue.gif" alt="Valid CSS!" height="31" width="88" /><img
 	style="float: right" src="bilder/valid-xhtml10-blue.png" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
-<p>Badminton ist eine Sparte der <a href="http://www.tsv-gersthofen.de/startseite-leichtathletik.html"
-<?php echo STD_NEW_WINDOW ?>>Abteilung Leichtathletik</a> im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
+<p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
 <?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
-© 2009-2015 - Sparte Badminton</p>
+© 2009-2016 - Abteilung Badminton</p>
 </div>
 
 </div>
