@@ -52,7 +52,11 @@ if(!isset($_GET['section'])) {$_GET['section'] = 'startseite';}
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="alternate" hreflang="de" href="https://www.badminton-gersthofen.de/" />
+<!--
+<link rel="alternate" href="https://www.badminton-gersthofen.de/" hreflang="x-default" />
+<link rel="alternate" href="https://www.badminton-gersthofen.de/" hreflang="de"/>
+-->
+<link href="https://www.badminton-gersthofen.de/" rel="canonical" />
 
 <?php
 echo '<title>';
