@@ -1,7 +1,7 @@
 <h1>Jugend-Training</h1>
 
 <!--img src="bilder/training_jugend.jpg" alt="Jugend-Training" /-->
-
+<div class="trainingsseite">
 <p>Viele unserer <strong>Jugendlichen im Alter zwischen 15 und 18 Jahren
 </strong> haben mehrere Sportarten ausprobiert und entdecken dabei den Reiz des 
 Badminton-Sports: Spritzigkeit, schnelle Reaktionsfähigkeit und Köpfchen sind 
@@ -91,3 +91,4 @@ if($Mitglied = reset($MitgliedArray)){
 	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
+</div>

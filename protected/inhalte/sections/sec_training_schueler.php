@@ -1,7 +1,7 @@
 <h1>Schüler-Training</h1>
 
 <!--img src="bilder/training_schueler.jpg" alt="Schüler-Training" /-->
-
+<div class="trainingsseite">
 <p>Das Schüler-Training wendet sich an alle Kinder im <strong>Alter von 8-14 Jahren</strong>, die den Badminton 
 Sport erlernen möchten. Spielerisch werden den Kids Lauf- und Schlagtechniken vermittelt. 
 Die Schülermannschaften führen die leistungsstarken Kids an den Punktspielbetrieb heran 
@@ -86,3 +86,4 @@ if($Mitglied = reset($MitgliedArray)){
 	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
+</div>
