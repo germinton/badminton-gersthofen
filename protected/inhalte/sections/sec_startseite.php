@@ -20,7 +20,8 @@ if($Nbr= CTerminAllg::getNumberOfTermine(3))
 <p>Das Trainingsangebot <a href="index.php?section=dieabteilung">der Abteilung Badminton</a> im 
 TSV 1909 Gersthofen e. V. richtet sich sowohl an erfahrene Spieler, als auch an 
 Freizeitspieler. Egal wie alt oder jung Du bist, wir haben das richtige 
-Trainingsangebot für Dich. <strong>Was können wir für Dich tun?</strong></p>
+Trainingsangebot für Dich.<br>
+<strong>Was können wir für Dich tun?</strong></p>
 
 <p>&nbsp;</p>
 <div class="training_type_container">

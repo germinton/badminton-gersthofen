@@ -23,6 +23,7 @@ $NavContPub->add(new CNav(2, 'termine_allg', 'Termine'));
 $NavContPub->add(new CNav(2, 'gebuehren', 'Gebühren'));
 $NavContPub->add(new CNav(2, 'aufgabenverteilung', 'Aufgabenverteilung', true));
 $NavContPub->add(new CNav(2, 'galerie', 'Bildergalerie', true));
+$NavContPub->add(new CNav(2, 'faq', 'FAQ'));
 $NavContPub->add(new CNav(1, 'training', 'Training'));
 $NavContPub->add(new CNav(2, 'training_schueler', 'Schüler-Training'));
 $NavContPub->add(new CNav(2, 'training_jugend', 'Jugend-Training'));
@@ -30,7 +31,6 @@ $NavContPub->add(new CNav(2, 'training_erwachsene', 'Erwachsenen-Training'));
 $NavContPub->add(new CNav(2, 'sportstaetten', 'Sportstätten'));
 $NavContPub->add(new CNav(2, 'trainer', 'Unsere Trainer'));
 $NavContPub->add(new CNav(2, 'rangliste', 'Rangliste'));
-$NavContPub->add(new CNav(2, 'faq', 'FAQ'));
 $NavContPub->add(new CNav(1, 'spielbetrieb', 'Spielbetrieb'));
 $NavContPub->add(new CNav(2, 'mannschaften', 'Mannschaften &amp; Ergebnisse', true));
 $NavContPub->add(new CNav(2, 'termine_psb', 'Punktspieltermine', true));
@@ -91,8 +91,7 @@ S_MANNSCHAFTSFUEHRER,
 S_MANNSCHAFTSFUEHRER_M,
 S_JUGENDBEAUFTRAGTER,
 S_WEBMASTER,
-S_BALLWART,
-S_EVENTMANAGER,
+S_EVENTWART,
 S_ABTEILUNGSSCHATZMEISTER,
 S_SPORTWARTWETTKAMPF,
 S_SPORTWARTTRAINING,
@@ -113,8 +112,7 @@ S_STAFFELLEITER,
 S_MANNSCHAFTSFUEHRER,
 S_MANNSCHAFTSFUEHRER_M,
 S_JUGENDBEAUFTRAGTER,
-S_BALLWART,
-S_EVENTMANAGER,
+S_EVENTWART,
 S_ABTEILUNGSSCHATZMEISTER,
 S_SPORTWARTWETTKAMPF,
 S_SPORTWARTTRAINING,
@@ -132,7 +130,7 @@ S_SCHIEDSRICHTEROBMANN,
 S_JUGENDBEAUFTRAGTER,
 S_SPORTWARTWETTKAMPF,
 S_SPORTWARTTRAINING,
-S_EVENTMANAGER,
+S_EVENTWART,
 S_CHEFTRAINER)));
 
 $NavContInt->add(new CNav(2, 'verw_termine_psb', 'Punktspieltermine', true,
@@ -144,7 +142,7 @@ S_MANNSCHAFTSFUEHRER_M,
 S_SPORTWARTWETTKAMPF)));
 
 $NavContInt->add(new CNav(2, 'verw_galerie', 'Bildergalerie', true,
-array(S_KOMMUNIKATIONSWART, S_EVENTMANAGER)));
+array(S_KOMMUNIKATIONSWART, S_EVENTWART)));
 
 $NavContInt->add(new CNav(1, 'dienste', 'Dienste'));
 $NavContInt->add(new CNav(2, 'dienste_trainingsorga', 'Trainingsorganisation'));

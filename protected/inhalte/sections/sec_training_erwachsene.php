@@ -1,7 +1,7 @@
 <h1>Erwachsenen-Training</h1>
 
 <!--img src="bilder/training_erwachsene.jpg" alt="Erwachsenen-Training" /-->
-
+<div class="trainingsseite">
 <p>Das <strong>Erwachsenen-Training</strong> steht allen <strong>über 18-Jährigen Sportlern</strong> offen. Dabei sind Anfänger
 genauso willkommen wie erfahrende Spieler, die bereits über Kenntnisse in Schlag- und 
 Lauftechnik verfügen. Auch wer nur vorübergehend in der Region Augsburg und Umland ist 
@@ -90,3 +90,4 @@ if($Mitglied = reset($MitgliedArray)){
 	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
+</div>

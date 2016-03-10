@@ -93,9 +93,8 @@ $GLOBALS['Enum']['Aufgabe'][] = S_STAFFELLEITER;
 $GLOBALS['Enum']['Aufgabe'][] = S_MANNSCHAFTSFUEHRER;
 $GLOBALS['Enum']['Aufgabe'][] = S_JUGENDBEAUFTRAGTER;
 $GLOBALS['Enum']['Aufgabe'][] = S_WEBMASTER;
-$GLOBALS['Enum']['Aufgabe'][] = S_BALLWART;
 $GLOBALS['Enum']['Aufgabe'][] = S_DBENTWICKLER;
-$GLOBALS['Enum']['Aufgabe'][] = S_EVENTMANAGER;
+$GLOBALS['Enum']['Aufgabe'][] = S_EVENTWART;
 $GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSSCHATZMEISTER;
 $GLOBALS['Enum']['Aufgabe'][] = S_SPORTWARTWETTKAMPF;
 $GLOBALS['Enum']['Aufgabe'][] = S_SPORTWARTTRAINING;
@@ -103,5 +102,11 @@ $GLOBALS['Enum']['Aufgabe'][] = S_CHEFTRAINER;
 $GLOBALS['Enum']['Aufgabe'][] = S_SCHUELERTRAINER;
 $GLOBALS['Enum']['Aufgabe'][] = S_JUGENDTRAINER;
 $GLOBALS['Enum']['Aufgabe'][] = S_ERWACHSENENTRAINER;
+$GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSJUGENDLEITER;
+$GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSJUGENDLEITER2;
+$GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSSCHATZMEISTER2;
+$GLOBALS['Enum']['Aufgabe'][] = S_ABTEILUNGSLEITER2;
+$GLOBALS['Enum']['Aufgabe'][] = S_EVENTWART_SCHUELERJUGEND;
+$GLOBALS['Enum']['Aufgabe'][] = S_TURNIERWART_AKTIVE;
 /*@}*/
 ?>

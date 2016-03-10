@@ -127,9 +127,8 @@ define('S_STAFFELLEITER', 12);
 define('S_MANNSCHAFTSFUEHRER', 13);
 define('S_JUGENDBEAUFTRAGTER', 15);
 define('S_WEBMASTER', 20);
-define('S_BALLWART', 21);
 define('S_DBENTWICKLER', 50);
-define('S_EVENTMANAGER', 60);
+define('S_EVENTWART', 60);
 define('S_ABTEILUNGSSCHATZMEISTER', 61);
 define('S_SPORTWARTWETTKAMPF', 62);
 define('S_SPORTWARTTRAINING', 63);
@@ -139,6 +138,12 @@ define('S_SCHIEDSRICHTEROBMANN', 71);
 define('S_SCHUELERTRAINER', 73);
 define('S_JUGENDTRAINER', 74);
 define('S_ERWACHSENENTRAINER', 75);
+define('S_ABTEILUNGSJUGENDLEITER', 76);
+define('S_ABTEILUNGSJUGENDLEITER2', 77);
+define('S_ABTEILUNGSSCHATZMEISTER2', 78);
+define('S_ABTEILUNGSLEITER2', 79);
+define('S_EVENTWART_SCHUELERJUGEND', 80);
+define('S_TURNIERWART_AKTIVE', 81);
 /*@}*/
 
 /*******************************************************************************************************************//**
