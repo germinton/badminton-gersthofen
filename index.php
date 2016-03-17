@@ -87,14 +87,15 @@ echo '" />'."\n";
 <link rel="stylesheet" href="css/default.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/loginbox.css" type="text/css" media="screen, projection" />
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+
 <script type="text/javascript" src="javascript/date_picker/js/datepicker.js"></script>
 <script type="text/javascript" src="javascript/gmap/my_gmap.js"></script>
-<script type="text/javascript"
-	src="https://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo GMAP_API_KEY ?>"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=MyGMapLoad&key=<?php echo GMAP_API_KEY ?>"></script>
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
 <script type="text/javascript" src="javascript/galleria/src/galleria.js"></script>
 <script type="text/javascript" src="javascript/galleria/src/themes/classic/galleria.classic.js"></script>
 <style type="text/css">
@@ -104,7 +105,7 @@ echo '" />'."\n";
 
 </head>
 
-<body onload="MyGMapLoad();" onunload="GUnload();">
+<body>
 
 
 <div id="wrappershadow">
