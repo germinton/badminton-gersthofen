@@ -125,7 +125,7 @@ define('S_SPIELLEITENDESTELLE', 5);
 define('S_SCHIEDSRICHTER', 11);
 define('S_STAFFELLEITER', 12);
 define('S_MANNSCHAFTSFUEHRER', 13);
-define('S_JUGENDBEAUFTRAGTER', 15);
+define('S_JUGENWART', 15);
 define('S_WEBMASTER', 20);
 define('S_DBENTWICKLER', 50);
 define('S_EVENTWART', 60);
