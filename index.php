@@ -83,6 +83,8 @@ echo '" />'."\n";
 <link rel="shortcut icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 <link rel="stylesheet" href="css/farben_gelb.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/default.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/loginbox.css" type="text/css" media="screen, projection" />
@@ -95,13 +97,10 @@ echo '" />'."\n";
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-
-<script type="text/javascript" src="javascript/galleria/src/galleria.js"></script>
-<script type="text/javascript" src="javascript/galleria/src/themes/classic/galleria.classic.js"></script>
-<style type="text/css">
-	#galleria{width:668px;margin:20px auto}
-</style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/nanogallery.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.woff.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/jquery.nanogallery.min.js"></script>
 
 </head>
 
@@ -223,8 +222,20 @@ if(count($SubNavArray = $SiteManager->getSubNavArrayForSecRequest())) {
 
 echo '</div>'."\n";
 ?> <!-- Fußzeile -->
-<div id="footer"><img style="float: right" src="bilder/vcss-blue.gif" alt="Valid CSS!" height="31" width="88" /><img
-	style="float: right" src="bilder/valid-xhtml10-blue.png" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+<div id="footer">
+	
+	<?php
+	if($_GET['section'] === 'galerie') {
+		echo '<p style="float: right">'."\n";
+		echo '<a itemprop="url" href="http://nanogallery.brisbois.fr" target="new" title="nanoGALLERY">nanoGALLERY</a> by'."\n";
+		echo '<a href="https://plus.google.com/111186676244625461692?rel=author" target="new">'."\n";
+		echo '  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">'."\n";
+		echo '	<span itemprop="name">Christophe Brisbois</span></span>'."\n";
+		echo '</a>'."\n";
+		echo '</p>'."\n";
+	}
+	?>
+	
 <p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
 <?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
 © 2009-2016 - Abteilung Badminton</p>

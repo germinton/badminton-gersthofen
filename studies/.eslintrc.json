@@ -1,0 +1,61 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "$": true,
+    "THREE": true,
+    "Stats": true
+  },
+  "rules": {
+    "comma-dangle": [2, "never"],
+    "no-cond-assign": [2, "always"],
+    "no-console": 1,
+    "valid-jsdoc": [1, {
+      "requireReturn": false
+    }],
+
+
+    "block-scoped-var": 1,
+    "default-case": 2,
+    "guard-for-in": 1,
+    "no-else-return": 1,
+    "no-eq-null": 2,
+    "no-self-compare": 1,
+    "no-warning-comments": [1, {
+      "terms": ["fixme", "todo"],
+      "location": "anywhere"
+    }],
+
+
+    "strict": [2, "global"],
+
+    "no-undef": 2,
+    "no-unused-vars": [1, {
+      "vars": "all",
+      "args": "all"
+    }],
+
+
+    "no-sync": 1,
+
+
+    "indent": [2, 2, {
+      "SwitchCase": 1
+    }],
+    "brace-style": [2, "1tbs", {
+      "allowSingleLine": false
+    }],
+    "quotes": [2, "single"],
+    "new-cap": 1,
+    "no-lonely-if": 1,
+    "no-nested-ternary": 2,
+    "no-underscore-dangle": 0,
+    "semi": [2, "always"],
+    "space-before-function-paren": [1, {
+      "anonymous": "always",
+      "named": "never"
+    }]
+  }
+}

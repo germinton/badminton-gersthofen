@@ -831,3 +831,16 @@ Aufklappen von Elementen
 .trainingsseite h2 {
     margin: 0.3em 0;
 }
+
+/*
+--------------------------------------------------------------------------------
+	Bilder Galerie
+--------------------------------------------------------------------------------
+*/
+.gallery_image_download,
+.gallery_image_download:visited, 
+.gallery_image_download:before {
+    text-decoration: none !important;
+    color: #ffffff !important;
+    content: none !important;
+}

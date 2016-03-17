@@ -250,69 +250,14 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 	{
 		$xhtml = "<br />\n<br />\n<h1>".$this->getTitel()."</h1>\n";
 		
-	  if($this->getPicasaAlbumID() != 0){
-		
-		$xhtml .= '<div id="galleria">'."\n";
+		if($this->getPicasaAlbumID() != 0){
 			
-						
-
-		// die XML version auslesen
-		$session = curl_init($this->getRSSLink());
-		curl_setopt($session, CURLOPT_HEADER, false);
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
-		$response = curl_exec($session);
-		curl_close($session);
-		$xml = simplexml_load_string($response);
-		
-		
-		$items = $xml->channel;	
-		//$xhtml .= '<div>'."\n";
-		$e = 0;
-		foreach ($items->item as $item){
-			$title = $item->title;
-			$content = $item->description;
-	
-			// Pull the images from the *description* section
-			//
-			$quotes = array('"', "'", "\n"); 
-			$imgContents = str_replace($quotes, '', $content);    # Strip " and ' as well as \n from input string 
-			$imgContents = stristr($imgContents, 'src=');            # Drop everything before the 'src' 
-			$endTagPosition = stripos($imgContents, 'alt');        # Position of the end tag '>' 
-			$img288 = substr($imgContents, 4, $endTagPosition - 4);    # Get everything from src to end tag --> 'src="path" something>' 
-	
-			// Swap out the s288 from the small image to make the thumbnail and larger images
-			//
-			$img144 = str_replace('/s288', '/s144', $img288);
-			//$img400 = str_replace('/s288', '/s400', $img288);
-			$img800 = str_replace('/s288', '/s800', $img288);
-			$imgfull = str_replace('/s288','', $img288);
-
-			$xhtml .= '<img src="'.$img800.'"'.((strncmp(strrev($title),"gpj.",4) && strncmp(strrev($title),"GPJ.",4))?('alt="'.$title.'"'):('alt=""')).' />'."\n";
+			$xhtml .= '<div class="nanogallery"></div>'."\n";
 			
-			
+			$xhtml .= '<script type="text/javascript">
+				LoadNanoGallery("'.$this->getPicasaAlbumID().'","'.$this->getPicasaAuthkey().'");
+			</script>'."\n";
 		}
-		
-		
-		
-		
-		$xhtml .= '</div>'."\n";
-		
-		$xhtml .= '<script type="text/javascript">
-    
-    			// Load theme
-			    Galleria.loadTheme(\'javascript/galleria/src/themes/classic/galleria.classic.js\');
-    
-   			 // run galleria and add some options
-  			  $(\'#galleria\').galleria({
-  			      image_crop: false,
-   			     transition: \'fade\',
-   			     height: 500,
-   			 });
-   			 </script>'."\n";
-
-	  }
 		
 		$xhtml .= "\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
 		
@@ -488,83 +433,6 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 		
 		return $xhtml;
 	}	
-	
-	public function getXHTMLold()
-	{
-		$count = intval(strlen($this->getFreitext(GET_SPEC))/600)+1;
-		$xhtml = '';
-
-		// die XML version auslesen
-		$session = curl_init($this->getRSSLink());
-		curl_setopt($session, CURLOPT_HEADER, false);
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);		
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
-		$response = curl_exec($session);
-		curl_close($session);
-		$xml = simplexml_load_string($response);
-		
-		
-		$items = $xml->channel;	
-		$xhtml .= '<div>'."\n";
-		$e = 0;
-		foreach ($items->item as $item){
-			$title = $item->title;
-			$content = $item->description;
-	
-			// Pull the images from the *description* section
-			//
-			$quotes = array('"', "'", "\n"); 
-			$imgContents = str_replace($quotes, '', $content);    # Strip " and ' as well as \n from input string 
-			$imgContents = stristr($imgContents, 'src=');            # Drop everything before the 'src' 
-			$endTagPosition = stripos($imgContents, 'alt');        # Position of the end tag '>' 
-			$img288 = substr($imgContents, 4, $endTagPosition - 4);    # Get everything from src to end tag --> 'src="path" something>' 
-	
-			// Swap out the s288 from the small image to make the thumbnail and larger images
-			//
-			$img144 = str_replace('/s288', '/s144', $img288);
-			//$img400 = str_replace('/s288', '/s400', $img288);
-			$img800 = str_replace('/s288', '/s800', $img288);
-			$imgfull = str_replace('/s288','', $img288);
-
-			$info = getimagesize($img144);
-			if($info[0] < $info[1]) $vertical = true; else $vertical = false;
-			//if ($count == 0) {$e++; }
-			$margin = (($count-- <= 0)?(0):(33)) + (($vertical)?(288-$info[0]):(0));
-			$xhtml .= '<div class="galerie"><a href="'.$img800.'" class="highslide" onclick="return hs.expand(this)">
-<img style="float:'.(($e%2 == 0)?('right'):('left')).'; margin-'.(($e++%2 == 0)?('left'):('right')).':'.$margin.'px" src="'.$img144.'" alt="Highslide JS" title="Click to enlarge" /></a>'."\n";
-			if(strncmp(strrev($title),"gpj.",4) && strncmp(strrev($title),"GPJ.",4))
-				$xhtml .= '<div class="highslide-caption">'.$title.'</div>'."\n";
-			$xhtml .= '</div>'."\n";
-		}
-		/*$xhtml .= '<a href="'.$imgfull.'" class="highslide" onclick="return hs.expand(this)">
-	<img src="'.$img288.'" alt="Highslide JS"
-		title="Click to enlarge" /></a>'."\n";*/
-		$xhtml .= "\n<br />\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
-		
-		if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3)))
-		{
-			$xhtml .= '<br /><br />'."\n".'<div class="galerie text"><p>'."\n";
-			$countAttachments = $this->countAttachments(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3));
-			$xhtml .= (($countAttachments > 1)?('Anhänge'):('Anhang')).':<br />'."\n";
-			if($this->hasAttachment(ATTACH_FILE1)) {
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE1);
-			}
-			if($this->hasAttachment(ATTACH_FILE2)) {
-				if($this->hasAttachment(ATTACH_FILE1)) {$xhtml .= ', '."\n";}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE2);
-			}
-			if($this->hasAttachment(ATTACH_FILE3)) {
-				if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2))) {$xhtml .= ', ';}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE3);
-			}
-			$xhtml .= "\n".'</p></div>'."\n";
-		}
-		
-		$xhtml .= '</div>'."\n";
-
-		return $xhtml;
-	}
 
 	public static function getGalerieeintraegeArray($chosenYear = 0)
 	{
