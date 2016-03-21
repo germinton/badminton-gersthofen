@@ -1,8 +1,43 @@
 <h1>Rangliste</h1>
 
 <p>&nbsp;</p>
-<iframe class="rangliste" frameborder="0" src="https://docs.google.com/spreadsheets/d/1p8h3qZSyf9nmcodlifO7Rsh7QeYXMQHIVbj94_HAf40/pubhtml?gid=1039608267&amp;single=true&amp;widget=false&amp;headers=false&amp;chrome=false">
-</iframe>
+<div class="rangliste_container">
+	<div class="rangliste_date"></div>
+	<table class="rangliste_table"></table>
+</div>
+
+<script>	
+function ImportGSS(result){
+	// build ranking array
+	$('.rangliste_date').text('Stand: ' + result.feed.entry[0].content.$t);
+	
+	var ranking = [];
+	for(i=3; i<result.feed.entry.length; i+=2){
+		ranking.push(result.feed.entry[i].content.$t);
+	}
+	var $table = $('.rangliste_table')
+	var rowBreakAfter = 1;
+	var currentItemsPerRow = 0
+	var content = '<tr>\n';
+	for(j=0; j<ranking.length; ++j) {
+		var rank = j+1;
+		content += '<td class="td_rank">' + rank + '.</td><td class="td_name">' + ranking[j] + '</td>\n'
+		
+		currentItemsPerRow++;
+		if(currentItemsPerRow === rowBreakAfter) { // break
+			content += '</tr><tr>\n';
+			currentItemsPerRow = 0;
+			if(rowBreakAfter < 6) {
+				rowBreakAfter++;
+			}
+		}
+	}
+	$table.append(content);
+}
+
+</script>
+<script src="https://spreadsheets.google.com/feeds/cells/1p8h3qZSyf9nmcodlifO7Rsh7QeYXMQHIVbj94_HAf40/o9xbr88/public/values?alt=json-in-script&callback=ImportGSS"></script>
+
 <p>
   <strong>Die Regeln:</strong>
   <ul>
