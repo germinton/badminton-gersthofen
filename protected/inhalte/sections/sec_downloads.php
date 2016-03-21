@@ -9,12 +9,14 @@
 <p>Einverständniserklärung zur veröffentlichung von Fotos im Internet (Medienfreigabe) (<a
 	href="downloads/Medienfreigabe.pdf">pdf</a>)</p>
 <p>Auszug aus der Satzung des TSV-Gersthofen (<a href="downloads/Satzung_Stand20041029.pdf">pdf</a>)</p>
+<p>Welcome Package Schüler/Jugend (<a href="downloads/Welcome-Package_S-J_v13.pdf">pdf</a>)</p>
 
 <h2>Spielbetrieb</h2>
 <p>Durchführungsbestimmungen Saison 2015/16 (<a href="downloads/durchfuehrungsbestimmungen.pdf">pdf</a>)</p>
 <p>Hallenadressen Saison 2014/15 (<a href="downloads/2014-2015_hallenadressen.pdf">pdf</a>)</p>
 <p>Staffeleinteilung Saison 2015/16 (<a href="downloads/2015-2016_staffeleinteilung.pdf">pdf</a>)</p>
 <p>Spielplan Saison 2015/16 (<a href="downloads/2015-2016_spielplan.pdf">pdf</a>)</p>
+<p>Terminplan Saison 2016/17 (<a href="downloads/Terminplan_2016_17.pdf">pdf</a>)</p>
 <p>Aufgaben eines Staffelleiters (<a href="downloads/staffelleiter12-2007.pdf">pdf</a>)</p>
 <p>Ersatz-Spielergebnis-Meldebogen (<a href="downloads/BBVSpielergebnismeldung.pdf">pdf</a>)</p>
  

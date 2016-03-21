@@ -19,14 +19,18 @@ Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 	<tr>
 		<th>Freitag</th>
 		<td>
-		<p>19-22Uhr<br />
-		<a href="index.php?section=sportstaetten#austragungsort_id:3">PKG-Halle</a></p></td>
+			<p>19:00-22:00 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			</p>
+		</td>
 	</tr>
 	<tr>
 		<th>Sonntag</th>
 		<td>
-		<p>19:30-22Uhr<br />
-		<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
+			<p>19:30-22:00 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			</p>
+		</td>
 	</tr>
 </table>
 
@@ -56,7 +60,7 @@ Sind noch Fragen offen? Häufige Fragen und Antworten sind unter <a href="index.
 
 <p>&nbsp;</p>
 <h2>Trainer:</h2>
-Folgende Trainer betreuen die Schüler-Gruppe:
+Folgende Trainer betreuen die Erwachsenen-Gruppe:
 <?php
 $SortierungArray = array();
 $MitgliedArray = array();

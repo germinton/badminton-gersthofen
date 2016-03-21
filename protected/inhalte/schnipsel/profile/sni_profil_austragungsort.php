@@ -13,8 +13,8 @@ if($Austragungsort->hasGMapCoord())
 	$GMapLat = $Austragungsort->getGMapLat(GET_SPEC);
 	$GMapLon = $Austragungsort->getGMapLon(GET_SPEC);
 	echo '<div class="profil_austragungsort_gmaps" ';
-	echo 'id="gmap_austragungsort_id:'.$Austragungsort->getAustragungsortID().'">';
-	echo $GMapLat.';'.$GMapLon;
+	echo 'id="gmap_austragungsort_id:'.$Austragungsort->getAustragungsortID().'" ';
+	echo 'data-lat="'.$GMapLat.'" data-lng="'.$GMapLon.'">';
 	echo '</div>';
 }
 ?>

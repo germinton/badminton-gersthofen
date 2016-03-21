@@ -52,7 +52,11 @@ if(!isset($_GET['section'])) {$_GET['section'] = 'startseite';}
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="alternate" hreflang="de" href="https://www.badminton-gersthofen.de/" />
+<!--
+<link rel="alternate" href="https://www.badminton-gersthofen.de/" hreflang="x-default" />
+<link rel="alternate" href="https://www.badminton-gersthofen.de/" hreflang="de"/>
+-->
+<link href="https://www.badminton-gersthofen.de/" rel="canonical" />
 
 <?php
 echo '<title>';
@@ -79,28 +83,28 @@ echo '" />'."\n";
 <link rel="shortcut icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 <link rel="stylesheet" href="css/farben_gelb.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/default.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/loginbox.css" type="text/css" media="screen, projection" />
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+
 <script type="text/javascript" src="javascript/date_picker/js/datepicker.js"></script>
 <script type="text/javascript" src="javascript/gmap/my_gmap.js"></script>
-<script type="text/javascript"
-	src="https://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo GMAP_API_KEY ?>"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?callback=MyGMapLoad&key=<?php echo GMAP_API_KEY ?>"></script>
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="javascript/galleria/src/galleria.js"></script>
-<script type="text/javascript" src="javascript/galleria/src/themes/classic/galleria.classic.js"></script>
-<style type="text/css">
-	#galleria{width:668px;margin:20px auto}
-</style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/nanogallery.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.woff.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/jquery.nanogallery.min.js"></script>
 
 </head>
 
-<body onload="MyGMapLoad();" onunload="GUnload();">
+<body>
 
 
 <div id="wrappershadow">
@@ -218,8 +222,20 @@ if(count($SubNavArray = $SiteManager->getSubNavArrayForSecRequest())) {
 
 echo '</div>'."\n";
 ?> <!-- Fußzeile -->
-<div id="footer"><img style="float: right" src="bilder/vcss-blue.gif" alt="Valid CSS!" height="31" width="88" /><img
-	style="float: right" src="bilder/valid-xhtml10-blue.png" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+<div id="footer">
+	
+	<?php
+	if($_GET['section'] === 'galerie') {
+		echo '<p style="float: right">'."\n";
+		echo '<a itemprop="url" href="http://nanogallery.brisbois.fr" target="new" title="nanoGALLERY">nanoGALLERY</a> by'."\n";
+		echo '<a href="https://plus.google.com/111186676244625461692?rel=author" target="new">'."\n";
+		echo '  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">'."\n";
+		echo '	<span itemprop="name">Christophe Brisbois</span></span>'."\n";
+		echo '</a>'."\n";
+		echo '</p>'."\n";
+	}
+	?>
+	
 <p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
 <?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
 © 2009-2016 - Abteilung Badminton</p>

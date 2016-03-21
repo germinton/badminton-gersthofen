@@ -817,9 +817,39 @@ Aufklappen von Elementen
 	Rangliste
 --------------------------------------------------------------------------------
 */
-.rangliste {
-  width: 100%;
-  height: 260px;
+.rangliste_container{
+    
+}
+
+.rangliste_date {
+    width: 100%;
+    text-align: right;
+    font-weight: 700;
+}
+
+.rangliste_table {
+    border-collapse: collapse;
+}
+
+.rangliste_table tr {
+    height: 25px;
+}
+
+.rangliste_table td.td_name {
+    text-align: left;
+    width: 100px;
+}
+
+.rangliste_table td.td_rank {
+    text-align: right;
+    width: 30px;
+}
+
+.rangliste_table tr:nth-child(odd) { 
+    background-color:#ffffff; 
+}
+.rangliste_table tr:nth-child(even) {
+    background-color:#cccccc; 
 }
 
 
@@ -830,4 +860,17 @@ Aufklappen von Elementen
 */
 .trainingsseite h2 {
     margin: 0.3em 0;
+}
+
+/*
+--------------------------------------------------------------------------------
+	Bilder Galerie
+--------------------------------------------------------------------------------
+*/
+.gallery_image_download,
+.gallery_image_download:visited, 
+.gallery_image_download:before {
+    text-decoration: none !important;
+    color: #ffffff !important;
+    content: none !important;
 }

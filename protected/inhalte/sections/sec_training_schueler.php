@@ -14,14 +14,18 @@ um dem Bedürfnis nach Bewegung und Spiel in diesem Alter Gerecht zu werden.</p>
 	<tr>
 		<th>Freitag</th>
 		<td>
-		<p>16-17:30Uhr<br />
-		<a href="index.php?section=sportstaetten#austragungsort_id:3">PKG-Halle</a></p></td>
+			<p>17:30-19:00 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			</p>
+		</td>
 	</tr>
 	<tr>
 		<th>Sonntag</th>
 		<td>
-		<p>18-19:30Uhr<br />
-		<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a></p></td>
+			<p>18:00-19:30 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			</p>
+		</td>
 	</tr>
 </table>
 
