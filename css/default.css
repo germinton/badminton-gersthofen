@@ -704,6 +704,10 @@ p.formularbuttons {
 	margin-bottom: .5em;
 }
 
+.profil.mitglied.vorstand {
+	width: 450px;
+	margin: auto;
+}
 /*
 --------------------------------------------------------------------------------
 	Bildergalerie

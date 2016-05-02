@@ -26,7 +26,7 @@ echo '<option value="2"'.((2 == $data['fltr1'])?(' selected="selected"'):('')).'
 		<th rowspan="2">Platz</th>
 		<th rowspan="2">Name</th>
 		<th rowspan="2">Gesamt</th>
-		<th colspan="3">Aktivenmannschaft</th>
+		<th colspan="4">Aktivenmannschaft</th>
 		<th colspan="2">Mannschaft</th>
 		<th rowspan="2">Einzel</th>
 		<th rowspan="2">Doppel</th>
@@ -36,6 +36,7 @@ echo '<option value="2"'.((2 == $data['fltr1'])?(' selected="selected"'):('')).'
 		<th>I.</th>
 		<th>II.</th>
 		<th>III.</th>
+        <th>IV.</th>
 		<th>J</th>
 		<th>S</th>
 	</tr>
@@ -58,6 +59,7 @@ echo '<option value="2"'.((2 == $data['fltr1'])?(' selected="selected"'):('')).'
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('A1')).'</td>'."\n";
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('A2')).'</td>'."\n";
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('A3')).'</td>'."\n";
+            echo '<td>'.NoZeros($Mitglied->statEinsaetze('A4')).'</td>'."\n";
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('J')).'</td>'."\n";
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('S')).'</td>'."\n";
 			echo '<td>'.NoZeros($Mitglied->statEinsaetze('E')).'</td>'."\n";
