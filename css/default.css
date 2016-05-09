@@ -704,6 +704,10 @@ p.formularbuttons {
 	margin-bottom: .5em;
 }
 
+.profil.mitglied.vorstand {
+	width: 450px;
+	margin: auto;
+}
 /*
 --------------------------------------------------------------------------------
 	Bildergalerie
@@ -787,8 +791,10 @@ Aufklappen von Elementen
     padding-left: 6px;
     padding-right: 6px;
     margin-top: 1em;
+    font-size: 0px;
 }
 .training_type_box {
+    font-size: 12px;
     display: inline-block;
     text-align: center;
     cursor: pointer;
