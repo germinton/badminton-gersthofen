@@ -240,7 +240,7 @@ class CTabelle extends CDriveEntity
 
 		$query = 'SELECT COUNT(*) FROM tabelleneintraege WHERE tabelle_id='.$this->getTabelleID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];

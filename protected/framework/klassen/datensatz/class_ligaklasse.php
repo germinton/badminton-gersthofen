@@ -171,14 +171,14 @@ class CLigaKlasse extends CDriveEntity
 
 		$query = 'SELECT COUNT(*) FROM mannschaften WHERE ligaklasse_id='.$this->getLigaKlasseID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM tabellen WHERE ligaklasse_id='.$this->getLigaKlasseID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];

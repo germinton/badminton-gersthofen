@@ -205,7 +205,7 @@ class CAthlet extends CDriveEntityWithAttachment
 		'WHERE (ta.athlet_id='.$this->getAthletID().') AND (t.ebene IS NOT NULL) AND '.
 		'(t.turniertyp='.S_MEISTERSCHAFT.') AND (tm.platzierung=1 OR tm.platzierung=2) '.
 		'ORDER BY t.ebene DESC, tm.platzierung, t.datumvon DESC, tm.spieltyp';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		$Turnierathlet = new CTurnierathlet();
 		while($row = mysqli_fetch_row($result))
@@ -225,7 +225,7 @@ class CAthlet extends CDriveEntityWithAttachment
 		'WHERE (ta.athlet_id='.$this->getAthletID().') AND (t.ebene IS NOT NULL) AND '.
 		'(t.turniertyp='.S_RANGLISTE.') AND (tm.platzierung BETWEEN 1 AND 10) '.
 		'ORDER BY t.ebene DESC, tm.platzierung, t.datumvon DESC, tm.spieltyp';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 
 		$Turnierathlet = new CTurnierathlet();
 		while($row = mysqli_fetch_row($result))
@@ -247,7 +247,7 @@ class CAthlet extends CDriveEntityWithAttachment
 		'INNER JOIN mannschaftsspieler mss ON mss.aufstellung_id=a.aufstellung_id ' .
 		'WHERE (mss.athlet_id='.$this->getAthletID().') AND (ms.saison_id='.CDBConnection::getInstance()->getSaisonID().') '.
 		'ORDER BY ms.mannschaft_id DESC';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		$row = mysqli_fetch_row($result);
 		return (int)$row[0];
 	}
@@ -281,7 +281,7 @@ class CAthlet extends CDriveEntityWithAttachment
 		foreach($TabNameArray as $TabName) {
 			$query = 'SELECT COUNT(*) FROM '.$TabName.' WHERE athlet_id='.$this->getAthletID();
 			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-				throw new Exception(mysql_error(CDriveEntity::getDB()));
+				throw new Exception(mysqli_error(CDriveEntity::getDB()));
 			}
 			$row = mysqli_fetch_row($result);
 			$Zaehler += (int)$row[0];

@@ -352,14 +352,14 @@ class CAustragungsort extends CDriveEntityWithAttachment
 
 		$query = 'SELECT COUNT(*) FROM sperml WHERE austragungsort_id='.$this->getAustragungsortID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM turniere WHERE austragungsort_id='.$this->getAustragungsortID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];

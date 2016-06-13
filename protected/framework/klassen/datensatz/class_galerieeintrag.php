@@ -438,7 +438,7 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT galerieeintrag_id FROM galerieeintraege'.((isset($chosenYear))?(' WHERE YEAR(datum) = '.$chosenYear.' '):' ').
 		         'ORDER BY datum DESC';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		while($row = mysqli_fetch_row($result)) {$GalerieeintraegeArray[] = new CGalerieeintrag($row[0]);}
 		return ((isset($GalerieeintraegeArray))?($GalerieeintraegeArray):(array()));
 	}

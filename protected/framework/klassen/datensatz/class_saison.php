@@ -202,14 +202,14 @@ class CSaison extends CDriveEntity
 
 		$query = 'SELECT COUNT(*) FROM mannschaften WHERE saison_id='.$this->getSaisonID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
 
 		$query = 'SELECT COUNT(*) FROM tabellen WHERE saison_id='.$this->getSaisonID();
 		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
-			throw new Exception(mysql_error(CDriveEntity::getDB()));
+			throw new Exception(mysqli_error(CDriveEntity::getDB()));
 		}
 		$row = mysqli_fetch_row($result);
 		$Zaehler += (int)$row[0];
