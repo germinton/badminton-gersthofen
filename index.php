@@ -21,15 +21,15 @@ date_default_timezone_set('Europe/Berlin');
 // Includes
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-include('protected/framework/framework.php');
-include('protected/inhalte/schnipsel/sni__all.php');
-include('protected/navigation.php');
+include 'protected/framework/framework.php';
+include 'protected/inhalte/schnipsel/sni__all.php';
+include 'protected/navigation.php';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Variablen zum Management des Templatesystems
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*******************************************************************************************************************//**
+/*******************************************************************************************************************//*
  * Das SiteManager-Objekt wickelt den Seitenaufbau ab. Von der CSiteManager-Klasse kann jeweils nur eine Instanz erzeugt
  * werden. Diese Instanz kontrolliert bei jedem Seitenaufbau den Login-Status, startet bei bedarf ein Modul zur
  * Verarbeitung von übergebenen Daten (des letzten Seitenaufrufs) und läd schließlich den eigentlichen Inhalt in die
@@ -37,7 +37,7 @@ include('protected/navigation.php');
  **********************************************************************************************************************/
 $SiteManager = CSiteManager::getInstance($NavContGlb, $NavContPub, $NavContInt);
 
-/*******************************************************************************************************************//**
+/*******************************************************************************************************************//*
  * Das Objekt der CTemplateData-Klasse transportiert Daten vom Modul in die Inhalts-Datei.
  **********************************************************************************************************************/
 $ActTplData = null;
@@ -46,7 +46,9 @@ $ActTplData = null;
  * Die $IncludeFile-Variable spezifiziert den Pfad des zu ladenden Inhalts.
  **********************************************************************************************************************/
 $IncludeFile = 'protected/inhalte/';
-if(!isset($_GET['section'])) {$_GET['section'] = 'startseite';}
+if (!isset($_GET['section'])) {
+    $_GET['section'] = 'startseite';
+}
 ?>
 
 <head>
@@ -60,11 +62,10 @@ if(!isset($_GET['section'])) {$_GET['section'] = 'startseite';}
 
 <?php
 echo '<title>';
-if($_GET['section'] != 'startseite' && ($NavForSecRequest = $SiteManager->getNavForSecRequest()) instanceof CNav) {
-	echo $NavForSecRequest->getNavText().' - Badminton TSV Gersthofen';
-}
-else {
-	echo 'Website der Abteilung Badminton des TSV Gersthofen';
+if ($_GET['section'] != 'startseite' && ($NavForSecRequest = $SiteManager->getNavForSecRequest()) instanceof CNav) {
+    echo $NavForSecRequest->getNavText().' - Badminton TSV Gersthofen';
+} else {
+    echo 'Website der Abteilung Badminton des TSV Gersthofen';
 }
 echo '</title>';
 ?>
@@ -72,8 +73,11 @@ echo '</title>';
 <meta name="author-mail" content="mailto:webmaster@badminton-gersthofen.de" />
 <?php
 echo '<meta name="description" content="';
-if(file_exists($desc_file = 'protected/inhalte/metadesc/desc_'.$_GET['section'].'.php')) {include $desc_file;}
-else {echo STD_META_DESC;}
+if (file_exists($desc_file = 'protected/inhalte/metadesc/desc_'.$_GET['section'].'.php')) {
+    include $desc_file;
+} else {
+    echo STD_META_DESC;
+}
 echo '" />'."\n";
 ?>
 <meta name="keywords" content="Badminton, Federball, Verein, Sport, Sportverein, Gersthofen, Augsburg" />
@@ -83,7 +87,7 @@ echo '" />'."\n";
 <link rel="shortcut icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 <link rel="icon" href="bilder/favicon.ico" type="image/vnd.microsoft.icon" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
 
 <link rel="stylesheet" href="css/farben_gelb.css" type="text/css" media="screen, projection" />
 <link rel="stylesheet" href="css/default.css" type="text/css" media="screen, projection" />
@@ -97,10 +101,10 @@ echo '" />'."\n";
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/nanogallery.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/css/themes/clean/nanogallery_clean.woff.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nanogallery/5.9.1/jquery.nanogallery.min.js"></script>
+<link rel="stylesheet" href="javascript/nanoGALLERY/css/nanogallery.min.css">
+<link rel="stylesheet" href="javascript/nanoGALLERY/css/themes/clean/nanogallery_clean.min.css">
+
+<script src="javascript/nanoGALLERY/jquery.nanogallery.min.js"></script>
 
 </head>
 
@@ -112,43 +116,46 @@ echo '" />'."\n";
 
 <a href="http://tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
 
-<div id="head"><?php 
+<div id="head"><?php
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Template-Datei (=anzuzeigender Inhalt) laden
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-try
-{
-	// 1. Allgemeine Funktionen ausführen, die zu jedem Seiten-Refresh aufgerufen werden sollen
-	$SiteManager->runOnEveryPageRefresh();
+try {
+    // 1. Allgemeine Funktionen ausführen, die zu jedem Seiten-Refresh aufgerufen werden sollen
+    $SiteManager->runOnEveryPageRefresh();
 
-	// 2. Login-Status überprüfen ($NavContInt evtl. filtern)
-	$SiteManager->processLogin();
+    // 2. Login-Status überprüfen ($NavContInt evtl. filtern)
+    $SiteManager->processLogin();
 
-	// 3. Daten für die angeforderte Seite zusammenstellen
-	$ActTplData = $SiteManager->getTemplateDataForSecRequest();
+    // 3. Daten für die angeforderte Seite zusammenstellen
+    $ActTplData = $SiteManager->getTemplateDataForSecRequest();
 
-	if(is_null($ActTplData)) {
-		throw new CShowError('Im Modul wurde die return Anweisung vergessen.');
-	}
-	if(!($ActTplData instanceof CTemplateData)) {
-		throw new CShowError('Das Modul hat einen ungültigen Wert zurückgegeben.');
-	}
-	if(!$ActTplData->justSimpleEcho() and !file_exists($IncludeFile.'sections/sec_'.$_GET['section'].'.php')) {
-		throw new CShowError('Für diese Funktionalität ist keine Ausgabe vorhanden.');
-	}
+    if (is_null($ActTplData)) {
+        throw new CShowError('Im Modul wurde die return Anweisung vergessen.');
+    }
+    if (!($ActTplData instanceof CTemplateData)) {
+        throw new CShowError('Das Modul hat einen ungültigen Wert zurückgegeben.');
+    }
+    if (!$ActTplData->justSimpleEcho() and !file_exists($IncludeFile.'sections/sec_'.$_GET['section'].'.php')) {
+        throw new CShowError('Für diese Funktionalität ist keine Ausgabe vorhanden.');
+    }
 
-	$IncludeFile .= 'sections/sec_'.$_GET['section'].'.php';
-}
-catch(CShowInfo $si)     {$ActTplData = $si->getTemplateData(); $IncludeFile .= 'meldungen/msg_info.php';}
-catch(CShowError $se)    {$ActTplData = $se->getTemplateData(); $IncludeFile .= 'meldungen/msg_error.php';}
-catch(CShowCheckMsg $sc) {$ActTplData = $sc->getTemplateData(); $IncludeFile .= 'meldungen/msg_check_msg.php';}
-catch(Exception $e)
-{
-	$ShowError = new CShowError('Unbehandelter Fehler: '.$e->getMessage());
-	$ActTplData = $ShowError->getTemplateData();
-	$IncludeFile .= 'meldungen/msg_error.php';
+    $IncludeFile .= 'sections/sec_'.$_GET['section'].'.php';
+} catch (CShowInfo $si) {
+    $ActTplData = $si->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_info.php';
+} catch (CShowError $se) {
+    $ActTplData = $se->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_error.php';
+} catch (CShowCheckMsg $sc) {
+    $ActTplData = $sc->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_check_msg.php';
+} catch (Exception $e) {
+    $ShowError = new CShowError('Unbehandelter Fehler: '.$e->getMessage());
+    $ActTplData = $ShowError->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_error.php';
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,8 +166,11 @@ echo "\n";
 echo '<!-- globale Navigation -->'."\n";
 echo $SiteManager->getXHTMLForNavGlb()."\n";
 echo '<!-- Login-Box -->'."\n";
-if($SiteManager->getMitglied() instanceof CMitglied) {include 'protected/inhalte/loginout/log_mitgliederlogout.php';}
-else {include 'protected/inhalte/loginout/log_mitgliederlogin.php';}
+if ($SiteManager->getMitglied() instanceof CMitglied) {
+    include 'protected/inhalte/loginout/log_mitgliederlogout.php';
+} else {
+    include 'protected/inhalte/loginout/log_mitgliederlogin.php';
+}
 echo "\n";
 echo '<!-- Überschrift/Logo -->'."\n";
 echo '<h1 id="logo"><img src="bilder/ueberschrift.png" width="310" height="80" alt="Badminton" /></h1>'."\n";
@@ -179,7 +189,7 @@ echo '</div>'."\n";
 echo "\n";
 echo '<div id="contentnav" class="grundiert">'."\n";
 $CntNav = $SiteManager->getXHTMLForNavCnt();
-echo ((strlen($CntNav))?($CntNav):('&nbsp;'))."\n";
+echo((strlen($CntNav)) ? ($CntNav) : ('&nbsp;'))."\n";
 echo '</div>'."\n";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,31 +200,34 @@ echo '<!-- INHALT -->'."\n";
 echo '<div id="content">'."\n";
 echo "\n";
 
-if($SiteManager->getMitglied() instanceof CMitglied)
-{
-	if($SiteManager->getMitglied()->getPwAendern() and $_GET['section']!='prof_aendernlogin')
-	{
-		echo '<div class="info papier">'."\n";
-		echo '<p>Bitte ändere Dein Passwort!</p>'."\n";
-		echo '<p>Du hast ein zufällig generiertes Passwort per E-Mail zugeschickt bekommen. ';
-		echo 'Diese Meldung wird so lange angezeigt, bis Du ein ';
-		echo '<a href="index.php?section=prof_aendernlogin">neues Passwort vergeben</a> hast.</p>'."\n";
-		echo '</div>'."\n";
-	}
+if ($SiteManager->getMitglied() instanceof CMitglied) {
+    if ($SiteManager->getMitglied()->getPwAendern() and $_GET['section'] != 'prof_aendernlogin') {
+        echo '<div class="info papier">'."\n";
+        echo '<p>Bitte ändere Dein Passwort!</p>'."\n";
+        echo '<p>Du hast ein zufällig generiertes Passwort per E-Mail zugeschickt bekommen. ';
+        echo 'Diese Meldung wird so lange angezeigt, bis Du ein ';
+        echo '<a href="index.php?section=prof_aendernlogin">neues Passwort vergeben</a> hast.</p>'."\n";
+        echo '</div>'."\n";
+    }
 }
 
 $data = $ActTplData->getData();
-if($ActTplData->justSimpleEcho()) {echo $data['xhtml'];}
-else {include $IncludeFile;}
+if ($ActTplData->justSimpleEcho()) {
+    echo $data['xhtml'];
+} else {
+    include $IncludeFile;
+}
 
-if(count($SubNavArray = $SiteManager->getSubNavArrayForSecRequest())) {
-	echo '<h2>Unterrubriken</h2>'."\n";
-	foreach($SubNavArray as $Nav)
-	{
-		echo '<h3>'.$Nav->getNavText().'</h3>'."\n";
-		if(file_exists($src = 'protected/inhalte/erklaerungen/epl_'.$Nav->getSecString().'.php')) {include_once($src);}
-		else {echo 'Weitere Funktionalitäten findest Du unter '.$Nav->getXHTMLForLink()."\n";}
-	}
+if (count($SubNavArray = $SiteManager->getSubNavArrayForSecRequest())) {
+    echo '<h2>Unterrubriken</h2>'."\n";
+    foreach ($SubNavArray as $Nav) {
+        echo '<h3>'.$Nav->getNavText().'</h3>'."\n";
+        if (file_exists($src = 'protected/inhalte/erklaerungen/epl_'.$Nav->getSecString().'.php')) {
+            include_once $src;
+        } else {
+            echo 'Weitere Funktionalitäten findest Du unter '.$Nav->getXHTMLForLink()."\n";
+        }
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INHALT-ENDE
@@ -223,19 +236,19 @@ if(count($SubNavArray = $SiteManager->getSubNavArrayForSecRequest())) {
 echo '</div>'."\n";
 ?> <!-- Fußzeile -->
 <div id="footer">
-	
+
 	<?php
-	if($_GET['section'] === 'galerie') {
-		echo '<p style="float: right">'."\n";
-		echo '<a itemprop="url" href="http://nanogallery.brisbois.fr" target="new" title="nanoGALLERY">nanoGALLERY</a> by'."\n";
-		echo '<a href="https://plus.google.com/111186676244625461692?rel=author" target="new">'."\n";
-		echo '  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">'."\n";
-		echo '	<span itemprop="name">Christophe Brisbois</span></span>'."\n";
-		echo '</a>'."\n";
-		echo '</p>'."\n";
-	}
-	?>
-	
+    if ($_GET['section'] === 'galerie') {
+        echo '<p style="float: right">'."\n";
+        echo '<a itemprop="url" href="http://nanogallery.brisbois.fr" target="new" title="nanoGALLERY">nanoGALLERY</a> by'."\n";
+        echo '<a href="https://plus.google.com/111186676244625461692?rel=author" target="new">'."\n";
+        echo '  <span itemprop="author" itemscope="" itemtype="http://schema.org/Person">'."\n";
+        echo '	<span itemprop="name">Christophe Brisbois</span></span>'."\n";
+        echo '</a>'."\n";
+        echo '</p>'."\n";
+    }
+    ?>
+
 <p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
 <?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
 © 2009-2016 - Abteilung Badminton</p>
