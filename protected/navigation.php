@@ -179,7 +179,7 @@ $NavContInt->add(new CNav(2, 'verw_aufgabenzuordnungen', 'Aufgabenzuordnungen', 
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_gegner', 'Gegner', true));
 $NavContInt->add(new CNav(2, 'verw_mannschaften', 'Mannschaften', true,
-array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_JUGENWART), array(14)));
 $NavContInt->add(new CNav(2, 'verw_austragungsorte', 'Austragungsorte', true,
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_vereine', 'Vereine', true,
