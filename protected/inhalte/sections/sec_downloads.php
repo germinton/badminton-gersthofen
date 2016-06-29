@@ -23,7 +23,7 @@
 <p>U19/U15/U13: Durchführungsbestimmungen Saison 2016/17 (<a href="downloads/durchfuehrungsbestimmung_U19-U15-U13_2015_16.pdf">pdf</a>)</p>
 <p>U19/U15/U13: Betreuer Saison 2016/17 (<a href="downloads/Betreuer_16_17_V1.pdf">pdf</a>)</p>
 <p>Hallenadressen Saison 2014/15 (<a href="downloads/2014-2015_hallenadressen.pdf">pdf</a>)</p>
-<p>Terminplan Saison 2016/17 (<a href="downloads/Terminplan_2016_17.pdf">pdf</a>)</p>
+<p>Terminplan Saison 2016/17 (<a href="downloads/2016-2017_spielplan_20160618.pdf">pdf</a>)</p>
 <p>Aufgaben eines Staffelleiters (<a href="downloads/staffelleiter12-2007.pdf">pdf</a>)</p>
 <p>Ersatz-Spielergebnis-Meldebogen (<a href="downloads/BBVSpielergebnismeldung.pdf">pdf</a>)</p>
 
