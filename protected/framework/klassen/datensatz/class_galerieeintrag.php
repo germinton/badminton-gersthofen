@@ -1,294 +1,378 @@
 <?php
-include_once(dirname(__FILE__).'/../datenbank/class_drive_entity_with_attach.php');
+
+include_once dirname(__FILE__).'/../datenbank/class_drive_entity_with_attach.php';
 
 /*******************************************************************************************************************//**
  * Repräsentation eines Galerieeintrags in seiner allgemeinsten Form.
+ *
  * @ingroup grp_recordset
  **********************************************************************************************************************/
 class CGalerieeintrag extends CDriveEntityWithAttachment
 {
-	/*****************************************************************************************************************//**
-	 * @name Tabellenname
-	 **************************************************************************************************************//*@{*/
+    /*****************************************************************************************************************/    /**
+     * @name Tabellenname
+     **************************************************************************************************************//*@{*/
 
-	const mcTabName = 'galerieeintraege';
+    const mcTabName = 'galerieeintraege';
 
-	/*@}*/
+    /*@}*/
 
-	/*****************************************************************************************************************//**
-	 * @name Tabellenspalten
-	 **************************************************************************************************************//*@{*/
+    /*****************************************************************************************************************/    /**
+     * @name Tabellenspalten
+     **************************************************************************************************************//*@{*/
 
-	private $mTitel;
-	private $mDatum;
-	private $mFreitext;
-	private $mPicasaAlbumID;
-	private $mPicasaAuthkey;
+    private $mTitel;
+    private $mDatum;
+    private $mFreitext;
+    private $mPicasaAlbumID;
+    private $mPicasaAuthkey;
 
+    /*@}*/
 
-	/*@}*/
+    /*****************************************************************************************************************/    /**
+     * @name Magics
+     **************************************************************************************************************//*@{*/
 
-	/*****************************************************************************************************************//**
-	 * @name Magics
-	 **************************************************************************************************************//*@{*/
+    public function __construct($GalerieeintragID = 0)
+    {
+        parent::__construct(self::mcTabName, $GalerieeintragID);
+    }
 
-	public function __construct($GalerieeintragID = 0) {
-		parent::__construct(self::mcTabName, $GalerieeintragID);
-	}
+    public function __toString()
+    {
+        if (!$this->getGalerieeintragID()) {
+            return 'Kein Eintrag vorhanden';
+        }
 
-	public function __toString()
-	{
-		if(!$this->getGalerieeintragID()) {return 'Kein Eintrag vorhanden';}
-		return $this->mTitel;
-	}
+        return $this->mTitel;
+    }
 
-	/*@}*/
+    /*@}*/
 
-	/*****************************************************************************************************************//**
-	 * @name Setter
-	 **************************************************************************************************************//*@{*/
+    /*****************************************************************************************************************/    /**
+     * @name Setter
+     **************************************************************************************************************//*@{*/
 
-	public function setInitVals()
-	{
-		parent::setInitVals();
-		$this->mTitel = '';
-		$this->mDatum = '';
-		$this->mFreitext = null;
-		$this->mPicasaAlbumID = '';
-		$this->mPicasaAuthkey = null;
-	}
+    public function setInitVals()
+    {
+        parent::setInitVals();
+        $this->mTitel = '';
+        $this->mDatum = '';
+        $this->mFreitext = null;
+        $this->mPicasaAlbumID = '';
+        $this->mPicasaAuthkey = null;
+    }
 
-	final public function setGalerieeintragID($GalerieeintragID) {
-		CDriveEntity::setID($GalerieeintragID);
-	}
+    final public function setGalerieeintragID($GalerieeintragID)
+    {
+        CDriveEntity::setID($GalerieeintragID);
+    }
 
-	final public function setTitel($Titel) {
-		$this->mTitel = trim((string)$Titel);
-	}
-	
-	final public function setDatum($Datum) {
-		$this->mDatum = trim((string)$Datum);
-	}
+    final public function setTitel($Titel)
+    {
+        $this->mTitel = trim((string) $Titel);
+    }
 
-	final public function setFreitext($Freitext) {
-		$this->mFreitext = (($s = trim((string)$Freitext))?($s):(null));
-	}
-	
-	final public function setPicasaAlbumID($PicasaAlbumID) {
-		$this->mPicasaAlbumID = trim((string)$PicasaAlbumID);
-	}
-	
-	final public function setPicasaAuthkey($PicasaAuthkey) {
-		$this->mPicasaAuthkey = trim((string)$PicasaAuthkey);
-	}
-	
-	/*@}*/
+    final public function setDatum($Datum)
+    {
+        $this->mDatum = trim((string) $Datum);
+    }
 
-	/*****************************************************************************************************************//**
-	 * @name Getter
-	 **************************************************************************************************************//*@{*/
+    final public function setFreitext($Freitext)
+    {
+        $this->mFreitext = (($s = trim((string) $Freitext)) ? ($s) : (null));
+    }
 
-	final public function getGalerieeintragID()
-	{
-		return CDriveEntity::getID();
-	}
-	
-	final public function getTitel()
-	{
-		return $this->mTitel;
-	}
+    final public function setPicasaAlbumID($PicasaAlbumID)
+    {
+        $this->mPicasaAlbumID = trim((string) $PicasaAlbumID);
+    }
 
-	final public function getDatum($FlagVariant = array())
-	{
-		$FlagArray = (array)$FlagVariant;
-		return ((in_array(GET_DTDE, $FlagArray))?(S2S_Datum_MySql2Deu($this->mDatum)):($this->mDatum));
-	}
+    final public function setPicasaAuthkey($PicasaAuthkey)
+    {
+        $this->mPicasaAuthkey = trim((string) $PicasaAuthkey);
+    }
 
-	final public function getFreitext($FlagVariant = array())
-	{
-		$FlagArray = (array)$FlagVariant;
-		if(is_null($v = $this->mFreitext) and in_array(GET_NBSP, $FlagArray)) {return '&nbsp;';}
-		$Freitext = ((in_array(GET_SPEC, $FlagArray))?(FormatXHTMLPermittedString($this->mFreitext)):($this->mFreitext));
-		$Freitext = ((in_array(GET_CLIP, $FlagArray) and (strlen($Freitext) > 20))?(substr($Freitext, 0, 20).'...'):($Freitext));
-		$Freitext = ((in_array(GET_HSPC, $FlagArray))?(htmlspecialchars($Freitext)):($Freitext));
-		return $Freitext;
-	}
-	
-	final public function getPicasaAlbumID()
-	{
-		return $this->mPicasaAlbumID;
-	}
-	
-	final public function getPicasaAuthkey()
-	{
-		return $this->mPicasaAuthkey;
-	}
-	
-	final public function getRSSLink()
-	{
-		if(is_null($this->mPicasaAuthkey)) {return 'https://';}
-		return 'https://picasaweb.google.com/data/feed/base/user/'.PICASA_USER.'/albumid/'.$this->mPicasaAlbumID.'?alt=rss&kind=photo&authkey='.$this->mPicasaAuthkey.'&hl=de';
-	}
+    /*@}*/
 
-	/*@}*/
+    /*****************************************************************************************************************/    /**
+     * @name Getter
+     **************************************************************************************************************//*@{*/
 
-	/*****************************************************************************************************************//**
-	 * @name Datenbank
-	 **************************************************************************************************************//*@{*/
+    final public function getGalerieeintragID()
+    {
+        return CDriveEntity::getID();
+    }
 
-	public static function isValidID($GalerieeintragID) {
-		return CDriveEntity::genericIsValidID(self::mcTabName, $GalerieeintragID);
-	}
+    final public function getTitel()
+    {
+        return $this->mTitel;
+    }
 
-	public function load($GalerieeintragID)
-	{
-		self::setInitVals();
-		$this->setGalerieeintragID($GalerieeintragID);
-		$format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey '.
-		          'FROM galerieeintraege WHERE galerieeintrag_id=%s';
-		$query = sprintf($format, $this->getGalerieeintragID());
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
-		$row = mysqli_fetch_row($result);
-		if(!$row) {throw new Exception('Album mit galerieeintrag_id='.$GalerieeintragID.' nicht gefunden!');}
-		$this->mTitel = lS($row[0]);
-		$this->mDatum = lS($row[1]);
-		$this->mFreitext = lS($row[2]);
-		$this->mPicasaAlbumID = lS($row[3]);
-		$this->mPicasaAuthkey = lS($row[4]);
-		
-	}
-	
-	public function loadLatest()
-	{
-		self::setInitVals();
-		$format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, galerieeintrag_id '.
-		          'FROM galerieeintraege ORDER BY datum DESC LIMIT 1';
-		$query = sprintf($format);
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
-		$row = mysqli_fetch_row($result);
-		if(!$row) {throw new Exception('Kein Album gefunden.');}
-		$this->mTitel = lS($row[0]);
-		$this->mDatum = lS($row[1]);
-		$this->mFreitext = lS($row[2]);
-		$this->mPicasaAlbumID = lS($row[3]);
-		$this->mPicasaAuthkey = lS($row[4]);
-		$this->setGalerieeintragID($row[5]);
-	}
+    final public function getDatum($FlagVariant = array())
+    {
+        $FlagArray = (array) $FlagVariant;
 
-	public function save()
-	{
-		self::check();
-		CDriveEntity::evlCheckMsg();
-		self::store();
-	}
+        return (in_array(GET_DTDE, $FlagArray)) ? (S2S_Datum_MySql2Deu($this->mDatum)) : ($this->mDatum);
+    }
 
-	public function store()
-	{
-		if(self::isValidID($this->getID()))
-		{
-			$format = 'UPDATE galerieeintraege SET '.
-			          'titel=%s, datum=%s, freitext=%s, picasa_albumid=%s, picasa_authkey=%s '.
-			          'WHERE galerieeintrag_id=%s';
-			$query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext), 
-				sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey), $this->getID());
-		}
-		else
-		{
-			$format = 'INSERT INTO galerieeintraege ('.
-			          'titel, datum, freitext, picasa_albumid, picasa_authkey'.
-			          ') VALUES (%s, %s, %s, %s, %s)';
-			$query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext), 
-				sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey));
-		}
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
+    final public function getFreitext($FlagVariant = array())
+    {
+        $FlagArray = (array) $FlagVariant;
+        if (is_null($v = $this->mFreitext) and in_array(GET_NBSP, $FlagArray)) {
+            return '&nbsp;';
+        }
+        $Freitext = ((in_array(GET_SPEC, $FlagArray)) ? (FormatXHTMLPermittedString($this->mFreitext)) : ($this->mFreitext));
+        $Freitext = ((in_array(GET_CLIP, $FlagArray) and (strlen($Freitext) > 20)) ? (substr($Freitext, 0, 20).'...') : ($Freitext));
+        $Freitext = ((in_array(GET_HSPC, $FlagArray)) ? (htmlspecialchars($Freitext)) : ($Freitext));
 
-		// Basisklasse
-		parent::store();
-	}
+        return $Freitext;
+    }
 
-	public function check()
-	{
-		// Titel
-		if(!(strlen($this->mTitel) >= 1 and strlen($this->mTitel) <= 100)) {
-			CDriveEntity::addCheckMsg('Der Titel muss mind. 1 bis max. 100 Zeichen lang sein.');
-		}
-		else if(substr_count($this->mTitel, '{') != substr_count($this->mTitel, '}')) {
-			CDriveEntity::addCheckMsg('Die Anzahl an sich öffnenden und sich schließenden geschw. Klammern ist ungleich.');
-		}
-		
-		// Datum
-		if(!(preg_match(REGEX_DATE_SQ, $this->mDatum)
-		and preg_match(REGEX_DATE_DE, $this->getDatum(GET_DTDE)))) {
-			CDriveEntity::addCheckMsg('Das Datum muss von der Form \'TT.MM.JJJJ\' sein.');
-		}
-		else if(!checkdate(
-		substr($this->mDatum, 5, 2), substr($this->mDatum, 8, 2), substr($this->mDatum, 0, 4))) {
-			CDriveEntity::addCheckMsg('Das Datum is ungültig.');
-		}
+    final public function getPicasaAlbumID()
+    {
+        return $this->mPicasaAlbumID;
+    }
 
-		// Freitext
-		if(!is_null($this->mFreitext))
-		{
-			if(!(strlen($this->mFreitext) >= 1 and strlen($this->mFreitext) <= 65535)) {
-				CDriveEntity::addCheckMsg('Der Freitext muss mind. 1 bis max. 65535 Zeichen lang sein.');
-			}
-			else if(substr_count($this->mFreitext, '{') != substr_count($this->mFreitext, '}')) {
-				CDriveEntity::addCheckMsg('Die Anzahl an sich öffnenden und sich schließenden geschw. Klammern ist ungleich.');
-			}
-		}
+    final public function getPicasaAuthkey()
+    {
+        return $this->mPicasaAuthkey;
+    }
 
-		// Picasa Album ID
-		if(is_null($this->mPicasaAlbumID)){
-			CDriveEntity::addCheckMsg('keine AlbumID angegeben');
-		}
-		
-		// Bild
-		CDriveEntityWithAttachment::check();
-	}
-	
-	public function getXHTML()
-	{
-		$xhtml = "<br />\n<br />\n<h1>".$this->getTitel()."</h1>\n";
-		
-		if($this->getPicasaAlbumID() != 0){
-			
-			$xhtml .= '<div class="nanogallery"></div>'."\n";
-			
-			$xhtml .= '<script type="text/javascript">
-				LoadNanoGallery("'.$this->getPicasaAlbumID().'","'.$this->getPicasaAuthkey().'");
+    final public function getRSSLink()
+    {
+        if (is_null($this->mPicasaAuthkey)) {
+            return 'https://';
+        }
+
+        return 'https://picasaweb.google.com/data/feed/base/user/'.PICASA_USER.'/albumid/'.$this->mPicasaAlbumID.'?alt=rss&kind=photo&authkey='.$this->mPicasaAuthkey.'&hl=de';
+    }
+
+    /*@}*/
+
+    /*****************************************************************************************************************/    /**
+     * @name Datenbank
+     **************************************************************************************************************//*@{*/
+
+    public static function isValidID($GalerieeintragID)
+    {
+        return CDriveEntity::genericIsValidID(self::mcTabName, $GalerieeintragID);
+    }
+
+    public function load($GalerieeintragID)
+    {
+        self::setInitVals();
+        $this->setGalerieeintragID($GalerieeintragID);
+        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey '.
+                  'FROM galerieeintraege WHERE galerieeintrag_id=%s';
+        $query = sprintf($format, $this->getGalerieeintragID());
+        if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
+            throw new Exception(mysqli_error(CDriveEntity::getDB()));
+        }
+        $row = mysqli_fetch_row($result);
+        if (!$row) {
+            throw new Exception('Album mit galerieeintrag_id='.$GalerieeintragID.' nicht gefunden!');
+        }
+        $this->mTitel = lS($row[0]);
+        $this->mDatum = lS($row[1]);
+        $this->mFreitext = lS($row[2]);
+        $this->mPicasaAlbumID = lS($row[3]);
+        $this->mPicasaAuthkey = lS($row[4]);
+    }
+
+    public function loadLatest()
+    {
+        self::setInitVals();
+        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, galerieeintrag_id '.
+                  'FROM galerieeintraege ORDER BY datum DESC LIMIT 1';
+        $query = sprintf($format);
+        if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
+            throw new Exception(mysqli_error(CDriveEntity::getDB()));
+        }
+        $row = mysqli_fetch_row($result);
+        if (!$row) {
+            throw new Exception('Kein Album gefunden.');
+        }
+        $this->mTitel = lS($row[0]);
+        $this->mDatum = lS($row[1]);
+        $this->mFreitext = lS($row[2]);
+        $this->mPicasaAlbumID = lS($row[3]);
+        $this->mPicasaAuthkey = lS($row[4]);
+        $this->setGalerieeintragID($row[5]);
+    }
+
+    public function save()
+    {
+        self::check();
+        CDriveEntity::evlCheckMsg();
+        self::store();
+    }
+
+    public function store()
+    {
+        if (self::isValidID($this->getID())) {
+            $format = 'UPDATE galerieeintraege SET '.
+                      'titel=%s, datum=%s, freitext=%s, picasa_albumid=%s, picasa_authkey=%s '.
+                      'WHERE galerieeintrag_id=%s';
+            $query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext),
+                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey), $this->getID());
+        } else {
+            $format = 'INSERT INTO galerieeintraege ('.
+                      'titel, datum, freitext, picasa_albumid, picasa_authkey'.
+                      ') VALUES (%s, %s, %s, %s, %s)';
+            $query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext),
+                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey));
+        }
+        if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
+            throw new Exception(mysqli_error(CDriveEntity::getDB()));
+        }
+
+        // Basisklasse
+        parent::store();
+    }
+
+    public function check()
+    {
+        // Titel
+        if (!(strlen($this->mTitel) >= 1 and strlen($this->mTitel) <= 100)) {
+            CDriveEntity::addCheckMsg('Der Titel muss mind. 1 bis max. 100 Zeichen lang sein.');
+        } elseif (substr_count($this->mTitel, '{') != substr_count($this->mTitel, '}')) {
+            CDriveEntity::addCheckMsg('Die Anzahl an sich öffnenden und sich schließenden geschw. Klammern ist ungleich.');
+        }
+
+        // Datum
+        if (!(preg_match(REGEX_DATE_SQ, $this->mDatum)
+        and preg_match(REGEX_DATE_DE, $this->getDatum(GET_DTDE)))) {
+            CDriveEntity::addCheckMsg('Das Datum muss von der Form \'TT.MM.JJJJ\' sein.');
+        } elseif (!checkdate(
+        substr($this->mDatum, 5, 2), substr($this->mDatum, 8, 2), substr($this->mDatum, 0, 4))) {
+            CDriveEntity::addCheckMsg('Das Datum is ungültig.');
+        }
+
+        // Freitext
+        if (!is_null($this->mFreitext)) {
+            if (!(strlen($this->mFreitext) >= 1 and strlen($this->mFreitext) <= 65535)) {
+                CDriveEntity::addCheckMsg('Der Freitext muss mind. 1 bis max. 65535 Zeichen lang sein.');
+            } elseif (substr_count($this->mFreitext, '{') != substr_count($this->mFreitext, '}')) {
+                CDriveEntity::addCheckMsg('Die Anzahl an sich öffnenden und sich schließenden geschw. Klammern ist ungleich.');
+            }
+        }
+
+        // Picasa Album ID
+        if (is_null($this->mPicasaAlbumID)) {
+            CDriveEntity::addCheckMsg('keine AlbumID angegeben');
+        }
+
+        // Bild
+        CDriveEntityWithAttachment::check();
+    }
+
+    public function getXHTML()
+    {
+        $xhtml = "<br />\n<br />\n<h1>".$this->getTitel()."</h1>\n";
+
+        if ($this->getPicasaAlbumID() != 0) {
+            $xhtml .= '<div class="gallery_container">'."\n";
+            $xhtml .= '            <div class="gallery">'."\n";
+            $xhtml .= '            </div>'."\n";
+            $xhtml .= '        </div>'."\n";
+
+            $xhtml .= '        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">'."\n";
+            $xhtml .= '            <div class="pswp__bg"></div>'."\n";
+            $xhtml .= '            <!-- Slides wrapper with overflow:hidden. -->'."\n";
+            $xhtml .= '            <div class="pswp__scroll-wrap">'."\n";
+
+            $xhtml .= '                <div class="pswp__container">'."\n";
+            $xhtml .= '                    <div class="pswp__item"></div>'."\n";
+            $xhtml .= '                    <div class="pswp__item"></div>'."\n";
+            $xhtml .= '                    <div class="pswp__item"></div>'."\n";
+            $xhtml .= '                </div>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->'."\n";
+            $xhtml .= '                <div class="pswp__ui pswp__ui--hidden">'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                    <div class="pswp__top-bar">'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <!--  Controls are self-explanatory. Order can be changed. -->'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <div class="pswp__counter"></div>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <button class="pswp__button pswp__button--share" title="Share"></button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <button class="pswp__button pswp__button--play" title="Play/Pause"></button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->'."\n";
+            $xhtml .= '                        <!-- element will get class pswp__preloader--active when preloader is running -->'."\n";
+            $xhtml .= '                        <div class="pswp__preloader">'."\n";
+            $xhtml .= '                            <div class="pswp__preloader__icn">'."\n";
+            $xhtml .= '                                <div class="pswp__preloader__cut">'."\n";
+            $xhtml .= '                                    <div class="pswp__preloader__donut"></div>'."\n";
+            $xhtml .= '                                </div>'."\n";
+            $xhtml .= '                            </div>'."\n";
+            $xhtml .= '                        </div>'."\n";
+            $xhtml .= '                    </div>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">'."\n";
+            $xhtml .= '                        <div class="pswp__share-tooltip"></div>'."\n";
+            $xhtml .= '                    </div>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">'."\n";
+            $xhtml .= '                    </button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">'."\n";
+            $xhtml .= '                    </button>'."\n";
+            $xhtml .= ''."\n";
+            $xhtml .= '                    <div class="pswp__caption">'."\n";
+            $xhtml .= '                        <div class="pswp__caption__center"></div>'."\n";
+            $xhtml .= '                    </div>'."\n";
+            $xhtml .= '                </div>'."\n";
+            $xhtml .= '            </div>'."\n";
+            $xhtml .= '        </div>'."\n";
+
+            $xhtml .= '<script type="text/javascript">
+				loadGallery("'.$this->getPicasaAlbumID().'","'.$this->getPicasaAuthkey().'");
 			</script>'."\n";
-		}
-		
-		$xhtml .= "\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
-		
-		if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3)))
-		{
-			$xhtml .= '<br /><br />'."\n".'<div class="galerie text"><p>'."\n";
-			$countAttachments = $this->countAttachments(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3));
-			$xhtml .= (($countAttachments > 1)?('Anhänge'):('Anhang')).':<br />'."\n";
-			if($this->hasAttachment(ATTACH_FILE1)) {
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE1);
-			}
-			if($this->hasAttachment(ATTACH_FILE2)) {
-				if($this->hasAttachment(ATTACH_FILE1)) {$xhtml .= ', '."\n";}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE2);
-			}
-			if($this->hasAttachment(ATTACH_FILE3)) {
-				if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2))) {$xhtml .= ', ';}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE3);
-			}
-			$xhtml .= "\n".'</p></div>'."\n";
-		}
-		
-		//$xhtml .= '</div>'."\n";
-		
-		return $xhtml;
-	}	
-	
-	public function getXHTMLlightbox()
-	{
-		$xhtml = '';
-		$xhtml .= '<div id="thumbcontainer">
+        }
+
+        $xhtml .= "\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
+
+        if ($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3))) {
+            $xhtml .= '<br /><br />'."\n".'<div class="galerie text"><p>'."\n";
+            $countAttachments = $this->countAttachments(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3));
+            $xhtml .= (($countAttachments > 1) ? ('Anhänge') : ('Anhang')).':<br />'."\n";
+            if ($this->hasAttachment(ATTACH_FILE1)) {
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE1);
+            }
+            if ($this->hasAttachment(ATTACH_FILE2)) {
+                if ($this->hasAttachment(ATTACH_FILE1)) {
+                    $xhtml .= ', '."\n";
+                }
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE2);
+            }
+            if ($this->hasAttachment(ATTACH_FILE3)) {
+                if ($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2))) {
+                    $xhtml .= ', ';
+                }
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE3);
+            }
+            $xhtml .= "\n".'</p></div>'."\n";
+        }
+
+        //$xhtml .= '</div>'."\n";
+
+        return $xhtml;
+    }
+
+    public function getXHTMLlightbox()
+    {
+        $xhtml = '';
+        $xhtml .= '<div id="thumbcontainer">
 			<p id="thumb_beschriftung">&nbsp;</p>
 			<ul id="thumbs"></ul>
 			<br />
@@ -341,51 +425,45 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 			// 2. Parameter: URL zum Detailbild
 			// 3. Parameter: Kurzbeschreibung, wenn die Maus ueber dem Bild ist
 			// 4. Parameter: Beschriftung des Detailbildes';
-			
-						
 
-		// die XML version auslesen
-		$session = curl_init($this->getRSSLink());
-		curl_setopt($session, CURLOPT_HEADER, false);
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);		
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
-		$response = curl_exec($session);
-		curl_close($session);
-		$xml = simplexml_load_string($response);
-		
-		
-		$items = $xml->channel;	
-		$xhtml .= '<div>'."\n";
-		$e = 0;
-		foreach ($items->item as $item){
-			$title = $item->title;
-			$content = $item->description;
-	
-			// Pull the images from the *description* section
-			//
-			$quotes = array('"', "'", "\n"); 
-			$imgContents = str_replace($quotes, '', $content);    # Strip " and ' as well as \n from input string 
-			$imgContents = stristr($imgContents, 'src=');            # Drop everything before the 'src' 
-			$endTagPosition = stripos($imgContents, 'alt');        # Position of the end tag '>' 
-			$img288 = substr($imgContents, 4, $endTagPosition - 4);    # Get everything from src to end tag --> 'src="path" something>' 
-	
-			// Swap out the s288 from the small image to make the thumbnail and larger images
-			//
-			$img144 = str_replace('/s288', '/s144', $img288);
-			//$img400 = str_replace('/s288', '/s400', $img288);
-			$img800 = str_replace('/s288', '/s800', $img288);
-			$imgfull = str_replace('/s288','', $img288);
+        // die XML version auslesen
+        $session = curl_init($this->getRSSLink());
+        curl_setopt($session, CURLOPT_HEADER, false);
+        curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($session, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($session, CURLOPT_SSL_VERIFYHOST, 0);
+        $response = curl_exec($session);
+        curl_close($session);
+        $xml = simplexml_load_string($response);
 
-			$xhtml .= 'addPhoto ("'.$img144.'", "'.$img800.'", "'.$title.'","");'."\n";
-			/*if(strncmp(strrev($title),"gpj.",4) && strncmp(strrev($title),"GPJ.",4))
-				$xhtml .= '<div class="highslide-caption">'.$title.'</div>'."\n";*/
-		}
-		
-		
-		
-		
-		$xhtml .= '
+        $items = $xml->channel;
+        $xhtml .= '<div>'."\n";
+        $e = 0;
+        foreach ($items->item as $item) {
+            $title = $item->title;
+            $content = $item->description;
+
+            // Pull the images from the *description* section
+            //
+            $quotes = array('"', "'", "\n");
+            $imgContents = str_replace($quotes, '', $content);    # Strip " and ' as well as \n from input string
+            $imgContents = stristr($imgContents, 'src=');            # Drop everything before the 'src'
+            $endTagPosition = stripos($imgContents, 'alt');        # Position of the end tag '>'
+            $img288 = substr($imgContents, 4, $endTagPosition - 4);    # Get everything from src to end tag --> 'src="path" something>'
+
+            // Swap out the s288 from the small image to make the thumbnail and larger images
+            //
+            $img144 = str_replace('/s288', '/s144', $img288);
+            //$img400 = str_replace('/s288', '/s400', $img288);
+            $img800 = str_replace('/s288', '/s800', $img288);
+            $imgfull = str_replace('/s288', '', $img288);
+
+            $xhtml .= 'addPhoto ("'.$img144.'", "'.$img800.'", "'.$title.'","");'."\n";
+            /*if(strncmp(strrev($title),"gpj.",4) && strncmp(strrev($title),"GPJ.",4))
+                $xhtml .= '<div class="highslide-caption">'.$title.'</div>'."\n";*/
+        }
+
+        $xhtml .= '
 			// intern genutzte Variablen (keine Anpassung noetig)
 			var index_erstes_bild = 0; // erstes Bild in der Liste (zur Initialisierung)
 			var index_grosses_bild = 0; // Bildindex fuer anzuzeigendes grosses Bild
@@ -408,41 +486,48 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 			Weitere Informationen und das Script zum Herunterladen finden Sie unter <a href="http://www.evocomp.de/scripts/java-script-download/java-script-galerie/javascript-galerie.html" title="Free JavaScript Fotoalbum Download">JavaScript Homepage Fotogalerie</a> und eine Demonstration des Scripts finden Sie unter <a href="http://www.evocomp.de/javascript-demos/java-script-galerie/javascript-galerie.html" title="JavaScript Album Beispiel">JavaScript Online-Galerie Demo</a>.
 		</noscript>';
 
-		$xhtml .= "\n<br />\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
-		
-		if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3)))
-		{
-			$xhtml .= '<br /><br />'."\n".'<div class="galerie text"><p>'."\n";
-			$countAttachments = $this->countAttachments(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3));
-			$xhtml .= (($countAttachments > 1)?('Anhänge'):('Anhang')).':<br />'."\n";
-			if($this->hasAttachment(ATTACH_FILE1)) {
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE1);
-			}
-			if($this->hasAttachment(ATTACH_FILE2)) {
-				if($this->hasAttachment(ATTACH_FILE1)) {$xhtml .= ', '."\n";}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE2);
-			}
-			if($this->hasAttachment(ATTACH_FILE3)) {
-				if($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2))) {$xhtml .= ', ';}
-				$xhtml .= $this->getAttachmentLink(ATTACH_FILE3);
-			}
-			$xhtml .= "\n".'</p></div>'."\n";
-		}
-		
-		$xhtml .= '</div>'."\n";
-		
-		return $xhtml;
-	}	
+        $xhtml .= "\n<br />\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
 
-	public static function getGalerieeintraegeArray($chosenYear = 0)
-	{
-		$query = 'SELECT galerieeintrag_id FROM galerieeintraege'.((isset($chosenYear))?(' WHERE YEAR(datum) = '.$chosenYear.' '):' ').
-		         'ORDER BY datum DESC';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
-		while($row = mysqli_fetch_row($result)) {$GalerieeintraegeArray[] = new CGalerieeintrag($row[0]);}
-		return ((isset($GalerieeintraegeArray))?($GalerieeintraegeArray):(array()));
-	}
-	
-	/*@}*/
+        if ($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3))) {
+            $xhtml .= '<br /><br />'."\n".'<div class="galerie text"><p>'."\n";
+            $countAttachments = $this->countAttachments(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3));
+            $xhtml .= (($countAttachments > 1) ? ('Anhänge') : ('Anhang')).':<br />'."\n";
+            if ($this->hasAttachment(ATTACH_FILE1)) {
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE1);
+            }
+            if ($this->hasAttachment(ATTACH_FILE2)) {
+                if ($this->hasAttachment(ATTACH_FILE1)) {
+                    $xhtml .= ', '."\n";
+                }
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE2);
+            }
+            if ($this->hasAttachment(ATTACH_FILE3)) {
+                if ($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2))) {
+                    $xhtml .= ', ';
+                }
+                $xhtml .= $this->getAttachmentLink(ATTACH_FILE3);
+            }
+            $xhtml .= "\n".'</p></div>'."\n";
+        }
+
+        $xhtml .= '</div>'."\n";
+
+        return $xhtml;
+    }
+
+    public static function getGalerieeintraegeArray($chosenYear = 0)
+    {
+        $query = 'SELECT galerieeintrag_id FROM galerieeintraege'.((isset($chosenYear)) ? (' WHERE YEAR(datum) = '.$chosenYear.' ') : ' ').
+                 'ORDER BY datum DESC';
+        if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
+            throw new Exception(mysqli_error(CDriveEntity::getDB()));
+        }
+        while ($row = mysqli_fetch_row($result)) {
+            $GalerieeintraegeArray[] = new self($row[0]);
+        }
+
+        return (isset($GalerieeintraegeArray)) ? ($GalerieeintraegeArray) : (array());
+    }
+
+    /*@}*/
 }
-?>

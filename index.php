@@ -69,6 +69,9 @@ if ($_GET['section'] != 'startseite' && ($NavForSecRequest = $SiteManager->getNa
 }
 echo '</title>';
 ?>
+<!--meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1"-->
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+
 <meta name="author-personal" content="Badmintonabteilung TSV Gersthofen" />
 <meta name="author-mail" content="mailto:webmaster@badminton-gersthofen.de" />
 <?php
@@ -101,10 +104,17 @@ echo '" />'."\n";
 
 <link rel="stylesheet" href="javascript/date_picker/css/datepicker.css" type="text/css" />
 
-<link rel="stylesheet" href="javascript/nanoGALLERY/css/nanogallery.min.css">
-<link rel="stylesheet" href="javascript/nanoGALLERY/css/themes/clean/nanogallery_clean.min.css">
 
-<script src="javascript/nanoGALLERY/jquery.nanogallery.min.js"></script>
+<link rel="stylesheet" href="javascript/slick-carousel/slick.css">
+<link rel="stylesheet" href="javascript/slick-carousel/slick-theme.css">
+
+<link rel="stylesheet" href="javascript/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="javascript/photoswipe/default-skin/default-skin.css">
+<link rel="stylesheet" href="javascript/photoswipe/default-skin/custom.css">
+
+<script src="javascript/slick-carousel/slick.min.js"></script>
+<script src="javascript/photoswipe/photoswipe.min.js"></script>
+<script src="javascript/photoswipe/photoswipe-ui-default.min.js"></script>
 
 </head>
 
