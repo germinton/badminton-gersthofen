@@ -309,7 +309,7 @@ class CTerminPSB extends CTermin
 		'WHERE datum >= CURDATE() AND MONTH(datum)='.$Monat.' AND YEAR(datum) ='.$Jahr.' AND mannschaft_id ='.$MannschaftID.' ORDER BY datum, uhrzeit')
 			:('SELECT tp.termin_id FROM termine_pktspbeg tp INNER JOIN termine t ON tp.termin_id=t.termin_id '.
 		'WHERE datum >= CURDATE() AND MONTH(datum)='.$Monat.' AND YEAR(datum) ='.$Jahr.' ORDER BY datum, mannschaft_id, uhrzeit'));
-			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 			while($row = mysqli_fetch_row($result)) {$TerminPSBArrayArray[$MonatString][] = new CTerminPsB($row[0]);}
 			if(++$Monat > 12) {$Monat = 1; $Jahr++;}
 		}

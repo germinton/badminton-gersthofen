@@ -1,0 +1,17 @@
+{
+  "html": {
+    "allowed_file_extensions": ["htm", "html", "xhtml", "shtml", "xml", "svg", "tmpl"],
+    "indent_size": 4,
+    "indent_char": " ",
+    "eol": "\n",
+    "end_with_newline": true
+  },
+  "js": {
+    "allowed_file_extensions": ["js", "json", "stylelintrc", "jsbeautifyrc", "htmlhintrc"],
+    "indent_size": 2,
+    "indent_char": " ",
+    "eol": "\n",
+    "space_after_anon_function": true,
+    "end_with_newline": true
+  }
+}

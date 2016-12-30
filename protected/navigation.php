@@ -141,11 +141,13 @@ array(
 
 $NavContInt->add(new CNav(2, 'verw_termine_psb', 'Punktspieltermine', true,
 array(
+  S_ABTEILUNGSLEITER,
   S_SPIELLEITENDESTELLE,
   S_STAFFELLEITER,
   S_MANNSCHAFTSFUEHRER,
   S_MANNSCHAFTSFUEHRER_M,
   S_SPORTWARTWETTKAMPF,
+  S_JUGENWART,
 )));
 
 $NavContInt->add(new CNav(2, 'verw_galerie', 'Bildergalerie', true,
@@ -179,14 +181,15 @@ $NavContInt->add(new CNav(2, 'verw_aufgabenzuordnungen', 'Aufgabenzuordnungen', 
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_gegner', 'Gegner', true));
 $NavContInt->add(new CNav(2, 'verw_mannschaften', 'Mannschaften', true,
-array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_JUGENWART), array(14)));
 $NavContInt->add(new CNav(2, 'verw_austragungsorte', 'Austragungsorte', true,
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_vereine', 'Vereine', true,
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
 $NavContInt->add(new CNav(2, 'verw_ligenklassen', 'LigenKlassen', true,
 array(S_ABTEILUNGSLEITER, S_WEBMASTER), array(14)));
-$NavContInt->add(new CNav(2, 'verw_saisons', 'Saisons', true));
+$NavContInt->add(new CNav(2, 'verw_saisons', 'Saisons', true,
+array(S_ABTEILUNGSLEITER, S_WEBMASTER, S_JUGENWART)));
 
 $NavContInt->add(new CNav(1, 'db_verwaltung', 'Datenbank-Verwaltung', false, S_DBENTWICKLER));
 $NavContInt->add(new CNav(2, 'db_werkzeuge', 'Werkzeuge', true,

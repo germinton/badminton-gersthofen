@@ -314,7 +314,7 @@ class CTerminAllg extends CTermin
 			$query = 'SELECT ta.termin_id FROM termine_allgemein ta INNER JOIN termine t ON ta.termin_id=t.termin_id '.
 			         'WHERE IFNULL(endedatum, datum) >= CURDATE() AND MONTH(IFNULL(endedatum, datum))='.$Monat.' '.
 			         'AND YEAR(IFNULL(endedatum, datum)) ='.$Jahr.' ORDER BY datum';
-			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+			if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 			while($row = mysqli_fetch_row($result)) {$TerminAllgArrayArray[$MonatString][] = new CTerminAllg($row[0]);}
 			if(++$Monat > 13) {$Monat = 1; $Jahr++;}
 		}
@@ -326,7 +326,7 @@ class CTerminAllg extends CTermin
 		$query = 'SELECT count(*) FROM termine_allgemein ta INNER JOIN termine t ON ta.termin_id=t.termin_id '.
 		         'WHERE IFNULL(endedatum, datum) BETWEEN CURDATE() '.
 		         'AND DATE_ADD(CURDATE(), INTERVAL '.$Month.' MONTH)';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		$row = mysqli_fetch_row($result);
 		return (int)$row[0];
 	}

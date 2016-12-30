@@ -1,0 +1,7 @@
+.pswp__button--play {
+  background-position: -220px 0;
+}
+
+.pswp__button--play.playing {
+  background-position: -176px 0;
+}

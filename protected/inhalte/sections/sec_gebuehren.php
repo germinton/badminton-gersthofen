@@ -6,16 +6,10 @@
 und dem <strong>Abteilungsbeitrag</strong> zusammen. Beide Beträge werden per Lastschrift eingezogen.</p>
 
 <p><strong>Mitgliedsbeitrag für den Hauptverein:</strong> Der TSV-Vereinsbeitrag deckt die Verwaltung,
-Trainer und Hallenmiete und berechtigt zur Teilnahme an Übungsstunden aller 
-Abteilungen. Dieser Beitrag wird halbjährig durch den Hauptverein eingezogen.</p>
+Trainer und Hallenmiete und berechtigt zur Teilnahme an Übungsstunden aller
+Abteilungen. Dieser Beitrag wird halbjährig durch die Verwaltung des Hauptvereins eingezogen.</p>
 
-<p><strong>Abteilungsbeitrag:</strong> Der Abteilungsbeitrag fließt der Abteilung Badminton zu und wird von
-beim Hauptverein hinterlegter Bankverbindung eingezogen. Wir spielen mit Natur-
-Federbällen aus Gänsefedern. Um einen reibungslosen Trainingsbetrieb sicherzustellen, 
-werden die Federbälle zentral von der Abteilung Badminton besorgt und im Training zur 
-Verfügung gestellt. Von den Qualitäts- und Kostenvorteilen profitieren alle Sportler. Aus 
-diesem Grund erhebt die Abteilung Badminton zusätzlich einen altersabhängigen 
-Abteilungsbeitrag.</p>
+<p><strong>Abteilungsbeitrag:</strong> Der Abteilungsbeitrag fließt der Abteilung Badminton zu und wird ebenfalls von der Verwaltung des Hauptverein eingezogen. Wir spielen mit Natur- Federbällen aus Gänsefedern. Um einen reibungslosen Trainingsbetrieb sicherzustellen, werden die Federbälle zentral von der Abteilung Badminton besorgt und im Training zur Verfügung gestellt. Von den Qualitäts- und Kostenvorteilen profitieren alle Sportler. Aus diesem Grund erhebt die Abteilung Badminton zusätzlich einen altersabhängigen Abteilungsbeitrag.</p>
 
 <p>&nbsp;</p>
 <table class="schattiert">

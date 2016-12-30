@@ -3,14 +3,14 @@
 <!--img src="bilder/training_jugend.jpg" alt="Jugend-Training" /-->
 <div class="trainingsseite">
 <p>Viele unserer <strong>Jugendlichen im Alter zwischen 15 und 18 Jahren
-</strong> haben mehrere Sportarten ausprobiert und entdecken dabei den Reiz des 
-Badminton-Sports: Spritzigkeit, schnelle Reaktionsfähigkeit und Köpfchen sind 
-gefragt, wenn man ein Badmintonspiel gewinnen möchte. Die Sportler lernen daher 
-im Training neben den Grundtechniken des Laufens und Schlagens auch taktische 
+</strong> haben mehrere Sportarten ausprobiert und entdecken dabei den Reiz des
+Badminton-Sports: Spritzigkeit, schnelle Reaktionsfähigkeit und Köpfchen sind
+gefragt, wenn man ein Badmintonspiel gewinnen möchte. Die Sportler lernen daher
+im Training neben den Grundtechniken des Laufens und Schlagens auch taktische
 Strategien kennen ein Spiel zu gewinnen.</p>
 
-<p>In den Punktspielen haben leistungsstarke Jugendlichen die Möglichkeit sich mit 
-Altersgenossen zu messen. Dabei entwickeln sie Teamgeist und Verantwortungsbewusstsein 
+<p>In den Punktspielen haben leistungsstarke Jugendlichen die Möglichkeit sich mit
+Altersgenossen zu messen. Dabei entwickeln sie Teamgeist und Verantwortungsbewusstsein
 für Ihre Mannschaft.</p>
 
 <p>&nbsp;</p>
@@ -19,8 +19,8 @@ für Ihre Mannschaft.</p>
 	<tr>
 		<th>Freitag</th>
 		<td>
-			<p>17:30-19:00 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			<p>16:00-17:30 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:3">Paul-Klee-Gymnasium</a>
 			</p>
 		</td>
 	</tr>
@@ -28,7 +28,14 @@ für Ihre Mannschaft.</p>
 		<th>Sonntag</th>
 		<td>
 			<p>18:00-19:30 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+				<a href="index.php?section=sportstaetten#austragungsort_id:276">International School Augsburg *</a>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<p>
+				* falls möglich: kurzfristige Zusammenlegung in die <a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschule</a><br>(bitte <a href="index.php">Startseite</a> vor Training auf kurzfristige Hallen-Änderung prüfen)
 			</p>
 		</td>
 	</tr>
@@ -69,30 +76,24 @@ $MitgliedArray = array();
 $AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_JUGENDTRAINER));
 $SortedAthletIDArray = CAufgabenzuordnung::getSortedAthletIDArray($AthletIDArray);
 
-foreach($SortedAthletIDArray as $AthletID)
-{
-	$TempMitglied = new CMitglied($AthletID);
-	
-	if($TempMitglied->getAnrede() == S_DAME)
-	{
-		array_unshift($MitgliedArray, $TempMitglied);
-	}
-	else
-	{
-		$MitgliedArray[] = $TempMitglied;
-	}
+foreach ($SortedAthletIDArray as $AthletID) {
+    $TempMitglied = new CMitglied($AthletID);
+
+    if ($TempMitglied->getAnrede() == S_DAME) {
+        array_unshift($MitgliedArray, $TempMitglied);
+    } else {
+        $MitgliedArray[] = $TempMitglied;
+    }
 }
 
-if($Mitglied = reset($MitgliedArray)){
-	do
-	{
-		echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
-		echo STD_P_UPARROW.PHP_EOL;
-	}
-	while($Mitglied = next($MitgliedArray));
+if ($Mitglied = reset($MitgliedArray)) {
+    do {
+        echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
+        echo STD_P_UPARROW.PHP_EOL;
+    } while ($Mitglied = next($MitgliedArray));
 } else {
-	echo '<p>&nbsp;</p>'.PHP_EOL;
-	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
+    echo '<p>&nbsp;</p>'.PHP_EOL;
+    echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
 </div>

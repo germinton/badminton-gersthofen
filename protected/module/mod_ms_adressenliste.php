@@ -45,36 +45,44 @@ $data['feldnamen_array'][] = 'erzber_nachname';
 $data['feldnamen_array'][] = 'erzber_tel_mobil';
 $data['feldnamen_array'][] = 'erzber_email';
 
-if(VIEW_DETAIL == $data['view'])
-{
-	$data['export'] = '';
+if (VIEW_DETAIL == $data['view']) {
+    $data['export'] = '';
 
-	$query = 'SELECT ';
-	$Flag = false;
-	foreach($data['feldnamen_array'] as $Feldname) {
-		if(isset($_POST[$Feldname])) {$query .= (($Flag)?(', '):('')).$Feldname; $Flag = true;}
-	}
-	if(!$Flag) {throw new Exception('Mindestens ein Feldname muss ausgewählt werden!');}
-	$query .= ' FROM _v3_mitglieder_daten ORDER BY nachname, vorname';
+    $query = 'SELECT ';
+    $Flag = false;
+    foreach ($data['feldnamen_array'] as $Feldname) {
+        if (isset($_POST[$Feldname])) {
+            $query .= (($Flag) ? (', ') : ('')).$Feldname;
+            $Flag = true;
+        }
+    }
+    if (!$Flag) {
+        throw new Exception('Mindestens ein Feldname muss ausgewählt werden!');
+    }
+    $query .= ' FROM _v3_mitglieder_daten ORDER BY nachname, vorname';
 
-	if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+    if (!$result = mysqli_query(CDBConnection::getDB(), $query)) {
+        throw new Exception(mysqlil_error(CDBConnection::getDB()));
+    }
 
-	for($i=0; $i<mysql_num_fields($result); $i++) {$data['export'] .= mysql_field_name($result, $i).',';}
-	$data['export'] = substr($data['export'], 0, strlen($data['export'])-1)."\n";
+    for ($i = 0; $i < mysqli_field_count(CDBConnection::getDB()); ++$i) {
+        $data['export'] .= mysqli_fetch_field_direct($result, $i)->name.',';
+    }
+    $data['export'] = substr($data['export'], 0, strlen($data['export']) - 1)."\n";
 
-	while($row = mysqli_fetch_row($result)) {
-		foreach($row as $cell) {$data['export'] .= $cell.',';}
-		$data['export'] = substr($data['export'], 0, strlen($data['export'])-1)."\n";
-	}
+    while ($row = mysqli_fetch_row($result)) {
+        foreach ($row as $cell) {
+            $data['export'] .= $cell.',';
+        }
+        $data['export'] = substr($data['export'], 0, strlen($data['export']) - 1)."\n";
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Übersicht
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if(VIEW_LIST == $data['view'])
-{
-
+if (VIEW_LIST == $data['view']) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,4 +90,3 @@ if(VIEW_LIST == $data['view'])
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 return new CTemplateData($data);
-?>

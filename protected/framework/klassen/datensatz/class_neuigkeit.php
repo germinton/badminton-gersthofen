@@ -291,7 +291,7 @@ class CNeuigkeit extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT neuigkeit_id FROM neuigkeiten WHERE gueltigbis IS NULL OR gueltigbis >= CURDATE() '.
 		         'ORDER BY wichtig DESC, eingestellt DESC, neuigkeit_id';
-		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysql_error(CDriveEntity::getDB()));}
+		if(!$result = mysqli_query(CDriveEntity::getDB(), $query)) {throw new Exception(mysqli_error(CDriveEntity::getDB()));}
 		while($row = mysqli_fetch_row($result)) {$NeuigkeitArray[] = new CNeuigkeit($row[0]);}
 		return ((isset($NeuigkeitArray))?($NeuigkeitArray):(array()));
 	}

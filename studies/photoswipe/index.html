@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PhotoSwipe Gallery</title>
+    <!--meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1"-->
+
+    <link rel="shortcut icon" href="../../bilder/favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="icon" href="../../bilder/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css">
+    <link rel="stylesheet" href="css/photoswipe.css">
+    <link rel="stylesheet" href="css/default-skin/default-skin.css">
+    <link rel="stylesheet" href="css/default-skin/custom.css">
+    <link rel="stylesheet" href="../shared/css/main.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="js/photoswipe.js"></script>
+    <script src="js/photoswipe-ui-default.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+
+<body>
+    <div class="main_content">
+        <h1>"PhotoSwipe" Beispiel</h1>
+        <h1>Wanderwochenende am Schliersee</h1>
+
+        <div class="gallery_container">
+            <div class="gallery">
+            </div>
+        </div>
+
+        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+            <!-- Background of PhotoSwipe.
+         It's a separate element as animating opacity is faster than rgba(). -->
+            <div class="pswp__bg"></div>
+
+            <!-- Slides wrapper with overflow:hidden. -->
+            <div class="pswp__scroll-wrap">
+
+                <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+
+                    <div class="pswp__top-bar">
+
+                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                        <button class="pswp__button pswp__button--play" title="Play/Pause"></button>
+
+                        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                        <!-- element will get class pswp__preloader--active when preloader is running -->
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="galerie text">
+            <p><em>Freitag</em>
+                <br> Die Abreise in Richtung Schliersee begann am Freitag um 15.00. So machten sich die vollbeladenen Autos auf den Weg und kamen - prompt auf der Autobahn angekommen - in einen etwas längeren Stau. Somit verschob sich die geplante Ankunft
+                zwar etwas, was aber schlussendlich nicht schlimm war. Alle Autos, samt Insassen, kamen pünktlich zum Abendessen um 18.00 heil in der Jugendherberge an.
+                <br>
+                <br> Nach dem Essen ging es dann noch mit der gesamten Gruppe zu einem kleinen Wanderausflug in die Berge. Da wandern allein für manche zu langweilig war, wagten sich einige Mutige in den im Wald vorhandenen, etwas kühleren Wasserfall. Teils
+                klatschnass, machten wir uns nach der kleinen Abkühlung fertig, um unsere Wandertour über kleine Hügel- und Waldabschnitte zu beenden.
+                <br>
+                <br> Wieder zurück in der Jugendherberge, gab es am Abend noch ein gemütliches Beisammensein und eine lustige Plauschrunde mit lustigen Erzählungen, die den ersten Tag gemütlich ausklingen ließen. Susi, Martina, Andrea und Claudia haben sich
+                zu später Stunde noch auf den Weg auf eine Schaumparty in der Nähe des Tegernsees gemacht. Nach ihrer Rückkehr um 2 Uhr nachts haben Sie noch geduscht, Wäsche gewaschen und sich auf den nächsten Tag vorbereitet.
+                <br>
+                <br>
+                <em>Samstag</em>
+                <br> Text Samstag (Annika) folgt....
+                <br>
+                <br>
+                <em>Sonntag</em>
+                <br> Am regnerischen Sonntag räumten wir nach einem gemütlichen Frühstück die Zimmer und brachen gegen 9.30 Uhr gleichzeitig zum nahe gelegenen Markus-Wasmeier-Freilichtmuseum auf. Dort ist vor der malerischen Alpenkulisse am Schliersee ein
+                ganzes alt-bayerisches Dorf entstanden, das den Besuchern das bäuerliche Leben des frühen 18. Jahrhunderts in all seinen Facetten erlebbar machen soll. Alte Bergbauernhöfe (teilweise sogar aus dem 13. Jahrhundert) wurden an ihrem ursprünglichen
+                Standort abgebaut, jedes Teil sorgfältig dokumentiert und originalgetreu auf dem 60.000qm umfassenden Gelände neu errichtet. Teilweise werden die Gebäude sogar mit Leben erfüllt und - gemäß ihrer Epochenzugehörigkeit - bewirtschaftet.
+                Wie zu damaliger Zeit üblich, finden sich Hühner, Esel, Schafe, Schweine und Kühe auf dem Gelände. Ein sachkundiger Museumsführer nahm uns mit auf eine Zeitreise und gewährte uns einen Einblick in Bräuche und Gedankengut der mittelalterlichen
+                Bauersleut. Sehr interessiert haben wir den Geschichten über damalige Lebensweise, Ängste und Aberglauben gelauscht und wurden nebenbei auch über den Ursprung der ein oder anderen Redewendung aufgeklärt. Besonders beeindruckt haben uns
+                die Räumlichkeiten eines Hofs aus dem frühen 18. Jahrhundert. Alles war so lebendig und detailgetreu gestaltet, dass man den Eindruck hatte, der Hof sei immer noch bewohnt. Neben den Höfen konnten auch die Schöpfbrauerei und der Brotbackofen
+                besichtigt werden. Im Musueumsladen hatte man dann Gelegenheit, ofenwarmes Brot, hausgemachte Kräuterlimonade, Schöpfbier oder Hochprozentiges zu erwerben.
+                <br>
+                <br> Mittags kehrten wir im Museumsgasthaus "Zum Wofen" ein, wo gut für unser leibliches Wohl gesorgt wurde. Nach dem Essen begaben wir uns in die Tenne des Wirtshauses, wo gleichzeitig eine Volkstanzveranstaltung stattfand. Dort konnten wir
+                nicht nur die Tanzpaare in ihren teils prächtigen Trachtengewändern bewundern, sondern nach kurzer Anleitung sogar selbst das Tanzbein schwingen. Der ein odere andere machte dabei durchaus eine gute Figur, allen voran unser Trainer Stefan,
+                der sich trotz anfänglicher Rückenschmerzen zu einem Tänzchen überreden ließ und mit Walzer, Polka und Zwiefachen beeindruckte. So ließen wir in bester Laune den gemeinsamen Tag ausklingen.
+                <br>
+                <br> Um pünktlich zum EM-Achtelfinalspiel zuhause zu sein, traten wir gegen 15.00 Uhr die Heimreise an. Nach diesem rundum gelungenen Wochenende fiel den meisten von uns der Abschied sichtlich schwer. Wir hatten jede Menge Spaß und viel Gelegenheit
+                für gute Gespräche, sich näher kennen zulernen und Freundschaften zu intensivieren.
+                <br>
+                <br> Wir danken Claudia für die hervorragende Organisation und freuen uns schon sehr auf´s nächste Jahr! (Susi)</p>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="264"
+   height="88"
+   viewBox="0 0 264 88"
+   id="svg4800"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="default-skin.svg">
+  <metadata
+     id="metadata4843">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>default-skin 2</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4841" />
+  <sodipodi:namedview
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     id="namedview4839"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.7784807"
+     inkscape:cx="220.75472"
+     inkscape:cy="5.3818612"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4800">
+    <sodipodi:guide
+       position="176,0"
+       orientation="1,0"
+       id="guide4845"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="220,0"
+       orientation="1,0"
+       id="guide4847"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="0,44"
+       orientation="0,1"
+       id="guide4849"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
+  <title
+     id="title4802">default-skin 2</title>
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     id="g4804">
+    <g
+       id="g4806">
+      <path
+         d="M67.002 59.5v3.768c-6.307.84-9.184 5.75-10.002 9.732 2.22-2.83 5.564-5.098 10.002-5.098V71.5L73 65.585 67.002 59.5z"
+         id="Shape"
+         fill="#fff" />
+      <g
+         fill="#fff"
+         id="g4809">
+        <path
+           d="M13 29v-5h2v3h3v2h-5zM13 15h5v2h-3v3h-2v-5zM31 15v5h-2v-3h-3v-2h5zM31 29h-5v-2h3v-3h2v5z"
+           id="path4811" />
+      </g>
+      <g
+         fill="#fff"
+         id="g4813">
+        <path
+           d="M62 24v5h-2v-3h-3v-2h5zM62 20h-5v-2h3v-3h2v5zM70 20v-5h2v3h3v2h-5zM70 24h5v2h-3v3h-2v-5z"
+           id="path4815" />
+      </g>
+      <path
+         d="M20.586 66l-5.656-5.656 1.414-1.414L22 64.586l5.656-5.656 1.414 1.414L23.414 66l5.656 5.656-1.414 1.414L22 67.414l-5.656 5.656-1.414-1.414L20.586 66z"
+         fill="#fff"
+         id="path4817" />
+      <path
+         d="M111.785 65.03L110 63.5l3-3.5h-10v-2h10l-3-3.5 1.785-1.468L117 59l-5.215 6.03z"
+         fill="#fff"
+         id="path4819" />
+      <path
+         d="M152.215 65.03L154 63.5l-3-3.5h10v-2h-10l3-3.5-1.785-1.468L147 59l5.215 6.03z"
+         fill="#fff"
+         id="path4821" />
+      <g
+         id="g4823">
+        <path
+           id="Rectangle-11"
+           fill="#fff"
+           d="M160.957 28.543l-3.25-3.25-1.413 1.414 3.25 3.25z" />
+        <path
+           d="M152.5 27c3.038 0 5.5-2.462 5.5-5.5s-2.462-5.5-5.5-5.5-5.5 2.462-5.5 5.5 2.462 5.5 5.5 5.5z"
+           id="Oval-1"
+           stroke="#fff"
+           stroke-width="1.5" />
+        <path
+           fill="#fff"
+           d="M150 21h5v1h-5z"
+           id="path4827" />
+      </g>
+      <g
+         id="g4829">
+        <path
+           d="M116.957 28.543l-1.414 1.414-3.25-3.25 1.414-1.414 3.25 3.25z"
+           fill="#fff"
+           id="path4831" />
+        <path
+           d="M108.5 27c3.038 0 5.5-2.462 5.5-5.5s-2.462-5.5-5.5-5.5-5.5 2.462-5.5 5.5 2.462 5.5 5.5 5.5z"
+           stroke="#fff"
+           stroke-width="1.5"
+           id="path4833" />
+        <path
+           fill="#fff"
+           d="M106 21h5v1h-5z"
+           id="path4835" />
+        <path
+           fill="#fff"
+           d="M109.043 19.008l-.085 5-1-.017.085-5z"
+           id="path4837" />
+      </g>
+    </g>
+  </g>
+  <g
+     style="fill:#ffffff"
+     id="g4863"
+     transform="matrix(1.2462349,0,0,1.2462349,182.5482,6.746988)">
+    <path
+       id="path4853"
+       d="m 6,19 4,0 0,-14 -4,0 0,14 z m 8,-14 0,14 4,0 0,-14 -4,0 z"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4855"
+       d="M 0,0 24,0 24,24 0,24 Z"
+       inkscape:connector-curvature="0"
+       style="fill:none" />
+  </g>
+  <g
+     style="fill:#ffffff"
+     id="g4879"
+     transform="matrix(1.3042169,0,0,1.3042169,226.48193,6.5481928)">
+    <path
+       id="path4869"
+       d="M 8,5 8,19 19,12 Z"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4871"
+       d="M 0,0 24,0 24,24 0,24 Z"
+       inkscape:connector-curvature="0"
+       style="fill:none" />
+  </g>
+</svg>
