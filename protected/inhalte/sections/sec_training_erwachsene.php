@@ -3,14 +3,14 @@
 <!--img src="bilder/training_erwachsene.jpg" alt="Erwachsenen-Training" /-->
 <div class="trainingsseite">
 <p>Das <strong>Erwachsenen-Training</strong> steht allen <strong>über 18-Jährigen Sportlern</strong> offen. Dabei sind Anfänger
-genauso willkommen wie erfahrende Spieler, die bereits über Kenntnisse in Schlag- und 
-Lauftechnik verfügen. Auch wer nur vorübergehend in der Region Augsburg und Umland ist 
+genauso willkommen wie erfahrende Spieler, die bereits über Kenntnisse in Schlag- und
+Lauftechnik verfügen. Auch wer nur vorübergehend in der Region Augsburg und Umland ist
 (z.B. Studenten), findet im TSV Gersthofen sein Badminton-Zuhause auf Zeit.
 </p>
 
 <p>Das Aufwärmen erfolgt dabei gemeinsam mit einem Spiel oder Lauf- und Dehnungsübungen.
-Im angeleiteten Training wird die Sportlergruppe nach Vorkenntnissen getrennt. Ziel ist es 
-allen Athleten Lauf- und Schlagtechniken zu vermitteln. Taktische Strategien und die 
+Im angeleiteten Training wird die Sportlergruppe nach Vorkenntnissen getrennt. Ziel ist es
+allen Athleten Lauf- und Schlagtechniken zu vermitteln. Taktische Strategien und die
 Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 
 <p>&nbsp;</p>
@@ -20,7 +20,7 @@ Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 		<th>Freitag</th>
 		<td>
 			<p>19:00-22:00 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+				<a href="index.php?section=sportstaetten#austragungsort_id:3">Paul-Klee-Gymnasium</a>
 			</p>
 		</td>
 	</tr>
@@ -68,30 +68,24 @@ $MitgliedArray = array();
 $AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_ERWACHSENENTRAINER));
 $SortedAthletIDArray = CAufgabenzuordnung::getSortedAthletIDArray($AthletIDArray);
 
-foreach($SortedAthletIDArray as $AthletID)
-{
-	$TempMitglied = new CMitglied($AthletID);
-	
-	if($TempMitglied->getAnrede() == S_DAME)
-	{
-		array_unshift($MitgliedArray, $TempMitglied);
-	}
-	else
-	{
-		$MitgliedArray[] = $TempMitglied;
-	}
+foreach ($SortedAthletIDArray as $AthletID) {
+    $TempMitglied = new CMitglied($AthletID);
+
+    if ($TempMitglied->getAnrede() == S_DAME) {
+        array_unshift($MitgliedArray, $TempMitglied);
+    } else {
+        $MitgliedArray[] = $TempMitglied;
+    }
 }
 
-if($Mitglied = reset($MitgliedArray)){
-	do
-	{
-		echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
-		echo STD_P_UPARROW.PHP_EOL;
-	}
-	while($Mitglied = next($MitgliedArray));
+if ($Mitglied = reset($MitgliedArray)) {
+    do {
+        echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
+        echo STD_P_UPARROW.PHP_EOL;
+    } while ($Mitglied = next($MitgliedArray));
 } else {
-	echo '<p>&nbsp;</p>'.PHP_EOL;
-	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
+    echo '<p>&nbsp;</p>'.PHP_EOL;
+    echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
 </div>

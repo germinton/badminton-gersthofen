@@ -2,10 +2,10 @@
 
 <!--img src="bilder/training_schueler.jpg" alt="Schüler-Training" /-->
 <div class="trainingsseite">
-<p>Das Schüler-Training wendet sich an alle Kinder im <strong>Alter von 8-14 Jahren</strong>, die den Badminton 
-Sport erlernen möchten. Spielerisch werden den Kids Lauf- und Schlagtechniken vermittelt. 
-Die Schülermannschaften führen die leistungsstarken Kids an den Punktspielbetrieb heran 
-und lehren Team- sowie Kampfgeist. Im Training ist ausreichend Raum und Zeit vorhanden, 
+<p>Das Schüler-Training wendet sich an alle Kinder im <strong>Alter von 8-14 Jahren</strong>, die den Badminton
+Sport erlernen möchten. Spielerisch werden den Kids Lauf- und Schlagtechniken vermittelt.
+Die Schülermannschaften führen die leistungsstarken Kids an den Punktspielbetrieb heran
+und lehren Team- sowie Kampfgeist. Im Training ist ausreichend Raum und Zeit vorhanden,
 um dem Bedürfnis nach Bewegung und Spiel in diesem Alter Gerecht zu werden.</p>
 
 <p>&nbsp;</p>
@@ -14,8 +14,8 @@ um dem Bedürfnis nach Bewegung und Spiel in diesem Alter Gerecht zu werden.</p>
 	<tr>
 		<th>Freitag</th>
 		<td>
-			<p>17:30-19:00 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			<p>16:00-17:30 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:3">Paul-Klee-Gymnasium</a>
 			</p>
 		</td>
 	</tr>
@@ -23,7 +23,14 @@ um dem Bedürfnis nach Bewegung und Spiel in diesem Alter Gerecht zu werden.</p>
 		<th>Sonntag</th>
 		<td>
 			<p>18:00-19:30 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+				<a href="index.php?section=sportstaetten#austragungsort_id:259">Pestalozzischule (neu) *</a>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<p>
+				* falls möglich: kurzfristige Zusammenlegung in die <a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschule</a><br>(bitte <a href="index.php">Startseite</a> vor Training auf kurzfristige Hallen-Änderung prüfen)
 			</p>
 		</td>
 	</tr>
@@ -64,30 +71,24 @@ $MitgliedArray = array();
 $AthletIDArray = CAufgabenzuordnung::getAthletIDArray(array(S_SCHUELERTRAINER));
 $SortedAthletIDArray = CAufgabenzuordnung::getSortedAthletIDArray($AthletIDArray);
 
-foreach($SortedAthletIDArray as $AthletID)
-{
-	$TempMitglied = new CMitglied($AthletID);
-	
-	if($TempMitglied->getAnrede() == S_DAME)
-	{
-		array_unshift($MitgliedArray, $TempMitglied);
-	}
-	else
-	{
-		$MitgliedArray[] = $TempMitglied;
-	}
+foreach ($SortedAthletIDArray as $AthletID) {
+    $TempMitglied = new CMitglied($AthletID);
+
+    if ($TempMitglied->getAnrede() == S_DAME) {
+        array_unshift($MitgliedArray, $TempMitglied);
+    } else {
+        $MitgliedArray[] = $TempMitglied;
+    }
 }
 
-if($Mitglied = reset($MitgliedArray)){
-	do
-	{
-		echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
-		echo STD_P_UPARROW.PHP_EOL;
-	}
-	while($Mitglied = next($MitgliedArray));
+if ($Mitglied = reset($MitgliedArray)) {
+    do {
+        echo sni_ProfilMitgliedSteckbrief($Mitglied->getAthletID());
+        echo STD_P_UPARROW.PHP_EOL;
+    } while ($Mitglied = next($MitgliedArray));
 } else {
-	echo '<p>&nbsp;</p>'.PHP_EOL;
-	echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
+    echo '<p>&nbsp;</p>'.PHP_EOL;
+    echo '<p class="textbox schattiert">Es sind aktuell keine Trainer angelegt.</p>'.PHP_EOL;
 }
 ?>
 </div>
