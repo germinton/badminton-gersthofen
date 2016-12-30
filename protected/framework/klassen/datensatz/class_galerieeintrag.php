@@ -26,6 +26,7 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
     private $mFreitext;
     private $mPicasaAlbumID;
     private $mPicasaAuthkey;
+    private $mGooglePhotosLink;
 
     /*@}*/
 
@@ -61,6 +62,7 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
         $this->mFreitext = null;
         $this->mPicasaAlbumID = '';
         $this->mPicasaAuthkey = null;
+        $this->mGooglePhotosLink = '';
     }
 
     final public function setGalerieeintragID($GalerieeintragID)
@@ -91,6 +93,11 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
     final public function setPicasaAuthkey($PicasaAuthkey)
     {
         $this->mPicasaAuthkey = trim((string) $PicasaAuthkey);
+    }
+
+    final public function setGooglePhotosLink($GooglePhotosLink)
+    {
+        $this->mGooglePhotosLink = trim((string) $GooglePhotosLink);
     }
 
     /*@}*/
@@ -139,6 +146,11 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
         return $this->mPicasaAuthkey;
     }
 
+    final public function getGooglePhotosLink()
+    {
+        return $this->mGooglePhotosLink;
+    }
+
     final public function getRSSLink()
     {
         if (is_null($this->mPicasaAuthkey)) {
@@ -163,7 +175,7 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
     {
         self::setInitVals();
         $this->setGalerieeintragID($GalerieeintragID);
-        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey '.
+        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, google_photos_link '.
                   'FROM galerieeintraege WHERE galerieeintrag_id=%s';
         $query = sprintf($format, $this->getGalerieeintragID());
         if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
@@ -178,12 +190,13 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
         $this->mFreitext = lS($row[2]);
         $this->mPicasaAlbumID = lS($row[3]);
         $this->mPicasaAuthkey = lS($row[4]);
+        $this->mGooglePhotosLink = lS($row[5]);
     }
 
     public function loadLatest()
     {
         self::setInitVals();
-        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, galerieeintrag_id '.
+        $format = 'SELECT titel, datum, freitext, picasa_albumid, picasa_authkey, google_photos_link, galerieeintrag_id '.
                   'FROM galerieeintraege ORDER BY datum DESC LIMIT 1';
         $query = sprintf($format);
         if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
@@ -198,7 +211,8 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
         $this->mFreitext = lS($row[2]);
         $this->mPicasaAlbumID = lS($row[3]);
         $this->mPicasaAuthkey = lS($row[4]);
-        $this->setGalerieeintragID($row[5]);
+        $this->mGooglePhotosLink = lS($row[5]);
+        $this->setGalerieeintragID($row[6]);
     }
 
     public function save()
@@ -212,16 +226,16 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
     {
         if (self::isValidID($this->getID())) {
             $format = 'UPDATE galerieeintraege SET '.
-                      'titel=%s, datum=%s, freitext=%s, picasa_albumid=%s, picasa_authkey=%s '.
+                      'titel=%s, datum=%s, freitext=%s, picasa_albumid=%s, picasa_authkey=%s, google_photos_link=%s '.
                       'WHERE galerieeintrag_id=%s';
             $query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext),
-                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey), $this->getID());
+                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey), sS($this->mGooglePhotosLink), $this->getID());
         } else {
             $format = 'INSERT INTO galerieeintraege ('.
-                      'titel, datum, freitext, picasa_albumid, picasa_authkey'.
-                      ') VALUES (%s, %s, %s, %s, %s)';
+                      'titel, datum, freitext, picasa_albumid, picasa_authkey, google_photos_link '.
+                      ') VALUES (%s, %s, %s, %s, %s, %s)';
             $query = sprintf($format, sS($this->mTitel), sS($this->mDatum), sS($this->mFreitext),
-                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey));
+                sS($this->mPicasaAlbumID), sS($this->mPicasaAuthkey), sS($this->mGooglePhotosLink));
         }
         if (!$result = mysqli_query(CDriveEntity::getDB(), $query)) {
             throw new Exception(mysqli_error(CDriveEntity::getDB()));
@@ -340,6 +354,9 @@ class CGalerieeintrag extends CDriveEntityWithAttachment
 			</script>'."\n";
         }
 
+        if ($this->getGooglePhotosLink() != '') {
+            $xhtml .= "\n".'<a href="'.$this->getGooglePhotosLink().'" target="_blank">Bildergalerie</a><br />';
+        }
         $xhtml .= "\n".'<div class="galerie text"><p>'.$this->getFreitext(GET_SPEC)."</p></div>\n";
 
         if ($this->hasAttachment(array(ATTACH_FILE1, ATTACH_FILE2, ATTACH_FILE3))) {
