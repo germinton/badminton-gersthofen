@@ -4,7 +4,5 @@
 phpinfo();
 
 // Zeigt nur die Modul-Informationen.
-// phpinfo(8) führt zum gleichen Ergebnis.
+// phpinfo(8) fÃ¼hrt zum gleichen Ergebnis.
 phpinfo(INFO_MODULES);
-
-?>

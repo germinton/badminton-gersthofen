@@ -461,7 +461,7 @@ class CMannschaft extends CDriveEntityWithAttachment
 	{
 		$query = 'SELECT tabelle_id FROM tabellen '.
 		         'WHERE saison_id='.$this->getSaisonID().' and ligaklasse_id='.$this->getLigaKlasseID();
-		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
 		return (($row = mysqli_fetch_row($result))?((int)$row[0]):(null));
 	}
 
@@ -472,7 +472,7 @@ class CMannschaft extends CDriveEntityWithAttachment
 
 		$SpermlXArray = array();
 
-		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
 
 		while($row = mysqli_fetch_row($result)) {
 			switch($row[1])
@@ -490,7 +490,7 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$query = 'SELECT begegnungnr FROM _v1_punktspiele '.
 		         'WHERE mannschaft_id='.$this->getMannschaftID().' ORDER BY datum, begegnungnr';
 		$SpermlXBegegnungNrArray = array();
-		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
 		while($row = mysqli_fetch_row($result)) {$SpermlXBegegnungNrArray[] = (int)$row[0];}
 		return $SpermlXBegegnungNrArray;
 	}
@@ -500,7 +500,7 @@ class CMannschaft extends CDriveEntityWithAttachment
 		$query = 'SELECT seite FROM _v1_punktspiele '.
 		         'WHERE mannschaft_id='.$this->getMannschaftID().' ORDER BY datum, begegnungnr';
 		$SpermlXSeiteArray = array();
-		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqlil_error(CDBConnection::getDB()));}
+		if(!$result = mysqli_query(CDBConnection::getDB(), $query)) {throw new Exception(mysqli_error(CDBConnection::getDB()));}
 		while($row = mysqli_fetch_row($result)) {$SpermlXSeiteArray[] = (int)$row[0];}
 		return $SpermlXSeiteArray;
 	}
