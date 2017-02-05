@@ -16,10 +16,10 @@
 //}
 ?>
 
-<div style="float: right; width:320px; margin-bottom: 10px; margin-left: 40px; border-width:1px;border-color:#cccccc;border-style: solid;">
+<div style="float: right; width:245px;height:80px; margin-bottom: 10px; margin-left: 40px; border-width:1px;border-color:#cccccc;border-style: solid;">
 	<div class="koerper" style="text-align: center; padding: 3px">
 		<a href="https://badminton-gersthofen.de/balloncup/">
-			<img src="wordpress/wp-content/uploads/2017/01/2017-02-04-Logo-Turnier_leer-300x98.png" />
+			<img src="wordpress/wp-content/uploads/2017/01/2017-02-04-Logo-Turnier_leer-300x98.png" style="max-width:100%;max-height:100%;" />
 		</a>
 	</div>
 </div>
