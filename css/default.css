@@ -160,11 +160,11 @@ a[href ^="http://"]:before,a[href ^="https://"]:before {
 	content: "\21D7\202F";
 }
 
-/* Kein Pfeil vor Picasa-Links */
+/* Kein Pfeil vor Picasa-Links, balloncup-Link */
 a[href ^="http://lh0.ggpht.com/"]:before,a[href ^="http://lh1.ggpht.com/"]:before,a[href ^="http://lh2.ggpht.com/"]:before,a[href
 	^="http://lh3.ggpht.com/"]:before,a[href ^="http://lh4.ggpht.com/"]:before,a[href ^="http://lh5.ggpht.com/"]:before,a[href
 	^="http://lh6.ggpht.com/"]:before,a[href ^="http://lh7.ggpht.com/"]:before,a[href ^="http://lh8.ggpht.com/"]:before,a[href
-	^="http://lh9.ggpht.com/"]:before,a[href ^="http://tsv-gersthofen.de/"]:before {
+	^="http://lh9.ggpht.com/"]:before,a[href ^="http://tsv-gersthofen.de/"]:before,a[href ^="https://badminton-gersthofen.de/balloncup/"]:before {
 	content: "";
 }
 

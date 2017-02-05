@@ -1,20 +1,28 @@
 <h1>Badminton – Dein Sport!</h1>
 
 <?php
-if($Nbr= CTerminAllg::getNumberOfTermine(3))
-{
-	echo '<div style="float: right; width:320px; margin-bottom: 10px; margin-left: 40px">'."\n";
-	echo '<div class="grundiert" style="text-align: center; padding: 3px" >'."\n";
-	echo '<em>Termin-Erinnerung</em>'."\n";
-	echo '</div>'."\n";
-	echo '<div class="schattiert" style="text-align: center; height:50px; padding:8px" >'."\n";
-	echo '<img src="bilder/kalender.jpg" alt="Kalender" height="50" style="float:left; margin-right: 15px" />'."\n";
-	echo 'In den nächsten 3 Monaten steh'.((1==$Nbr)?('t'):('en')).' '.$Nbr.' Termin'.((1==$Nbr)?(''):('e')).' an.'."\n";
-	echo 'Wirf einen Blick in die <a href="index.php?section=termine_allg">Termin-Übersicht</a>.'."\n";
-	echo '</div>'."\n";
-	echo '</div>'."\n";
-}
+// if($Nbr= CTerminAllg::getNumberOfTermine(3))
+// {
+// 	echo '<div style="float: right; width:320px; margin-bottom: 10px; margin-left: 40px">'."\n";
+//	echo '<div class="grundiert" style="text-align: center; padding: 3px" >'."\n";
+//	echo '<em>Termin-Erinnerung</em>'."\n";
+//	echo '</div>'."\n";
+//	echo '<div class="schattiert" style="text-align: center; height:50px; padding:8px" >'."\n";
+//	echo '<img src="bilder/kalender.jpg" alt="Kalender" height="50" style="float:left; margin-right: 15px" />'."\n";
+//	echo 'In den nächsten 3 Monaten steh'.((1==$Nbr)?('t'):('en')).' '.$Nbr.' Termin'.((1==$Nbr)?(''):('e')).' an.'."\n";
+//	echo 'Wirf einen Blick in die <a href="index.php?section=termine_allg">Termin-Übersicht</a>.'."\n";
+//	echo '</div>'."\n";
+//	echo '</div>'."\n";
+//}
 ?>
+
+<div style="float: right; width:320px; margin-bottom: 10px; margin-left: 40px; border-width:1px;border-color:#cccccc;border-style: solid;">
+	<div class="koerper" style="text-align: center; padding: 3px">
+		<a href="https://badminton-gersthofen.de/balloncup/">
+			<img src="wordpress/wp-content/uploads/2017/01/2017-02-04-Logo-Turnier_leer-300x98.png" />
+		</a>
+	</div>
+</div>
 
 <p>&nbsp;</p>
 <h2>Du interessierst Dich für Badminton – wie können wir Dir helfen?</h2>
