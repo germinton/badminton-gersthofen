@@ -19,8 +19,8 @@ für Ihre Mannschaft.</p>
 	<tr>
 		<th>Freitag</th>
 		<td>
-			<p>16:00-17:30 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:3">Paul-Klee-Gymnasium</a>
+			<p>17:30-19:00 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
 	</tr>
@@ -28,14 +28,7 @@ für Ihre Mannschaft.</p>
 		<th>Sonntag</th>
 		<td>
 			<p>18:00-19:30 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:276">International School Augsburg *</a>
-			</p>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<p>
-				* falls möglich: kurzfristige Zusammenlegung in die <a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschule</a><br>(bitte <a href="index.php">Startseite</a> vor Training auf kurzfristige Hallen-Änderung prüfen)
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
 	</tr>
