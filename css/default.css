@@ -161,10 +161,20 @@ a[href ^="http://"]:before,a[href ^="https://"]:before {
 }
 
 /* Kein Pfeil vor Picasa-Links, balloncup-Link */
-a[href ^="http://lh0.ggpht.com/"]:before,a[href ^="http://lh1.ggpht.com/"]:before,a[href ^="http://lh2.ggpht.com/"]:before,a[href
-	^="http://lh3.ggpht.com/"]:before,a[href ^="http://lh4.ggpht.com/"]:before,a[href ^="http://lh5.ggpht.com/"]:before,a[href
-	^="http://lh6.ggpht.com/"]:before,a[href ^="http://lh7.ggpht.com/"]:before,a[href ^="http://lh8.ggpht.com/"]:before,a[href
-	^="http://lh9.ggpht.com/"]:before,a[href ^="http://tsv-gersthofen.de/"]:before,a[href ^="https://badminton-gersthofen.de/balloncup/"]:before {
+a[href ^="http://lh0.ggpht.com/"]:before,
+a[href ^="http://lh1.ggpht.com/"]:before,
+a[href ^="http://lh2.ggpht.com/"]:before,
+a[href ^="http://lh3.ggpht.com/"]:before,
+a[href ^="http://lh4.ggpht.com/"]:before,
+a[href ^="http://lh5.ggpht.com/"]:before,
+a[href ^="http://lh6.ggpht.com/"]:before,
+a[href ^="http://lh7.ggpht.com/"]:before,
+a[href ^="http://lh8.ggpht.com/"]:before,
+a[href ^="http://lh9.ggpht.com/"]:before,
+a[href ^="https://goo.gl/forms/vxHQKVOjl0691CXV2"]:before,
+a[href ^="http://tsv-gersthofen.de/"]:before,
+a[href ^="https://badminton-gersthofen.de/balloncup/"]:before,
+a[href ^="https://badminton-gersthofen.de/lkm/"]:before {
 	content: "";
 }
 
@@ -498,6 +508,9 @@ p.formularbuttons {
 	font-size: 0.8em;
 }
 
+#calendar_navbar {
+	padding: 5px;
+}
 /*
 --------------------------------------------------------------------------------
 	Meldungen
@@ -533,6 +546,18 @@ p.formularbuttons {
 	Neuigkeiten, Allgemeine Termine, Punktspielbegegnungstermine
 --------------------------------------------------------------------------------
 */
+
+#calendar_trainingstermine {
+	height: 220px;
+	width: 100%;
+}
+
+#calendar_termine{	
+	width: 250px;
+	height: 220px;
+	float: right;
+}
+
 .neuigkeit,.allg_termin,.psb_termin {
 	margin-top: 1em;
 }

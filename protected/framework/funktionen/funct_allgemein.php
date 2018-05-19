@@ -76,6 +76,22 @@ function lB($StringOrNull)
 }
 
 /*******************************************************************************************************************//**
+ * Gibt für den angegebenen String entwededer einen Float oder 'PHP-null' zurück
+ **********************************************************************************************************************/
+function lF($StringOrNull)
+{
+	/*
+	 * mysqli_fetch_row()
+	 * http://www.php.net/manual/en/function.mysql-fetch-row.php
+	 * ...
+	 * Note: This function sets NULL fields to the PHP NULL value.
+	 *
+	 */
+	// if(is_integer($StringOrNull)) {die('is_integer!');}
+	return ((is_null($StringOrNull)?(null):((float)$StringOrNull)));
+}
+
+/*******************************************************************************************************************//**
  * Gibt für den angegebenen 'Section-String' das XHTML-'a'-Element (Anker-Element) aus.
  **********************************************************************************************************************/
 function EchoLink($SecString = null)

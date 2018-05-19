@@ -152,8 +152,8 @@ tr.highlight {
 */
 
 .training_type_box {
- 	color: #333333;
-	background-color: #7cbbff;
+	color: #ffffff;
+    background-color: #0060a1;
 }
 
 .training_type_box:hover {

@@ -20,7 +20,7 @@ für Ihre Mannschaft.</p>
 		<th>Freitag</th>
 		<td>
 			<p>17:30-19:00 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
 	</tr>

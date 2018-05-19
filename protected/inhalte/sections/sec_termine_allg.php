@@ -1,10 +1,20 @@
-<h1>Allgemeine Termine</h1>
+<h1>Kalender</h1>
 
-<p>Hier eine Übersicht unserer Termine der nächsten 13 Monate. Typischerweise sind hier Infos zu anstehenden Ausflügen
-oder Turnieren notiert. Die Punktspieltermine findet ihr unter <?php EchoLink('termine_psb') ?>.</p>
+<div style="float: right; margin-left: 40px;">
+	<a href="kalender/kalender.html?title=Abteilungskalender&calendars=Punktspielkalender,Hallenkalender,Events" target="_blank">
+	<img src="bilder/kalender-logo.jpg" style="
+		width: 110px;
+		display: block;
+		margin: 0 auto;
+	">
+	</a>
+</div>
+
+<p>
+Wir sind nicht nur in der Halle eine aktive Abteilung, sondern unternehmen auch sonst viel miteinander. Hier ist eine Übersicht aller anstehenden Ausflüge und Turniere in den kommenden 13 Monaten. Die Punktspieltermine sind unter Punktspieltermine zu finden, die normalen Trainingstermine unter <?php EchoLink('training') ?>. Mit einem Klick auf das Kalender-Logo öffnet sich der <a href="kalender/kalender.html?title=Abteilungskalender&calendars=Punktspielkalender,Hallenkalender,Events" target="_blank">Badminton-Kalender der Abteilung</a> mit allen Terminen im Überblick.
+</p>
 
 <?php
-
 $TerminAllgArrayArray = CTerminAllg::getRecentTerminAllgArrayArray();
 
 echo '<ul>'."\n";

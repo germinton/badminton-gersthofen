@@ -36,6 +36,7 @@ include 'protected/navigation.php';
  * Seite.
  **********************************************************************************************************************/
 $SiteManager = CSiteManager::getInstance($NavContGlb, $NavContPub, $NavContInt);
+$SiteManager->processLogin();
 
 /*******************************************************************************************************************//*
  * Das Objekt der CTemplateData-Klasse transportiert Daten vom Modul in die Inhalts-Datei.
@@ -116,6 +117,30 @@ echo '" />'."\n";
 <script src="javascript/photoswipe/photoswipe.min.js"></script>
 <script src="javascript/photoswipe/photoswipe-ui-default.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000000",
+      "text": "#ffdb2b"
+    },
+    "button": {
+      "background": "#ffdb2b"
+    }
+  },
+  "content": {
+    "message": "Diese Internetseite verwendet Cookies, um die Nutzererfahrung zu verbessern und den Benutzern bestimmte Dienste und Funktionen bereitzustellen. Mit der Nutzung dieser Seite erklären Sie sich damit einverstanden, dass wir Cookies verwenden.  ",
+    "dismiss": "Meldung nicht mehr anzeigen",
+    "allow": "Cookies erlauben",
+    "link": "Mehr Informationen",
+    "href": "/index.php?section=datenschutz"
+  }
+})});
+</script>
+
 </head>
 
 <body>
@@ -126,7 +151,9 @@ echo '" />'."\n";
 
 <a href="http://tsv-gersthofen.de/"><img src="bilder/heading-tsv-gersthofen.png" /></a>
 
-<div id="head"><?php
+<div id="head">
+
+<?php
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Template-Datei (=anzuzeigender Inhalt) laden
@@ -137,7 +164,8 @@ try {
     $SiteManager->runOnEveryPageRefresh();
 
     // 2. Login-Status überprüfen ($NavContInt evtl. filtern)
-    $SiteManager->processLogin();
+    // das muss viel früher passieren, wegen dem Set-Cookie HEADER der nicht verändert werden darf nach dem content geschrieben wurde
+    
 
     // 3. Daten für die angeforderte Seite zusammenstellen
     $ActTplData = $SiteManager->getTemplateDataForSecRequest();
@@ -259,9 +287,9 @@ echo '</div>'."\n";
     }
     ?>
 
-<p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html?view=impressum&id=0"
-<?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a><br />
-© 2009-2016 - Abteilung Badminton</p>
+<p>Badminton ist eine Abteilung im <a href="http://www.tsv-gersthofen.de/gesch%C3%A4ftsstelle/impressum.html"
+<?php echo STD_NEW_WINDOW ?>>TSV Gersthofen (Impressum)</a> <a href="index.php?section=datenschutz">Datenschutzerklärung</a><br />
+© 2009-2018 - Abteilung Badminton</p>
 </div>
 
 </div>

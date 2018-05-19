@@ -16,13 +16,14 @@ class CNav
 
 	private $mUpFlag = false; ///< Navigationspunkt liegt [nicht] auf einer höheren Stufe als sein Vorgänger
 	private $mNbrOfDowns = 0; ///< Stufen, die dieser Navigationspunkt tiefer liegt als sein Vorgänger
+	private $mDirectLink;
 
 	/*****************************************************************************************************************//**
 	 * @name Magics
 	 **************************************************************************************************************//*@{*/
 
 	public function __construct($Stage, $SecString, $NavText,
-	$HasScript = false, $AufgabeIDArray = array(), $AthletIDArray = array())
+	$HasScript = false, $AufgabeIDArray = array(), $AthletIDArray = array(), $directLink = '')
 	{
 		$this->mStage = $Stage;
 		$this->mSecString = $SecString;
@@ -30,6 +31,7 @@ class CNav
 		$this->mHasScript = $HasScript;
 		$this->mAufgabeIDArray = $AufgabeIDArray;
 		$this->mAthletIDArray = $AthletIDArray;
+		$this->mDirectLink = $directLink;
 
 		$Aufgabenzuordnung = new CAufgabenzuordnung();
 		$AthletIDArray = CAufgabenzuordnung::getAthletIDArray($this->mAufgabeIDArray);
@@ -72,12 +74,17 @@ class CNav
 
 	public function getXHTMLForLink()
 	{
-		if($this->mSecString == $_GET['section']) {
-			return '<strong title="Hier befindest Du Dich gerade.">'.self::getNavText().'</strong>';
+		if(empty($this->mDirectLink)) {
+
+			if($this->mSecString == $_GET['section']) {
+				return '<strong title="Hier befindest Du Dich gerade.">'.self::getNavText().'</strong>';
+			}
+			$HRefString = self::getHRefString();
+			$OnClickEvent = (('http://'  == substr($HRefString, 0, 7))?(' '.STD_NEW_WINDOW):(''));
+			return '<a href="'.$HRefString.'"'.$OnClickEvent.'>'.self::getNavText().'</a>';
+		} else {
+			return '<a href="'.$this->mDirectLink.'">'.self::getNavText().'</a>';
 		}
-		$HRefString = self::getHRefString();
-		$OnClickEvent = (('http://'  == substr($HRefString, 0, 7))?(' '.STD_NEW_WINDOW):(''));
-		return '<a href="'.$HRefString.'"'.$OnClickEvent.'>'.self::getNavText().'</a>';
 	}
 
 	public function getHRefString()

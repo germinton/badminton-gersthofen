@@ -23,9 +23,11 @@ $NavContPub->add(new CNav(1, 'dieabteilung', 'Die Abteilung'));
 $NavContPub->add(new CNav(2, 'organisation', 'Organisation'));
 $NavContPub->add(new CNav(2, 'aufgabenverteilung', 'Aufgabenverteilung', true));
 $NavContPub->add(new CNav(2, 'gebuehren', 'Gebühren'));
-$NavContPub->add(new CNav(2, 'termine_allg', 'Termine'));
+$NavContPub->add(new CNav(2, 'termine_allg', 'Kalender'));
 $NavContPub->add(new CNav(2, 'galerie', 'Bildergalerie', true));
 $NavContPub->add(new CNav(2, 'faq', 'FAQ'));
+$NavContPub->add(new CNav(2, 'datenschutz', 'Datenschutzerklärung'));
+
 $NavContPub->add(new CNav(1, 'training', 'Training'));
 $NavContPub->add(new CNav(2, 'training_schueler', 'Schüler-Training'));
 $NavContPub->add(new CNav(2, 'training_jugend', 'Jugend-Training'));
@@ -40,6 +42,7 @@ $NavContPub->add(new CNav(2, 'einsatzstatistik', 'Einsatzstatistik', true));
 $NavContPub->add(new CNav(2, 'archiv', 'Archiv', true));
 $NavContPub->add(new CNav(3, 'sperml_punkt', 'Punktspiele', true));
 $NavContPub->add(new CNav(3, 'sperml_freund', 'Freundschaftsspiele', true));
+$NavContPub->add(new CNav(1, 'balloncup', 'Ballon-Cup', false, array(), array(), '/balloncup/'));
 $NavContPub->add(new CNav(1, 'service', 'Service'));
 $NavContPub->add(new CNav(2, 'links', 'Links'));
 $NavContPub->add(new CNav(2, 'downloads', 'Downloads'));
@@ -175,6 +178,15 @@ array(
   S_ERWACHSENENTRAINER,
   S_SCHIEDSRICHTER,
   S_JUGENWART,
+  S_ABTEILUNGSSCHATZMEISTER,
+)));
+$NavContInt->add(new CNav(2, 'verw_abteilungsbeitraege', 'Abteilungsbeiträge', true,
+array(
+  S_ABTEILUNGSLEITER,
+  S_WEBMASTER,
+  S_DBENTWICKLER,
+  S_JUGENWART,
+  S_ABTEILUNGSSCHATZMEISTER,
 )));
 $NavContInt->add(new CNav(2, 'verw_aufgaben', 'Aufgaben', true));
 $NavContInt->add(new CNav(2, 'verw_aufgabenzuordnungen', 'Aufgabenzuordnungen', true,

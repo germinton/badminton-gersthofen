@@ -64,6 +64,7 @@ function S2S_TabName_IDName($TabName)
 		case 'aufgabenzuordnungen': return 'aufgabenzuordnung_id'; break;
 		case 'aufstellungen': return 'aufstellung_id'; break;
 		case 'austragungsorte': return 'austragungsort_id'; break;
+		case 'beitraege': return 'beitrag_id'; break;
 		case 'ersatzspieler': return 'ersatzspieler_id'; break;
 		case 'galerieeintraege': return 'galerieeintrag_id'; break;
 		case 'kontrahenten': return 'kontrahent_id'; break;

@@ -44,6 +44,7 @@ $data['feldnamen_array'][] = 'erzber_vorname';
 $data['feldnamen_array'][] = 'erzber_nachname';
 $data['feldnamen_array'][] = 'erzber_tel_mobil';
 $data['feldnamen_array'][] = 'erzber_email';
+$data['feldnamen_array'][] = 'beitrag';
 
 if (VIEW_DETAIL == $data['view']) {
     $data['export'] = '';
@@ -66,13 +67,13 @@ if (VIEW_DETAIL == $data['view']) {
     }
 
     for ($i = 0; $i < mysqli_field_count(CDBConnection::getDB()); ++$i) {
-        $data['export'] .= mysqli_fetch_field_direct($result, $i)->name.',';
+        $data['export'] .= mysqli_fetch_field_direct($result, $i)->name.';';
     }
     $data['export'] = substr($data['export'], 0, strlen($data['export']) - 1)."\n";
 
     while ($row = mysqli_fetch_row($result)) {
         foreach ($row as $cell) {
-            $data['export'] .= $cell.',';
+            $data['export'] .= $cell.';';
         }
         $data['export'] = substr($data['export'], 0, strlen($data['export']) - 1)."\n";
     }

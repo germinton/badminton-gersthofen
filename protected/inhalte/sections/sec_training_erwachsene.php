@@ -20,7 +20,7 @@ Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 		<th>Freitag</th>
 		<td>
 			<p>19:00-22:00 Uhr<br />
-				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
 	</tr>
@@ -28,6 +28,14 @@ Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 		<th>Sonntag</th>
 		<td>
 			<p>19:30-22:00 Uhr<br />
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<th>Dienstag</th>
+		<td>
+			<p>20:30-22:00 Uhr<br />(freies Spiel, kein angeleitetes Training)<br />
 				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
