@@ -1,5 +1,5 @@
 <?php
-/*
+
  if($Nbr= CTerminAllg::getNumberOfTermine(3))
  {
  	echo '<div style="float: right; width:320px; margin-bottom: 10px; margin-left: 40px">'."\n";
@@ -13,10 +13,10 @@
 	echo '</div>'."\n";
 	echo '</div>'."\n";
 }
-*/
+
 ?>
 
-
+<!-- Ballon-Cup
 <div style="float: right; width:140px;height:140px; margin-bottom: 10px; margin-left: 40px; margin-top: 1.3em;">
 	<div class="koerper">
 		<a href="/balloncup" target="_blank">
@@ -24,6 +24,7 @@
 		</a>
 	</div>
 </div>
+-->
 
 
 <!--
