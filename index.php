@@ -36,7 +36,22 @@ include 'protected/navigation.php';
  * Seite.
  **********************************************************************************************************************/
 $SiteManager = CSiteManager::getInstance($NavContGlb, $NavContPub, $NavContInt);
-$SiteManager->processLogin();
+try {
+    $SiteManager->processLogin();
+} catch (CShowInfo $si) {
+    $ActTplData = $si->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_info.php';
+} catch (CShowError $se) {
+    $ActTplData = $se->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_error.php';
+} catch (CShowCheckMsg $sc) {
+    $ActTplData = $sc->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_check_msg.php';
+} catch (Exception $e) {
+    $ShowError = new CShowError('Unbehandelter Fehler: '.$e->getMessage());
+    $ActTplData = $ShowError->getTemplateData();
+    $IncludeFile .= 'meldungen/msg_error.php';
+}
 
 /*******************************************************************************************************************//*
  * Das Objekt der CTemplateData-Klasse transportiert Daten vom Modul in die Inhalts-Datei.
