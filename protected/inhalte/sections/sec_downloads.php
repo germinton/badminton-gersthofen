@@ -7,9 +7,9 @@
 <p>Abteilungsordnung (<a href="downloads/Abteilungsordnung_Badminton.pdf">pdf</a>)</p>
 <p>Aufgabenbeschreibung Funktionäre (<a href="downloads/Abteilungsorganisation.pdf">pdf</a>)</p>
 <p>Protokoll Gründungsversammlung (24.01.2015) (<a href="downloads/2016_01_24_protokoll_gruendungsversammlung_signed.pdf">pdf</a>)</p>
-<p>Protokolle Abteilungsjugendtage: <a href="downloads/Protokoll_1._Abteilungsjugendversammlung_final.pdf">2016</a>, <a href="downloads/Protokoll_1._Abteilungsjugendtag_final.pdf">2017(1)</a>, <a href="downloads/Protokoll_Abteilungsjugendtag_2017-10-15.pdf">2017(2)</a>, <a href="downloads/Protokoll_Abteilungsjugendtag_2018.pdf">2018</a></p>
+<p>Protokolle Abteilungsjugendtage: <a href="downloads/Protokoll_1._Abteilungsjugendversammlung_final.pdf">2016</a>, <a href="downloads/Protokoll_Abteilungsjugendtag_2017-10-15.pdf">2017(2)</a>, <a href="downloads/Protokoll_Abteilungsjugendtag_2018.pdf">2018</a>, <a href="downloads/Protokoll_Abteilungsjugendtag_2019.PDF">2019</a></p>
 
-<p>Protokolle Mitgliederversammlungen: <a href="downloads/Protokoll_1._Mitgliederversammlung_final.pdf">2016</a>, <a href="downloads/Protokoll_1._Mitgliederversammlung2017.pdf">2017</a>, <a href="downloads/Protokoll 1. Mitgliederversammlung 2018.pdf">2018</a></p>
+<p>Protokolle Mitgliederversammlungen: <a href="downloads/Protokoll_1._Mitgliederversammlung_final.pdf">2016</a>, <a href="downloads/Protokoll_1._Mitgliederversammlung2017.pdf">2017</a>, <a href="downloads/Protokoll 1. Mitgliederversammlung 2018.pdf">2018</a>, <a href="downloads/Protokoll 1. Mitgliederversammlung 2019.pdf">2019</a></p>
 
 <p>&nbsp;</p>
 <h2>Formulare:</h2>

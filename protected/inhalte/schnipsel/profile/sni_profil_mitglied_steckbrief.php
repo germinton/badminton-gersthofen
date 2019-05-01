@@ -12,8 +12,8 @@
 	<dd><?php echo $Mitglied->getNachname() ?></dd>
 	<?php if($s = $Mitglied->getSpitzname()) {echo '<dt>Spitzname</dt>'."\n".'<dd>'.$s.'</dd>'."\n";} ?>
 	<?php if($s = $Mitglied->getBeruf()) {echo '<dt>Beruf</dt>'."\n".'<dd>'.$s.'</dd>'."\n";} ?>
-	<dt>E-Mail</dt>
-	<dd><?php echo $Mitglied->getEMail(array(GET_NBSP, GET_SPEC)) ?></dd>
+	<!--<dt>E-Mail</dt>
+	<dd><?php /*echo $Mitglied->getEMail(array(GET_NBSP, GET_SPEC))*/ ?></dd>-->
 	<?php if(count($aa = $Mitglied->getAufgabenstringArray())) { ?>
 	<dt>&nbsp;</dt>
 	<dd>&nbsp;</dd>

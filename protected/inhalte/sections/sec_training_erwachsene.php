@@ -20,7 +20,7 @@ Umsetzung des Erlernten in die Praxis erfolgt im freien Spiel.</p>
 		<th>Freitag</th>
 		<td>
 			<p>19:00-22:00 Uhr<br />
-			<a href="index.php?section=sportstaetten#austragungsort_id:3">Paul-Klee Gymnasium</a>
+				<a href="index.php?section=sportstaetten#austragungsort_id:278">Mittelschulhalle (neu)</a>
 			</p>
 		</td>
 	</tr>

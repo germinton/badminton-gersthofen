@@ -3,6 +3,9 @@
 Beliebtheit. Grund hierfür sind nicht nur die Geselligkeit und die gute Organisation der Abteilung, sondern vor allem die
 hohe Qualität unseres Trainings. Möglich machen dies unsere gut ausgebildeten Trainer, die das Aktvien-, Jugend- und
 Schülertraining durchführen. Alle Übungsleiter sind selbst erfahrene Badmintonspieler und einige haben sich sogar als C-Trainer vom Bayerischen Badminton-Verband lizenzieren lassen.</p>
+
+<p>Sind noch Fragen offen? Häufige Fragen und Antworten sind unter <a href="index.php?section=faq">FAQ</a> zu finden!</p>
+
 <p>Nachfolgend findest Du ein Kurzportrait zu jedem unserer Trainer:</p>
 <?php
 $SortierungArray = array();
